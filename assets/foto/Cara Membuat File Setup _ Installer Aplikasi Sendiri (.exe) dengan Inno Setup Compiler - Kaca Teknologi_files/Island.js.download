@@ -1,0 +1,53 @@
+function drawIsland(picObj)
+{
+	var ctx = picObj.canvas.getContext('2d');
+	//
+	ctx.save();
+	ctx.translate( - w / 2 + picObj.x, picObj.y);
+	//
+	ctx.scale(1 / 1.5, 1 / 1.5);
+	//
+	ctx.drawImage(picObj.pic, -picObj.pic.width / 2, -picObj.pic.height);
+	//
+	var g = ctx.createLinearGradient(0, 0, 0, 25);
+	g.addColorStop(0,"rgba(0, 20, 2, 0.4)");
+	g.addColorStop(1,"rgba(0, 40, 6, 0)");
+	//
+	ctx.beginPath();
+	ctx.moveTo(218,25);
+	ctx.lineTo(-220,25);
+	ctx.lineTo(-220,0);
+	ctx.lineTo(220,0);
+	ctx.lineTo(218,25);
+	ctx.closePath();
+	//
+	ctx.fillStyle = g;
+	ctx.fill();
+
+	///// WAVE
+	wCtx.clearRect(0, 0, 450, 8);
+	wCtx.save();
+	wCtx.translate(waveX - img_wave.pic.width, 0);
+	//
+	var	tpgr = wCtx.createLinearGradient(- waveX + img_wave.pic.width + 450, 0, - waveX + img_wave.pic.width, 28);
+	tpgr.addColorStop(0.6, "rgba(0, 0, 0, 0.7)");	
+	tpgr.addColorStop(0.8,   "rgba(0, 0, 0, 0)");			
+	wCtx.fillStyle = tpgr;
+	wCtx.beginPath();
+	wCtx.rect(- waveX + img_wave.pic.width, 0, 450, 8);
+	wCtx.fill();
+	wCtx.globalCompositeOperation = "source-in";
+	var iPattern = wCtx.createPattern(img_wave.pic, 'repeat-x');	
+	wCtx.fillStyle = iPattern;
+	wCtx.fillRect(- waveX + img_wave.pic.width, 0, 370, 8);
+	var wavePic = nCanvas;
+	wCtx.restore();
+	//
+	img_wave.ang += radian(1);
+	img_wave.ang = img_wave.ang % Math.PI;
+	//
+	ctx.drawImage(wavePic, picObj.x - 250, -4 + 1 * Math.sin(img_wave.ang));
+
+	//
+	ctx.restore();
+}
