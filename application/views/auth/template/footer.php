@@ -1,13 +1,26 @@
-<!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets') ?>/vendor/jquery/jquery.min.js"></script>
-<script src="<?= base_url('assets') ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
+  <div class="card-footer text-center">
 
-<!-- Core plugin JavaScript-->
-<script src="<?= base_url('assets') ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </main>
+  </div>
+  <div id="layoutAuthentication_footer">
+      <footer class="footer mt-auto footer-dark">
+          <div class="container-fluid">
+              <div class="row">
 
-<!-- Custom scripts for all pages-->
-<script src="<?= base_url('assets') ?>/js/sb-admin-2.min.js"></script>
+              </div>
+          </div>
+      </footer>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="<?= base_url("assets") ?>/js/scripts.js"></script>
+  </body>
 
-</body>
-
-</html>
+  </html>

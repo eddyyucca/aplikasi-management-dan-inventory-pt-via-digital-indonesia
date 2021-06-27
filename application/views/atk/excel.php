@@ -6,7 +6,7 @@ header("Content-Disposition: attachment; filename=Data Barang $date.xls");
 <table border="1">
 
     <tr align="center" width="400">
-        <td colspan="4">DEPARTEMEN HRGS</td>
+        <td colspan="4">DEPARTEMEN HRGS PT.VIA</td>
     </tr>
 
     <tr align="center">
