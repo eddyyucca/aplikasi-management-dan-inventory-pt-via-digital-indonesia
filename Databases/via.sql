@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Sep 2019 pada 07.57
--- Versi server: 10.1.34-MariaDB
--- Versi PHP: 5.6.37
+-- Waktu pembuatan: 18 Jul 2021 pada 16.31
+-- Versi server: 10.4.18-MariaDB
+-- Versi PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hrs`
+-- Database: `via`
 --
 
 -- --------------------------------------------------------
@@ -44,7 +43,7 @@ INSERT INTO `data_barang` (`id`, `item`, `qty`, `satuan`) VALUES
 (2, 'Amplop Coklat D (folio) Samson', '12', 'Pack'),
 (3, 'Amplop jaya 95x152mm', '12', 'Pack'),
 (4, 'Amplop Surat Putih (110 x 230 mm)', '7', 'Pack'),
-(5, 'Ball Point Snowman V5 Hitam', '50', 'Pcs'),
+(5, 'Ball Point Snowman V5 Hitam', '46', 'Pcs'),
 (6, 'Ballpoint Boxy Uni Ball 105 (Biru)', '31', 'Pcs'),
 (7, 'Ballpoint Boxy Uni Ball 105 (Hitam)', '37', 'Pcs'),
 (8, 'Ballpoint Pilot G2 - 07 Hitam', '24', 'Pcs'),
@@ -145,6 +144,69 @@ INSERT INTO `data_catering` (`id`, `mitra`, `alamat`, `kontrak_awal`, `akhir_kon
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `data_karyawan`
+--
+
+CREATE TABLE `data_karyawan` (
+  `id_karyawan` varchar(20) NOT NULL,
+  `nama_lengkap` varchar(50) NOT NULL,
+  `nama_panggilan` varchar(50) NOT NULL,
+  `jk` varchar(20) NOT NULL,
+  `tempat` varchar(20) NOT NULL,
+  `ttl` varchar(25) NOT NULL,
+  `alamat_saat_ini` text NOT NULL,
+  `alamat_permanen` text NOT NULL,
+  `no_telp` varchar(25) NOT NULL,
+  `agama` varchar(10) NOT NULL,
+  `warganegra` varchar(20) NOT NULL,
+  `suku` varchar(20) NOT NULL,
+  `no_ktp` int(20) NOT NULL,
+  `alamat_ktp` text NOT NULL,
+  `masa_berlaku_ktp` varchar(10) NOT NULL,
+  `no_sim_a` int(20) NOT NULL,
+  `alamat_sim_a` text NOT NULL,
+  `masa_berlaku_sim_a` varchar(10) NOT NULL,
+  `no_sim_c` int(20) NOT NULL,
+  `alamat_sim_c` text NOT NULL,
+  `masa_berlaku_sim_c` varchar(10) NOT NULL,
+  `no_npwp` int(20) NOT NULL,
+  `no_bpjs_tenagakerja` int(20) NOT NULL,
+  `no_bpjs_kes` int(20) NOT NULL,
+  `no_passport` int(20) NOT NULL,
+  `alamat_passport` text NOT NULL,
+  `masa_berlaku_passport` varchar(10) NOT NULL,
+  `tinggi_badan` varchar(10) NOT NULL,
+  `berat_badan` varchar(10) NOT NULL,
+  `rhesus` varchar(10) NOT NULL,
+  `ukuran_baju` varchar(10) NOT NULL,
+  `ukuran_celana` varchar(10) NOT NULL,
+  `ukuran_sepatu` varchar(10) NOT NULL,
+  `hobi` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `id_dep` int(10) NOT NULL,
+  `id_jab` int(10) NOT NULL,
+  `status_karyawan` varchar(50) NOT NULL,
+  `mess` varchar(10) NOT NULL,
+  `foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `data_karyawan`
+--
+
+INSERT INTO `data_karyawan` (`id_karyawan`, `nama_lengkap`, `nama_panggilan`, `jk`, `tempat`, `ttl`, `alamat_saat_ini`, `alamat_permanen`, `no_telp`, `agama`, `warganegra`, `suku`, `no_ktp`, `alamat_ktp`, `masa_berlaku_ktp`, `no_sim_a`, `alamat_sim_a`, `masa_berlaku_sim_a`, `no_sim_c`, `alamat_sim_c`, `masa_berlaku_sim_c`, `no_npwp`, `no_bpjs_tenagakerja`, `no_bpjs_kes`, `no_passport`, `alamat_passport`, `masa_berlaku_passport`, `tinggi_badan`, `berat_badan`, `rhesus`, `ukuran_baju`, `ukuran_celana`, `ukuran_sepatu`, `hobi`, `email`, `id_dep`, `id_jab`, `status_karyawan`, `mess`, `foto`) VALUES
+('1199503122', 'Syamsul Suriadi', 'Syam', 'Laki-Laki', 'Kotabaru', '1995-03-12', 'Kupang, Rantau, Kalimantan Selatan', 'Kupang, Rantau, Kalimantan Selatan', '081387651095', 'Islam', 'Indonesia', 'Banjar', 2147483647, 'Kotabaru', '2023-03-12', 0, '', '', 2147483647, 'Kotabaru', '2025-03-12', 2147483647, 2147483647, 128496922, 0, '', '', '170', '65', 'O', 'L', 'L', '43', 'Memancing', 's.syamsul@gmail.com', 1, 14, 'Aktif', 'Ya', '292912e8cbc03dda29214d2c61feb807.png'),
+('1202005081', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'tapin', '2020-05-08', 'Tapin\r\n', '', '', '', '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '112', '', '', '', '', '', '', '', 1, 12, '', 'Ya', 'foto.jpg'),
+('1202007034', 'mas jordy', 'jordy', 'Laki-Laki', 'tapin', '2020-07-03', '', '', '083159982119', '', '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', 1, 2, '', 'Tidak', ''),
+('1202107175', 'eddy adha saputra', 'sas', 'Laki-Laki', 'banjarbaru', '2021-07-17', 'Banjar Baru Selatan', 'JL. pandu, guntung paikat, kost berkat utama no 67', '085248665646', 'Islam', 'Indonesia', 'banjar', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '211', '79', 'A', 'XL', 'xxl', '43', 'Jalan-Jalan', 'eddyyucca@gmail.com', 1, 15, 'Aktif', '', ''),
+('1202107176', 'eddy adha saputra', 'sas', 'Laki-Laki', 'banjarbaru', '2021-07-17', 'Banjar Baru Selatan', 'JL. pandu, guntung paikat, kost berkat utama no 67', '085248665646', 'Islam', 'Indonesia', 'banjar', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '211', '79', 'A', 'XL', 'xxl', '43', 'Jalan-Jalan', 'eddyyucca@gmail.com', 1, 15, 'Aktif', '', ''),
+('2199806251', 'Muhammad Aldi', 'Aldi', 'Laki-Laki', 'Tatakan', '1998-06-25', 'Jl. A. Yani, Tatakan Datu Sanggul', 'Jl. A. Yani, Tatakan Datu Sanggul', '081346814830', 'Islam', 'Indonesia', 'Banjar', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2021-06-25', 0, '', '', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2025-06-25', 2147483647, 2147483647, 127496931, 0, '', '', '165', '60', 'B ', 'L', 'L', '40', 'Menggambar', 'aldi555@gmail.com', 2, 15, '', '', 'main-list-image2nd-b016a720-04e2-4536-bcac-b82f60ee00a3-7.jpeg'),
+('3199607191', 'Berlian Mutiara Senduk', 'Lian', 'Perempuan', 'Balikpapan', '1996-07-19', 'Pulau Pinang', 'Pulau Pinang', '089856701242', 'Kristen', 'Indonesia', 'Toraja', 2147483647, 'Jl. A. Yani, Tapin Utara, Tapin, Kalimantan Selatan', '2023-07-19', 0, '', '', 2147483647, 'Jl. A. Yani, Tapin Utara, Tapin, Kalimantan Selatan', '2024-07-19', 2147483647, 2147483647, 146496942, 0, '', '', '160', '49', 'AB', 'S', 'S', '37', 'Menulis', 'berlian.mutiara@gmail.com', 1, 15, '', '', 'pas-foto-3x4.jpg'),
+('4199609131', 'Gina Sonia', 'Gina', 'Perempuan', 'Tatakan', '1996-09-13', 'Desa Tatakan, Tapin Selatan, Tapin, Kalimantan Sekatan', 'Desa Tatakan, Tapin Selatan, Tapin, Kalimantan Sekatan', '081337426207', 'Islam', 'Indonesia', 'Banjar', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2022-09-13', 0, '', '', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2022-09-13', 2147483647, 2147483647, 121346531, 0, '', '', '159', '40', 'A', 'S', 'S', '37', 'Memasak', 'gisoni@gmail.com', 4, 2, '', '', 'b33296bb-4994-4284-b69c-9309efdba868_34.jpeg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `data_mess_lahan`
 --
 
@@ -180,7 +242,6 @@ INSERT INTO `data_mess_lahan` (`id`, `mess_lahan`, `nama_perum`, `alamat`, `no_t
 (7, 'SINERGI 7', 'M. YUNAN', 'JL. JEND SUDIRMAN KOMPLEK ASABRI RT 09 KEL. RANGDA MALINGKUNG KEC. TAPIN UTARA KAB. TAPIN', '', '', '', '', '', '', '2018-11-06', '2025-11-05', 'Rp12.000.000', '4', '2', '?', ''),
 (8, 'SINERGI 8', 'Hj. RITA HERDALINA, S.Pd, MM', '', '', '', '', '', '', '', '2019-05-07', '2020-05-06', 'Rp38.000.000', '14', '6', '?', ''),
 (11, 'LAHAN PARKIR TAMBANG', 'ACHFIDA YULIANTI', 'DESA BITAHAN BARU KECAMATAN LOKPAIKAT BPATEN TAPIN KAL-SEL', '', '', '', '', '', '', '2019-01-02', '2021-01-01', 'Rp7.000.000', '-', '-', '?', ''),
-(13, 'MESS BMC', 'Norhan', '', '', '', '', '', '', '', '2019-04-01', '2020-03-31', 'Rp35.000.000', '-', '-', '?', ''),
 (14, 'TRAINING CENTER', 'Hj.NOORFATMAWATI', '', '', '', '', '', '', '', '2019-05-01', '2020-04-30', 'Rp40.000.000', '-', '-', '?', '');
 
 -- --------------------------------------------------------
@@ -196,25 +257,29 @@ CREATE TABLE `data_order` (
   `id_dep` varchar(255) NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `qty_order` varchar(255) NOT NULL,
-  `tanggal` varchar(50) NOT NULL
+  `tanggal` varchar(50) NOT NULL,
+  `ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `data_order`
 --
 
-INSERT INTO `data_order` (`id_order`, `id_keranjang`, `id_barang`, `id_dep`, `user_id`, `qty_order`, `tanggal`) VALUES
-(55, '1', '3', '8', 'eddy', '3', '2019-09-18'),
-(56, '2', '3', '8', 'eddy', '1', '2019-09-18'),
-(57, '3', '9', '8', 'eddy', '1', '2019-09-19'),
-(58, '4', '8', '8', 'eddy', '1', '2019-09-19'),
-(59, '5', '8', '8', 'eddy', '1', '2019-09-19'),
-(60, '5', '3', '8', 'eddy', '2', '2019-09-19'),
-(61, '5', '2', '8', 'eddy', '1', '2019-09-19'),
-(62, '8', '8', '8', 'eddy', '1', '2019-09-19'),
-(63, '8', '9', '8', 'eddy', '1', '2019-09-19'),
-(64, '10', '5', '8', 'eddy', '1', '2019-09-20'),
-(65, '10', '3', '8', 'eddy', '1', '2019-09-20');
+INSERT INTO `data_order` (`id_order`, `id_keranjang`, `id_barang`, `id_dep`, `user_id`, `qty_order`, `tanggal`, `ket`) VALUES
+(55, '1', '3', '8', 'eddy', '3', '2019-09-18', ''),
+(56, '2', '3', '8', 'eddy', '1', '2019-09-18', ''),
+(57, '3', '9', '8', 'eddy', '1', '2019-09-19', ''),
+(58, '4', '8', '8', 'eddy', '1', '2019-09-19', ''),
+(59, '5', '8', '8', 'eddy', '1', '2019-09-19', ''),
+(60, '5', '3', '8', 'eddy', '2', '2019-09-19', ''),
+(61, '5', '2', '8', 'eddy', '1', '2019-09-19', ''),
+(62, '8', '8', '8', 'eddy', '1', '2019-09-19', ''),
+(63, '8', '9', '8', 'eddy', '1', '2019-09-19', ''),
+(64, '10', '5', '8', 'eddy', '1', '2019-09-20', ''),
+(65, '10', '3', '8', 'eddy', '1', '2019-09-20', ''),
+(66, '12', '1', '1', 'Berlian Mutiara Senduk', '5', '2021-07-17', ''),
+(67, '12', '2', '1', 'Berlian Mutiara Senduk', '4', '2021-07-17', ''),
+(68, '14', '5', '1', 'eddy adha saputra', '4', '2021-07-18', '');
 
 -- --------------------------------------------------------
 
@@ -314,7 +379,8 @@ INSERT INTO `data_seragam` (`id`, `type`, `ukuran`, `stok`) VALUES
 (1, 'seragam_kerja', 'XXL', '2'),
 (2, 'kaos', 'XXL', '1'),
 (3, 'kaos', 'XXL', '1'),
-(4, 'celana', 'XXL', '1');
+(4, 'celana', 'XXL', '1'),
+(6, 'seragam_kerja', 's', '6');
 
 -- --------------------------------------------------------
 
@@ -342,6 +408,58 @@ INSERT INTO `departemen` (`id`, `nama_dep`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `developer`
+--
+
+CREATE TABLE `developer` (
+  `id_dev` int(10) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `level` enum('super_admin','','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `developer`
+--
+
+INSERT INTO `developer` (`id_dev`, `username`, `password`, `level`) VALUES
+(1, 'admin', 'd56b699830e77ba53855679cb1d252da', 'super_admin');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jabatan`
+--
+
+CREATE TABLE `jabatan` (
+  `id_jab` int(10) NOT NULL,
+  `nama_jabatan` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jabatan`
+--
+
+INSERT INTO `jabatan` (`id_jab`, `nama_jabatan`) VALUES
+(2, 'Officer'),
+(3, 'FGDP'),
+(4, 'Operator A2B'),
+(5, 'Driver Dump Truck'),
+(6, 'Helper'),
+(7, 'Helper Tyre'),
+(8, 'Tyre Man'),
+(9, 'Helper Mekanik'),
+(10, 'Mekanik'),
+(11, 'Deputy Project Manag'),
+(12, 'Dep. Head'),
+(13, 'Sect. Head'),
+(14, 'Group Leader'),
+(15, 'Admin'),
+(16, 'Project Manager');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `order_status`
 --
 
@@ -364,7 +482,9 @@ INSERT INTO `order_status` (`id_ker`, `departemen`, `user`, `status`, `tanggal`)
 (4, '8', 'eddy', 1, '2019-09-19'),
 (5, '8', 'eddy', 1, '2019-09-19'),
 (8, '8', 'eddy', 1, '2019-09-19'),
-(10, '8', 'eddy', 3, '2019-09-20');
+(10, '8', 'eddy', 3, '2019-09-20'),
+(12, '1', 'Berlian Mutiara Senduk', 3, '2021-07-17'),
+(14, '1', 'eddy adha saputra', 1, '2021-07-18');
 
 -- --------------------------------------------------------
 
@@ -377,6 +497,7 @@ CREATE TABLE `user` (
   `nama_user` varchar(255) NOT NULL,
   `password` varchar(50) NOT NULL,
   `id_dep` varchar(255) NOT NULL,
+  `id_jab` varchar(20) NOT NULL,
   `level` enum('admin','user','super_admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -384,11 +505,37 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `nama_user`, `password`, `id_dep`, `level`) VALUES
-(16, 'pa eko', '202cb962ac59075b964b07152d234b70', '1', 'admin'),
-(18, 'eddy', '202cb962ac59075b964b07152d234b70', '8', 'user'),
-(26, 'Pa ansari', 'caf1a3dfb505ffed0d024130f58c5cfa', '1', 'super_admin'),
-(27, 'biasa', '202cb962ac59075b964b07152d234b70', '11', 'user');
+INSERT INTO `user` (`id`, `nama_user`, `password`, `id_dep`, `id_jab`, `level`) VALUES
+(16, 'pa eko', '202cb962ac59075b964b07152d234b70', '1', '2', 'admin'),
+(18, 'eddy', '202cb962ac59075b964b07152d234b70', '8', '3', 'user'),
+(26, 'Pa ansari', 'caf1a3dfb505ffed0d024130f58c5cfa', '1', '4', 'super_admin'),
+(27, 'biasa', '202cb962ac59075b964b07152d234b70', '11', '5', 'user'),
+(29, 'eddy adha saputra', '0d35fe1507bad23cd0d523f09c7f18ba', '1', '15', 'user');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_login`
+--
+
+CREATE TABLE `user_login` (
+  `id_userlog` int(10) NOT NULL,
+  `id_kar` varchar(20) NOT NULL,
+  `password` text NOT NULL,
+  `level` enum('admin','user','kepala_gs','hr_admin','admin_dep','super_admin') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user_login`
+--
+
+INSERT INTO `user_login` (`id_userlog`, `id_kar`, `password`, `level`) VALUES
+(21, '1202005081', 'd56b699830e77ba53855679cb1d252da', 'hr_admin'),
+(32, '2199806251', 'efbd28a337cba93019252f6c3a500043', 'kepala_gs'),
+(33, '1199503122', '87ec84afcf37894d64f22eb521a6234b', 'admin'),
+(34, '3199607191', 'b428e697b0dc917249cf322cf7f8350f', 'admin_dep'),
+(35, '4199609131', '01fb486c77baa0404a0e312ac41ea8f2', 'admin_dep'),
+(44, '1202007034', '2f11f6d90b57887268072cd40f40fc30', 'user');
 
 --
 -- Indexes for dumped tables
@@ -405,6 +552,12 @@ ALTER TABLE `data_barang`
 --
 ALTER TABLE `data_catering`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `data_karyawan`
+--
+ALTER TABLE `data_karyawan`
+  ADD PRIMARY KEY (`id_karyawan`);
 
 --
 -- Indeks untuk tabel `data_mess_lahan`
@@ -437,6 +590,18 @@ ALTER TABLE `departemen`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `developer`
+--
+ALTER TABLE `developer`
+  ADD PRIMARY KEY (`id_dev`);
+
+--
+-- Indeks untuk tabel `jabatan`
+--
+ALTER TABLE `jabatan`
+  ADD PRIMARY KEY (`id_jab`);
+
+--
 -- Indeks untuk tabel `order_status`
 --
 ALTER TABLE `order_status`
@@ -449,6 +614,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `user_login`
+--
+ALTER TABLE `user_login`
+  ADD PRIMARY KEY (`id_userlog`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -456,13 +627,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `data_barang`
 --
 ALTER TABLE `data_barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_catering`
 --
 ALTER TABLE `data_catering`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_mess_lahan`
@@ -474,19 +645,19 @@ ALTER TABLE `data_mess_lahan`
 -- AUTO_INCREMENT untuk tabel `data_order`
 --
 ALTER TABLE `data_order`
-  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_sarana`
 --
 ALTER TABLE `data_sarana`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_seragam`
 --
 ALTER TABLE `data_seragam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `departemen`
@@ -495,16 +666,34 @@ ALTER TABLE `departemen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT untuk tabel `developer`
+--
+ALTER TABLE `developer`
+  MODIFY `id_dev` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `jabatan`
+--
+ALTER TABLE `jabatan`
+  MODIFY `id_jab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT untuk tabel `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id_ker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_ker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT untuk tabel `user_login`
+--
+ALTER TABLE `user_login`
+  MODIFY `id_userlog` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
