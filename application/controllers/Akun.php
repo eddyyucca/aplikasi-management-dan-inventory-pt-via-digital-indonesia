@@ -18,7 +18,8 @@ class Akun extends CI_Controller
 			redirect('auth');
 		}
 
-		$data['nama'] = $this->session->userdata('nama_user');
+		$data['nama'] = $this->session->userdata('nama_lengkap');
+		$data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
 	}
 
 	public function index()
@@ -27,7 +28,9 @@ class Akun extends CI_Controller
 		$data['alerts'] = $this->order_model->getDataJoin();
 		$data['alerts_3'] = $this->order_model->alerts_3();
 		$data['departemen'] = $this->akun_model->getByRoleId();
-		$data['nama'] = $this->session->userdata('nama_user');
+		$data['nama'] = $this->session->userdata('nama_lengkap');
+		$data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+		// $data['jabatan'] = "sss";
 		$data['level_akun'] = $this->session->userdata('level');
 
 		$this->load->view('template/header', $data);
@@ -41,7 +44,8 @@ class Akun extends CI_Controller
 		$data['alerts'] = $this->order_model->getDataJoin();
 		$data['alerts_3'] = $this->order_model->alerts_3();
 		$data['data_departemen'] = $this->akun_model->getDataDepartemen();
-		$data['nama'] = $this->session->userdata('nama_user');
+		$data['nama'] = $this->session->userdata('nama_lengkap');
+		$data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
 		$data['level_akun'] = $this->session->userdata('level');
 
 		$this->load->view('template/header', $data);
@@ -55,7 +59,8 @@ class Akun extends CI_Controller
 		$data['alerts'] = $this->order_model->getDataJoin();
 		$data['alerts_3'] = $this->order_model->alerts_3();
 		$data['data_departemen'] = $this->akun_model->getDataDepartemen();
-		$data['nama'] = $this->session->userdata('nama_user');
+		$data['nama'] = $this->session->userdata('nama_lengkap');
+		$data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
 		$data['data'] = $this->akun_model->getId($id);
 		$data['level_akun'] = $this->session->userdata('level');
 
@@ -66,7 +71,7 @@ class Akun extends CI_Controller
 
 	public function prosesEdit($id)
 	{
-		$this->form_validation->set_rules('nama_user', 'Username', 'required');
+		$this->form_validation->set_rules('nama_lengkap', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('id_dep', 'Departemen', 'required');
 		$this->form_validation->set_rules('level', 'Level', 'required');
@@ -75,7 +80,7 @@ class Akun extends CI_Controller
 			$this->edit($id);
 		} else {
 			$data = array(
-				'nama_user' => $this->input->post('nama_user'),
+				'nama_lengkap' => $this->input->post('nama_lengkap'),
 				'password' => md5($this->input->post('password')),
 				'id_dep' => $this->input->post('id_dep'),
 				'level' => $this->input->post('level'),
@@ -88,7 +93,7 @@ class Akun extends CI_Controller
 
 	public function prosesInput()
 	{
-		$this->form_validation->set_rules('nama_user', 'Username', 'required');
+		$this->form_validation->set_rules('nama_lengkap', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('id_dep', 'Departemen', 'required');
 		$this->form_validation->set_rules('level', 'Level', 'required');
@@ -97,7 +102,7 @@ class Akun extends CI_Controller
 			$this->input();
 		} else {
 			$data = array(
-				'nama_user' => $this->input->post('nama_user'),
+				'nama_lengkap' => $this->input->post('nama_lengkap'),
 				'password' => md5($this->input->post('password')),
 				'id_dep' => $this->input->post('id_dep'),
 				'level' => $this->input->post('level'),

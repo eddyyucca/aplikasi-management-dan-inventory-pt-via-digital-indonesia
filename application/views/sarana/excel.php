@@ -1,7 +1,7 @@
 <?php
 header("Content-type: application/vnd-ms-excel");
 $date = date('Y-m-d');
-header("Content-Disposition: attachment; filename=Data Sarana $date.xls");
+header("Content-Disposition: attachment; filename=Data Sarana PT Via $date.xls");
 ?>
 
 <div class="table-responsive">
@@ -16,7 +16,7 @@ header("Content-Disposition: attachment; filename=Data Sarana $date.xls");
         </tr>
         <tr>
             <th>No</th>
-            <th>Mitra HRS</th>
+            <th>Mitra</th>
             <th>Jenis</th>
             <th>No. Polisi Baru</th>
             <th>Warna TNKB</th>
@@ -53,10 +53,10 @@ header("Content-Disposition: attachment; filename=Data Sarana $date.xls");
                 <td><?= $x->awal_kontrak; ?></td>
                 <td><?= $x->akhir_kontrak; ?></td>
                 <td><?php $sekarang = date('Y-m-d');
-                        $datesekarang = new DateTime($sekarang);
-                        $akhir = new DateTime($x->akhir_kontrak);
-                        $date = $datesekarang->diff($akhir);
-                        echo "$date->days hari";  ?></td>
+                    $datesekarang = new DateTime($sekarang);
+                    $akhir = new DateTime($x->akhir_kontrak);
+                    $date = $datesekarang->diff($akhir);
+                    echo "$date->days hari";  ?></td>
 
                 <td><?= $x->dept; ?></td>
                 <td><?= $x->harga_sewa_unit; ?></td>

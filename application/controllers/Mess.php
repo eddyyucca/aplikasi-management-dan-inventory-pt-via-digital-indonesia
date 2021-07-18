@@ -8,6 +8,7 @@ class Mess extends CI_Controller
         parent::__construct();
         $this->load->model('mess_model');
         $this->load->model('order_model');
+        $this->load->model('jabatan_model');
         $level_akun = $this->session->userdata('level');
         if ($level_akun != ("admin") <= ("super_admin")) {
             redirect('auth');
@@ -21,7 +22,8 @@ class Mess extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->mess_model->data_mess();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -35,7 +37,8 @@ class Mess extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->mess_model->data_mess_row($id);
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -54,7 +57,8 @@ class Mess extends CI_Controller
         $data['judul'] = 'Mess dan lahan';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -93,7 +97,8 @@ class Mess extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->mess_model->get_row($id);
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);

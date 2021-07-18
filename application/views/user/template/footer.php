@@ -1,62 +1,25 @@
-   <!-- Footer -->
-   <footer class="sticky-footer bg-white">
-     <div class="container my-auto">
-       <div class="copyright text-center my-auto">
-         <span>Copyright &copy; <a href="http://www.majatekno.id">Majatekno.id 2019</a></span>
-       </div>
-     </div>
-   </footer>
+ <footer class="footer mt-auto footer-light">
+   <div class="container-fluid">
+     <div class="row">
 
-   <!-- Scroll to Top Button-->
-   <a class="scroll-to-top rounded" href="#page-top">
-     <i class="fas fa-angle-up"></i>
-   </a>
-
-   <!-- Logout Modal-->
-   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-     <div class="modal-dialog" role="document">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Apakah anda ingin keluar ?</h5>
-           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">×</span>
-           </button>
-         </div>
-         <div class="modal-body">Klik Tombol Untuk Keluar</div>
-         <div class="modal-footer">
-           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-           <a class="btn btn-primary" href="<?= base_url('auth/keluar') ?>">Keluar</a>
-         </div>
-       </div>
      </div>
    </div>
+ </footer>
+ </div>
+ </div>
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+ <script src="<?= base_url('assets') ?>/js/scripts.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+ <script src="<?= base_url('assets') ?>/assets/demo/chart-area-demo.js"></script>
+ <script src="<?= base_url('assets') ?>/assets/demo/chart-bar-demo.js"></script>
+ <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+ <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+ <script src="<?= base_url('assets') ?>/assets/demo/datatables-demo.js"></script>
+ <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
+ <script src="<?= base_url('assets') ?>/assets/demo/date-range-picker-demo.js"></script>
+ <script src="<?= base_url('assets') ?>/js/qty.js"></script>
+ </body>
 
-
-   <!-- Bootstrap core JavaScript-->
-   <!-- databel -->
-   <script src="<?= base_url('assets') ?>/vendor/jquery/jquery.min.js"></script>
-   <script src="<?= base_url('assets') ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-   <!-- Core plugin JavaScript-->
-   <script src="<?= base_url('assets') ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-   <!-- Custom scripts for all pages-->
-   <script src="<?= base_url('assets') ?>/js/sb-admin-2.min.js"></script>
-
-   <!-- Page level plugins -->
-   <script src="<?= base_url('assets') ?>/vendor/datatables/jquery.dataTables.min.js"></script>
-   <script src="<?= base_url('assets') ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-   <!-- Page level custom scripts -->
-   <script src="<?= base_url('assets') ?>/js/demo/datatables-demo.js"></script>
-   <!-- Page level plugins -->
-   <script src="<?= base_url('assets') ?>/vendor/chart.js/Chart.min.js"></script>
-
-   <!-- Page level custom scripts -->
-   <script src="<?= base_url('assets') ?>/js/demo/chart-area-demo.js"></script>
-   <script src="<?= base_url('assets') ?>/js/demo/chart-pie-demo.js"></script>
-   <script src="<?= base_url('assets') ?>/js/qty.js"></script>
-
-   </body>
-
-   </html>
+ </html>

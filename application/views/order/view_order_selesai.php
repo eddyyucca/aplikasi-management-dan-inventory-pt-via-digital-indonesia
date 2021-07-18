@@ -48,9 +48,9 @@
                                         <td colspan='5' align="center">
                                             <a href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#selesai">Print</a>
                                         </td>
-                                    <?php } ?>
+                                    <?php
+                                    } ?>
                                 </table>
-
                             </div>
                         </div>
                     </div>

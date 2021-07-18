@@ -24,7 +24,8 @@ class Departemen extends CI_Controller
         $data['judul'] = "Departemen";
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->departemen_model->getData();
         $data['level_akun'] = $this->session->userdata('level');
 
@@ -37,7 +38,8 @@ class Departemen extends CI_Controller
         $data['judul'] = "Tambah Departemen";
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->departemen_model->getData();
         $data['level_akun'] = $this->session->userdata('level');
 
@@ -64,7 +66,8 @@ class Departemen extends CI_Controller
         $data['judul'] = "Edit Departemen";
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->departemen_model->getDataById($id);
         $data['level_akun'] = $this->session->userdata('level');
 

@@ -9,19 +9,23 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_model');
+        $this->load->model('jabatan_model');
         $this->load->library('cart');
         $this->load->library('pagination');
-        if ($this->session->userdata('level') != "user") {
-            redirect('auth');
-        }
+        // if ($this->session->userdata('level') != "false") {
+        //     redirect('auth');
+        // }
     }
 
     public function index()
     {
-        $data['judul'] = 'Home';
-
-        $data['nama'] = $this->session->userdata('nama_user');
-        $this->load->view('user/template/header_home', $data);
+        $data['judul'] = 'Tabel Data ATK';
+        $data['databarang'] = $this->user_model->getDataBarang();
+        $data['keranjang'] = $this->cart->contents();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/index', $data);
         $this->load->view('user/template/footer');
     }
@@ -71,7 +75,8 @@ class User extends CI_Controller
         $data['judul'] = 'Tabel Data ATK';
         $data['databarang'] = $this->user_model->getDataBarang();
         $data['keranjang'] = $this->cart->contents();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $this->load->view('user/template/header', $data);
         $this->load->view('user/atk/atk', $data);
         $this->load->view('user/template/footer');
@@ -84,7 +89,8 @@ class User extends CI_Controller
         $data['judul'] = 'Tabel Data ATK';
         $data['databarang'] = $this->user_model->cari($cari);
         $data['keranjang'] = $this->cart->contents();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $this->load->view('user/template/header', $data);
         $this->load->view('user/atk/cari', $data);
         $this->load->view('user/template/footer');
@@ -103,7 +109,8 @@ class User extends CI_Controller
         $data['judul'] = 'View Order';
         $data['data'] = $this->user_model->getDataBarangById($id);
         $data['keranjang'] = $this->cart->contents();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $this->load->view('user/template/header', $data);
         $this->load->view('user/atk/view_order', $data);
         $this->load->view('user/template/footer');
@@ -116,7 +123,7 @@ class User extends CI_Controller
             'id' => $id,
             'price' => '',
             'item' => $this->input->post('item'),
-            'name' => $this->session->userdata('nama_user'),
+            'name' => $this->session->userdata('nama_lengkap'),
             'qty' => $this->input->post('qty'),
             'id_dep' => $this->session->userdata('id_dep'),
             'satuan' =>  $this->input->post('satuan'),
@@ -130,7 +137,8 @@ class User extends CI_Controller
     {
         $data['judul'] = 'View Order';
 
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['keranjang'] = $this->cart->contents();
         $this->load->view('user/template/header', $data);
         $this->load->view('user/atk/keranjang', $data);
@@ -184,7 +192,8 @@ class User extends CI_Controller
     public function status()
     {
         $data['judul'] = 'Status Order';
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $id_dep = $this->session->userdata('id_dep');
         $data['data'] = $this->user_model->status($id_dep);
         $data['keranjang'] = $this->cart->contents();
@@ -196,8 +205,9 @@ class User extends CI_Controller
     {
         $data['judul'] = 'Tabel Sarana';
         $data['data'] = $this->user_model->sarana();
-        $data['nama'] = $this->session->userdata('nama_user');
-        $this->load->view('user/template/header_home', $data);
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/sarana/sarana', $data);
         $this->load->view('user/template/footer');
     }
@@ -206,8 +216,9 @@ class User extends CI_Controller
     {
         $data['judul'] = 'Tabel Sarana';
         $data['data'] = $this->user_model->sarana_row($id);
-        $data['nama'] = $this->session->userdata('nama_user');
-        $this->load->view('user/template/header_home', $data);
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/sarana/view_sarana', $data);
         $this->load->view('user/template/footer');
     }
@@ -218,8 +229,9 @@ class User extends CI_Controller
     {
         $data['judul'] = 'Tabel Sarana';
         $data['data'] = $this->user_model->data_mess();
-        $data['nama'] = $this->session->userdata('nama_user');
-        $this->load->view('user/template/header_home', $data);
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/mess/mess', $data);
         $this->load->view('user/template/footer');
     }
@@ -227,8 +239,9 @@ class User extends CI_Controller
     {
         $data['judul'] = 'Tabel Sarana';
         $data['data'] = $this->user_model->data_mess_row($id);
-        $data['nama'] = $this->session->userdata('nama_user');
-        $this->load->view('user/template/header_home', $data);
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/mess/view_mess', $data);
         $this->load->view('user/template/footer');
     }
@@ -237,22 +250,24 @@ class User extends CI_Controller
     public function seragam()
     {
         $data['judul'] = 'Seragam';
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
-        $this->load->view('user/template/header_home', $data);
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/seragam/index', $data);
         $this->load->view('user/template/footer');
     }
     public function view_seragam_kerja()
     {
         $data['judul'] = 'Seragam Kerja';
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
         $data['data'] = $this->user_model->get_seragam_kerja();
 
 
-        $this->load->view('user/template/header_home', $data);
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/seragam/view_seragam_kerja', $data);
         $this->load->view('user/template/footer');
     }
@@ -260,11 +275,12 @@ class User extends CI_Controller
     public function view_kaos()
     {
         $data['judul'] = 'Seragam Kerja';
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
         $data['data'] = $this->user_model->get_kaos();
 
-        $this->load->view('user/template/header_home', $data);
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/seragam/view_kaos', $data);
         $this->load->view('user/template/footer');
     }
@@ -272,11 +288,12 @@ class User extends CI_Controller
     public function view_celana()
     {
         $data['judul'] = 'Seragam Kerja';
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
         $data['data'] = $this->user_model->get_celana();
 
-        $this->load->view('user/template/header_home', $data);
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/seragam/view_celana', $data);
         $this->load->view('user/template/footer');
     }
@@ -286,10 +303,11 @@ class User extends CI_Controller
     {
         $data['judul'] = 'Catering';
         $data['data'] = $this->user_model->get_data_catering();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
-        $this->load->view('user/template/header_home', $data);
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/catering/index', $data);
         $this->load->view('user/template/footer');
     }
@@ -297,11 +315,12 @@ class User extends CI_Controller
     public function view_catering($id)
     {
         $data['judul'] = 'View Catering';
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
         $data['data'] = $this->user_model->data_row_catering($id);
 
-        $this->load->view('user/template/header_home', $data);
+        $this->load->view('user/template/header', $data);
         $this->load->view('user/catering/view', $data);
         $this->load->view('user/template/footer');
     }

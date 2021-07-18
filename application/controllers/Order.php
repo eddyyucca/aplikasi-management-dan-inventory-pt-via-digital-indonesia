@@ -9,13 +9,17 @@ class Order extends CI_Controller
     {
         parent::__construct();
         $this->load->model('order_model');
+        $this->load->model('jabatan_model');
+        $this->load->model('akun_model');
 
-        $level_akun = $this->session->userdata('level');
-        if ($level_akun != ("admin") <= ("super_admin")) {
-            redirect('auth');
-        } elseif ($level_akun == "user") {
-            redirect('auth');
-        }
+        // $level_akun = $this->session->userdata('level');
+        // if ($level_akun != ("admin") <= ("kepala_gs")) {
+        //     redirect('auth');
+        // } elseif ($level_akun == "hr_admin") {
+        //     redirect('hr');
+        // } elseif ($level_akun == "admin_dep") {
+        //     redirect('auth');
+        // }
     }
 
     public function index()
@@ -24,7 +28,8 @@ class Order extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->order_model->getDataJoin();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -36,7 +41,8 @@ class Order extends CI_Controller
         $data['judul'] = 'View Barang';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->order_model->where($id);
         $data['data2'] = $this->order_model->getDataJoin();
         $data['data3'] = $this->order_model->status($id);
@@ -61,11 +67,27 @@ class Order extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->order_model->order_selesai();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
         $this->load->view('order/order_selesai', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function order_ditolak()
+    {
+        $data['judul'] = 'Order Barang';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['data'] = $this->order_model->order_ditolak();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('order/order_ditolak', $data);
         $this->load->view('template/footer');
     }
 
@@ -97,7 +119,8 @@ class Order extends CI_Controller
         $data['judul'] = 'View Barang';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->order_model->where($id);
         $data['data2'] = $this->order_model->getDataJoin();
         $data['data3'] = $this->order_model->status($id);
@@ -108,15 +131,33 @@ class Order extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function view_ditolak($id)
+    {
+        $data['judul'] = 'View Barang';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->order_model->where($id);
+        $data['data2'] = $this->order_model->getDataJoin();
+        $data['data3'] = $this->order_model->status($id);
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('order/view_order_ditolak', $data);
+        $this->load->view('template/footer');
+    }
+
     public function cari()
     {
         $cari = $this->input->post('tanggal');
-        echo $cari;
+
         $data['judul'] = 'Order Barang';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->order_model->cari_order_selesai($cari);
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -134,5 +175,65 @@ class Order extends CI_Controller
         $data['data2'] = $this->order_model->getDataJoin();
         $data['data3'] = $this->order_model->status($id);
         $this->load->view('order/report', $data);
+    }
+
+
+    public function laporan_bulanan()
+    {
+
+        $tahun =  $this->input->post('tahun');
+        $bulan = $this->input->post('bulan');
+
+
+        $data['judul'] = 'laporan bulanan';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['data'] = $this->order_model->cari_bulan($tahun, $bulan);
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('order/laporan_bulanan', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function laporan_departemen()
+    {
+        $data_cari = $this->input->post('laporan_dep');
+
+        $data['judul'] = 'laporan order departemen';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['data'] = $this->order_model->cari_departemen($data_cari);
+        $data['data_departemen'] = $this->akun_model->getDataDepartemen();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('order/laporan_departemen', $data);
+        $this->load->view('template/footer');
+    }
+    public function order_makanan()
+    {
+
+        $data['judul'] = 'laporan order departemen';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['data_departemen'] = $this->akun_model->getDataDepartemen();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['level_akun'] = $this->session->userdata('level');
+        if ($this->input->post('date') == false) {
+            $data['makanan'] = false;
+        } elseif ($this->input->post('date') == true) {
+            $date = $this->input->post('date');
+            $data['makanan'] = $this->order_model->ordermakan($date);
+        }
+
+        $this->load->view('template/header', $data);
+        $this->load->view('order/order_makanan', $data);
+        $this->load->view('template/footer');
     }
 }

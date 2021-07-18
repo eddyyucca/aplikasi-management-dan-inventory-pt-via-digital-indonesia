@@ -27,6 +27,18 @@ class Order_model extends CI_Model
         return $query->result();
     }
 
+    public function order_ditolak()
+    {
+        $this->db->select('*');
+        $this->db->from('order_status');
+        $this->db->join('departemen', 'departemen.id = order_status.departemen');
+        $this->db->where('status', 4);
+
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     public function cari_order_selesai($cari)
     {
         $this->db->select('*');
@@ -110,6 +122,43 @@ class Order_model extends CI_Model
         $this->db->where('id_ker', $id);
         $x = $this->db->get('order_status');
         return $x->row();
+    }
+
+    public function cari_bulan($tahun, $bulan)
+    {
+        $this->db->select('*');
+        $this->db->from('order_status as bulan');
+        $this->db->join('departemen', 'departemen.id = bulan.departemen');
+        $this->db->where('YEAR(bulan.tanggal)', $tahun);
+        $this->db->where('MONTH(bulan.tanggal)', $bulan);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function cari_departemen($data_cari)
+    {
+        $this->db->select('*');
+        $this->db->from('order_status');
+        $this->db->join('departemen', 'departemen.id = order_status.departemen');
+        $this->db->where('departemen', $data_cari);
+
+        $this->db->like('departemen', $data_cari);
+
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    public function ordermakan($date)
+    {
+        $this->db->select('*');
+        $this->db->from('order_makanan');
+        $this->db->join('data_karyawan', 'data_karyawan.id_karyawan = order_makanan.id_kar');
+        $this->db->where('tanggal_pesan', $date);
+
+        $query = $this->db->get();
+
+        return $query->result();
     }
 }
 

@@ -37,11 +37,11 @@ header("Content-Disposition: attachment; filename=Data Catering $date.xls");
             <td><?= $x->kontrak_awal; ?></td>
             <td><?= $x->akhir_kontrak; ?></td>
             <td> <?php   //hitung selisih tanggal
-                        $sekarang = date('Y-m-d');
-                        $datesekarang = new DateTime($sekarang);
-                        $akhir = new DateTime($x->akhir_kontrak);
-                        $date = $datesekarang->diff($akhir);
-                        echo "$date->days "; ?>
+                    $sekarang = date('Y-m-d');
+                    $datesekarang = new DateTime($sekarang);
+                    $akhir = new DateTime($x->akhir_kontrak);
+                    $date = $datesekarang->diff($akhir);
+                    echo "$date->days "; ?>
 
             </td>
             <td><?= $x->ket; ?></td>

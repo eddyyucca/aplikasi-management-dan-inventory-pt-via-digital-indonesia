@@ -17,6 +17,7 @@
 </head>
 
 <body class="nav-fixed">
+
     <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
         <!-- Navbar Brand-->
         <!-- * * Tip * * You can use text or an image for your navbar brand.-->
@@ -27,14 +28,7 @@
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle"><i data-feather="menu"></i></button>
         <!-- Navbar Search Input-->
         <!-- * * Note: * * Visible only on and above the md breakpoint-->
-        <form class="form-inline mr-auto d-none d-md-block mr-3">
-            <div class="input-group input-group-joined input-group-solid">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <div class="input-group-append">
-                    <div class="input-group-text"><i data-feather="search"></i></div>
-                </div>
-            </div>
-        </form>
+
         <!-- Navbar Items-->
         <ul class="navbar-nav align-items-center ml-auto">
             <!-- Navbar Search Dropdown-->
@@ -103,7 +97,9 @@
                     <h6 class="dropdown-header d-flex align-items-center">
                         <img class="dropdown-user-img" src="<?= base_url('assets') ?>/assets/img/illustrations/profiles/profile-1.png" />
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name"><?= $nama; ?></div>
+                            <div class="dropdown-user-details-name"><?= $nama; ?>
+                                <hr> <?= $jabatan->nama_jabatan ?>
+                            </div>
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
@@ -139,23 +135,73 @@
                         </a>
                         <!-- Sidenav Menu Heading (Core)-->
                         <div class="sidenav-menu-heading">Core</div>
+
                         <!-- Sidenav Accordion (Dashboard)-->
                         <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
                             <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Dashboards
+                            Master Data
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
                             <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" href="index.html">
-                                    Default
-                                    <span class="badge badge-primary-soft text-primary ml-auto">Updated</span>
-                                </a>
-                                <a class="nav-link" href="dashboard-2.html">Multipurpose</a>
-                                <a class="nav-link" href="dashboard-3.html">Affiliate</a>
+                                <a class="nav-link" href="<?= base_url('atk/view_data') ?>">ATK - Barang Habis Pakai</a>
+                                <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Barang Tidak Habis Pakai</a>
+                                <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Barang Rusak</a>
+                            </nav>
+                        </div>
+                        <!-- Sidenav Accordion (Dashboard)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#akun" aria-expanded="false" aria-controls="akun">
+                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            Data Karyawan
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="akun" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                <a class="nav-link" href="<?= base_url('hr/karyawan') ?>">Karyawan</a>
+
+                            </nav>
+                        </div>
+                        <!-- Sidenav Accordion (Dashboard)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#data" aria-expanded="false" aria-controls="data">
+                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            Order ATK
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="data" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                <a class="nav-link" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Order Persetujuan</a>
+                                <a class="nav-link" href="<?= base_url('order') ?>">Order Tunggu</a>
+                            </nav>
+                        </div>
+
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#laporan_atk" aria-expanded="false" aria-controls="laporan_atk">
+                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            Laporan Order ATK
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="laporan_atk" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                <a class="nav-link" href="<?= base_url('order/laporan_bulanan') ?>">Laporan Order Bulanan</a>
+                                <a class="nav-link" href="<?= base_url('order/laporan_departemen') ?>">Laporan Departemen</a>
+                                <a class="nav-link" href="<?= base_url('order/order_selesai') ?>">Order Selesai</a>
+                                <a class="nav-link" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#tentang" aria-expanded="false" aria-controls="tentang">
+                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            Profil Perusahaan
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="tentang" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                <a class="nav-link" href="<?= base_url('order/laporan_bulanan') ?>">Visi & Misi</a>
                             </nav>
                         </div>
                     </div>
+
+
+
+
                 </div>
                 <!-- Sidenav Footer-->
                 <div class="sidenav-footer">

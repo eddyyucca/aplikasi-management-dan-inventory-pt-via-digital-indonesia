@@ -8,6 +8,7 @@ class Sarana extends CI_Controller
     {
         parent::__construct();
         $this->load->model('sarana_model');
+        $this->load->model('jabatan_model');
         $this->load->model('order_model');
         $level_akun = $this->session->userdata('level');
         if ($level_akun != ("admin") <= ("super_admin")) {
@@ -23,7 +24,8 @@ class Sarana extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->sarana_model->getdata();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -37,7 +39,8 @@ class Sarana extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->sarana_model->getdataid($id);
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -51,7 +54,8 @@ class Sarana extends CI_Controller
         $data['judul'] = 'Tambah Sarana';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['dept'] = $this->sarana_model->dept();
         $data['data'] = $this->sarana_model->getdata();
         $data['level_akun'] = $this->session->userdata('level');
@@ -125,7 +129,8 @@ class Sarana extends CI_Controller
     {
         $data['judul'] = 'Edit Sarana';
         $data['alerts'] = $this->order_model->getDataJoin();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['dept'] = $this->sarana_model->dept();
         $data['data'] = $this->sarana_model->getid($id);
@@ -177,8 +182,8 @@ class Sarana extends CI_Controller
             'awal_kontrak' => $this->input->post('awal_kontrak'),
             'akhir_kontrak' => $this->input->post('akhir_kontrak'),
             'dept' => $this->input->post('dept'),
-            'harga_sewa_unit' => Rp . $this->input->post('harga_sewa'),
-            'jasa_driver' => Rp . $this->input->post('jasa_driver'),
+            'harga_sewa_unit' => "Rp" . $this->input->post('harga_sewa'),
+            'jasa_driver' => "Rp" . $this->input->post('jasa_driver'),
             'shift' => $this->input->post('shifr'),
             'masa_kontrak' => $this->input->post('masa_kontrak'),
             'stnk_tahunan' => $this->input->post('stnk_tahunan'),

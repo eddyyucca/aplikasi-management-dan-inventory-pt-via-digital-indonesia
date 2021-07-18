@@ -9,6 +9,7 @@ class Atk extends CI_Controller
     {
         parent::__construct();
         $this->load->library('pagination');
+        $this->load->model('jabatan_model');
         $this->load->model('atk_model');
         $this->load->model('order_model');
         $this->load->library('form_validation');
@@ -28,7 +29,8 @@ class Atk extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->atk_model->getDataBarang();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -40,7 +42,8 @@ class Atk extends CI_Controller
         $data['judul'] = 'Input Data Barang';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -55,7 +58,8 @@ class Atk extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->atk_model->getDataBarangById($id);
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -99,7 +103,8 @@ class Atk extends CI_Controller
         $data['judul'] = 'Tabel Data ATK';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->atk_model->getDataBarang();
         $data['level_akun'] = $this->session->userdata('level');
 
@@ -113,7 +118,8 @@ class Atk extends CI_Controller
         $data['judul'] = 'Edit Data ATK';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->atk_model->getDataBarangById($id);
         $data['level_akun'] = $this->session->userdata('level');
 

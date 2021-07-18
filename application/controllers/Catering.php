@@ -7,6 +7,7 @@ class Catering extends CI_Controller
     {
         parent::__construct();
         $this->load->model('catering_model');
+        $this->load->model('jabatan_model');
         $this->load->model('order_model');
         $level_akun = $this->session->userdata('level');
         if ($level_akun != ("admin") <= ("super_admin")) {
@@ -21,7 +22,8 @@ class Catering extends CI_Controller
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->catering_model->get_data();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -34,7 +36,8 @@ class Catering extends CI_Controller
         $data['judul'] = 'Tambah Cateing';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -60,7 +63,8 @@ class Catering extends CI_Controller
         $data['judul'] = 'View Catering';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
         $data['data'] = $this->catering_model->data_row($id);
 
@@ -74,7 +78,8 @@ class Catering extends CI_Controller
         $data['judul'] = 'View Catering';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['nama'] = $this->session->userdata('nama_user');
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
         $data['data'] = $this->catering_model->data_row($id);
 
