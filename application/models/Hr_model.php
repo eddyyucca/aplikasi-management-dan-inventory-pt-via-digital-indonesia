@@ -46,7 +46,7 @@ class Hr_model extends CI_Model
 
     public function tambah_user($data2)
     {
-        $this->db->insert('user', $data2);
+        $this->db->insert('user_login', $data2);
     }
     public function hitung_id($dep)
     {

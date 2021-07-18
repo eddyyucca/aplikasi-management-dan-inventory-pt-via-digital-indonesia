@@ -190,10 +190,10 @@ class Hr extends CI_Controller
 
         $data2 = array(
             'id_kar' => $id_kar,
-            'nama_lengkap' => $this->input->post('nama_lengkap'),
+            // 'nama_lengkap' => $this->input->post('nama_lengkap'),
             'password' => md5($id_kar),
-            'id_dep' => $this->input->post('dep'),
-            'id_jab' => $this->input->post('jab'),
+            // 'id_dep' => $this->input->post('dep'),
+            // 'id_jab' => $this->input->post('jab'),
             'level' => "user",
         );
         //simpan ke db
