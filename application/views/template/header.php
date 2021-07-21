@@ -23,7 +23,8 @@
         <!-- * * Tip * * You can use text or an image for your navbar brand.-->
         <!-- * * * * * * When using an image, we recommend the SVG format.-->
         <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
-        <a class="navbar-brand" href="<?= base_url("home") ?>">PT.VIA Digital Indonesia </a>
+
+        <a class="navbar-brand" href="<?= base_url("home") ?>"> <img src="<?= base_url('assets/foto/icon.png'); ?>" alt="Logo"> PT.VIA Digital Indonesia </a>
         <!-- Sidenav Toggle Button-->
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle"><i data-feather="menu"></i></button>
         <!-- Navbar Search Input-->
@@ -187,16 +188,6 @@
                                 <a class="nav-link" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#tentang" aria-expanded="false" aria-controls="tentang">
-                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Profil Perusahaan
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="tentang" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" href="<?= base_url('order/laporan_bulanan') ?>">Visi & Misi</a>
-                            </nav>
-                        </div>
                     </div>
 
 
@@ -214,7 +205,7 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+                <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-5">
                     <div class="container">
                         <div class="page-header-content pt-4">
                             <div class="row align-items-center justify-content-between">

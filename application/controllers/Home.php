@@ -26,14 +26,11 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Home';
+        $data['judul'] = 'PT. VIA DIGITAL INDONESIA';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
-        $jabatan = $this->session->userdata('id_jab');
-        $data['jabatan'] = $this->jabatan_model->getDataById("5");
-
         $data['level_akun'] = $this->session->userdata('level');
 
         $data['data_sarana'] = $this->sarana_model->getdata();

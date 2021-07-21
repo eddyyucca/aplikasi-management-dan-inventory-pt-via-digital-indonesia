@@ -147,7 +147,6 @@ class Auth extends CI_Controller
 
         $cek = $this->auth_model->login($id_kar, $password);
 
-
         if ($cek == true) {
 
             foreach ($cek as $row);

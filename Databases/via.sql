@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jul 2021 pada 16.31
+-- Waktu pembuatan: 21 Jul 2021 pada 02.03
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -39,7 +39,7 @@ CREATE TABLE `data_barang` (
 --
 
 INSERT INTO `data_barang` (`id`, `item`, `qty`, `satuan`) VALUES
-(1, 'Amplop Coklat C3', '20', 'Pack'),
+(1, 'Amplop Coklat C3', '40', 'Pack'),
 (2, 'Amplop Coklat D (folio) Samson', '12', 'Pack'),
 (3, 'Amplop jaya 95x152mm', '12', 'Pack'),
 (4, 'Amplop Surat Putih (110 x 230 mm)', '7', 'Pack'),
@@ -195,14 +195,8 @@ CREATE TABLE `data_karyawan` (
 --
 
 INSERT INTO `data_karyawan` (`id_karyawan`, `nama_lengkap`, `nama_panggilan`, `jk`, `tempat`, `ttl`, `alamat_saat_ini`, `alamat_permanen`, `no_telp`, `agama`, `warganegra`, `suku`, `no_ktp`, `alamat_ktp`, `masa_berlaku_ktp`, `no_sim_a`, `alamat_sim_a`, `masa_berlaku_sim_a`, `no_sim_c`, `alamat_sim_c`, `masa_berlaku_sim_c`, `no_npwp`, `no_bpjs_tenagakerja`, `no_bpjs_kes`, `no_passport`, `alamat_passport`, `masa_berlaku_passport`, `tinggi_badan`, `berat_badan`, `rhesus`, `ukuran_baju`, `ukuran_celana`, `ukuran_sepatu`, `hobi`, `email`, `id_dep`, `id_jab`, `status_karyawan`, `mess`, `foto`) VALUES
-('1199503122', 'Syamsul Suriadi', 'Syam', 'Laki-Laki', 'Kotabaru', '1995-03-12', 'Kupang, Rantau, Kalimantan Selatan', 'Kupang, Rantau, Kalimantan Selatan', '081387651095', 'Islam', 'Indonesia', 'Banjar', 2147483647, 'Kotabaru', '2023-03-12', 0, '', '', 2147483647, 'Kotabaru', '2025-03-12', 2147483647, 2147483647, 128496922, 0, '', '', '170', '65', 'O', 'L', 'L', '43', 'Memancing', 's.syamsul@gmail.com', 1, 14, 'Aktif', 'Ya', '292912e8cbc03dda29214d2c61feb807.png'),
-('1202005081', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'tapin', '2020-05-08', 'Tapin\r\n', '', '', '', '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '112', '', '', '', '', '', '', '', 1, 12, '', 'Ya', 'foto.jpg'),
-('1202007034', 'mas jordy', 'jordy', 'Laki-Laki', 'tapin', '2020-07-03', '', '', '083159982119', '', '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', 1, 2, '', 'Tidak', ''),
-('1202107175', 'eddy adha saputra', 'sas', 'Laki-Laki', 'banjarbaru', '2021-07-17', 'Banjar Baru Selatan', 'JL. pandu, guntung paikat, kost berkat utama no 67', '085248665646', 'Islam', 'Indonesia', 'banjar', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '211', '79', 'A', 'XL', 'xxl', '43', 'Jalan-Jalan', 'eddyyucca@gmail.com', 1, 15, 'Aktif', '', ''),
-('1202107176', 'eddy adha saputra', 'sas', 'Laki-Laki', 'banjarbaru', '2021-07-17', 'Banjar Baru Selatan', 'JL. pandu, guntung paikat, kost berkat utama no 67', '085248665646', 'Islam', 'Indonesia', 'banjar', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '211', '79', 'A', 'XL', 'xxl', '43', 'Jalan-Jalan', 'eddyyucca@gmail.com', 1, 15, 'Aktif', '', ''),
-('2199806251', 'Muhammad Aldi', 'Aldi', 'Laki-Laki', 'Tatakan', '1998-06-25', 'Jl. A. Yani, Tatakan Datu Sanggul', 'Jl. A. Yani, Tatakan Datu Sanggul', '081346814830', 'Islam', 'Indonesia', 'Banjar', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2021-06-25', 0, '', '', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2025-06-25', 2147483647, 2147483647, 127496931, 0, '', '', '165', '60', 'B ', 'L', 'L', '40', 'Menggambar', 'aldi555@gmail.com', 2, 15, '', '', 'main-list-image2nd-b016a720-04e2-4536-bcac-b82f60ee00a3-7.jpeg'),
-('3199607191', 'Berlian Mutiara Senduk', 'Lian', 'Perempuan', 'Balikpapan', '1996-07-19', 'Pulau Pinang', 'Pulau Pinang', '089856701242', 'Kristen', 'Indonesia', 'Toraja', 2147483647, 'Jl. A. Yani, Tapin Utara, Tapin, Kalimantan Selatan', '2023-07-19', 0, '', '', 2147483647, 'Jl. A. Yani, Tapin Utara, Tapin, Kalimantan Selatan', '2024-07-19', 2147483647, 2147483647, 146496942, 0, '', '', '160', '49', 'AB', 'S', 'S', '37', 'Menulis', 'berlian.mutiara@gmail.com', 1, 15, '', '', 'pas-foto-3x4.jpg'),
-('4199609131', 'Gina Sonia', 'Gina', 'Perempuan', 'Tatakan', '1996-09-13', 'Desa Tatakan, Tapin Selatan, Tapin, Kalimantan Sekatan', 'Desa Tatakan, Tapin Selatan, Tapin, Kalimantan Sekatan', '081337426207', 'Islam', 'Indonesia', 'Banjar', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2022-09-13', 0, '', '', 2147483647, 'Jl. A. Yani, Tatakan Datu Sanggul, Tapin Selatan, Tapin, Kalimantan Selatan', '2022-09-13', 2147483647, 2147483647, 121346531, 0, '', '', '159', '40', 'A', 'S', 'S', '37', 'Memasak', 'gisoni@gmail.com', 4, 2, '', '', 'b33296bb-4994-4284-b69c-9309efdba868_34.jpeg');
+('1199503122', 'Syamsul Suriadi', 'Syam', 'Laki-Laki', 'Kotabaru', '1995-03-12', 'Kupang, Rantau, Kalimantan Selatan', 'Kupang, Rantau, Kalimantan Selatan', '081387651095', 'Islam', 'Indonesia', 'Banjar', 2147483647, 'Kotabaru', '2023-03-12', 0, '', '', 2147483647, 'Kotabaru', '2025-03-12', 2147483647, 2147483647, 128496922, 0, '', '', '170', '65', 'O', 'L', 'L', '43', 'Memancing', 's.syamsul@gmail.com', 1, 1, 'Aktif', 'Ya', '292912e8cbc03dda29214d2c61feb807.png'),
+('1202005081', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'tapin', '2020-05-08', 'Tapin\r\n', '', '', '', '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '112', '', '', '', '', '', '', '', 1, 1, '', 'Ya', 'foto.jpg');
 
 -- --------------------------------------------------------
 
@@ -441,21 +435,7 @@ CREATE TABLE `jabatan` (
 --
 
 INSERT INTO `jabatan` (`id_jab`, `nama_jabatan`) VALUES
-(2, 'Officer'),
-(3, 'FGDP'),
-(4, 'Operator A2B'),
-(5, 'Driver Dump Truck'),
-(6, 'Helper'),
-(7, 'Helper Tyre'),
-(8, 'Tyre Man'),
-(9, 'Helper Mekanik'),
-(10, 'Mekanik'),
-(11, 'Deputy Project Manag'),
-(12, 'Dep. Head'),
-(13, 'Sect. Head'),
-(14, 'Group Leader'),
-(15, 'Admin'),
-(16, 'Project Manager');
+(1, 'Admin Gudang');
 
 -- --------------------------------------------------------
 
@@ -535,7 +515,8 @@ INSERT INTO `user_login` (`id_userlog`, `id_kar`, `password`, `level`) VALUES
 (33, '1199503122', '87ec84afcf37894d64f22eb521a6234b', 'admin'),
 (34, '3199607191', 'b428e697b0dc917249cf322cf7f8350f', 'admin_dep'),
 (35, '4199609131', '01fb486c77baa0404a0e312ac41ea8f2', 'admin_dep'),
-(44, '1202007034', '2f11f6d90b57887268072cd40f40fc30', 'user');
+(44, '1202007034', '2f11f6d90b57887268072cd40f40fc30', 'user'),
+(45, '8202107063', '9dc52e779001536c8c792da5ef395241', 'user');
 
 --
 -- Indexes for dumped tables
@@ -693,7 +674,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `id_userlog` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_userlog` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
