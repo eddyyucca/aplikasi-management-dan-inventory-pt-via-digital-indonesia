@@ -12,9 +12,7 @@ class Home extends CI_Controller
         $this->load->model('auth_model');
         $this->load->model('order_model');
         $this->load->model('jabatan_model');
-        $this->load->model('sarana_model');
-        $this->load->model('catering_model');
-        $this->load->model('mess_model');
+
 
         $level_akun = $this->session->userdata('level');
         if ($level_akun != ("admin") <= ("super_admin")) {
@@ -33,9 +31,7 @@ class Home extends CI_Controller
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
 
-        $data['data_sarana'] = $this->sarana_model->getdata();
-        $data['data_catering'] = $this->catering_model->get_data();
-        $data['data_mess'] = $this->mess_model->data_mess();
+
         var_dump($this->session->userdata('level'));
         $this->load->view('template/header', $data);
         $this->load->view('home/index', $data);

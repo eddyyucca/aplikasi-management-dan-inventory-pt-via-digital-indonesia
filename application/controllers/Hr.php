@@ -15,9 +15,7 @@ class Hr extends CI_Controller
         $this->load->model('auth_model');
         $this->load->model('order_model');
         $this->load->model('departemen_model');
-        $this->load->model('sarana_model');
-        $this->load->model('catering_model');
-        $this->load->model('mess_model');
+
         $this->load->model('hr_model');
         $this->load->model('jabatan_model');
         $this->load->model('karyawan_model');
