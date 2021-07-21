@@ -10,9 +10,7 @@ class User_karyawan extends CI_Controller
         $this->load->helper('form');
         $this->load->model('auth_model');
         $this->load->model('order_model');
-        $this->load->model('sarana_model');
-        $this->load->model('catering_model');
-        $this->load->model('mess_model');
+
         $this->load->model('hr_model');
         $this->load->model('karyawan_model');
         $this->load->model('departemen_model');
@@ -40,7 +38,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $id = $this->session->userdata('id_kar');
         $id_kar = $this->session->userdata('id_kar');
         $x = $this->karyawan_model->get_karyawan($id);
@@ -65,7 +63,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $id = $this->session->userdata('id_kar');
         $x = $this->karyawan_model->get_karyawan($id);
         $data['data'] =  json_decode(json_encode($x), true);
@@ -153,7 +151,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $id = $this->session->userdata('id_kar');
         $x = $this->karyawan_model->get_karyawan($id);
         $data['data'] =  json_decode(json_encode($x), true);
@@ -171,7 +169,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $data['pesan'] = "";
         $this->load->view('user_karyawan/template_user/header', $data);
@@ -190,7 +188,7 @@ class User_karyawan extends CI_Controller
             $data['nama'] = $this->session->userdata('nama_lengkap');
             $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
             $data['level_akun'] = $this->session->userdata('level');
-            $data['mess'] = $this->session->userdata('mess');
+
             $data['id_kar'] = $this->session->userdata('id_kar');
             $data['pesan'] = "";
 
@@ -209,7 +207,7 @@ class User_karyawan extends CI_Controller
                 $data['nama'] = $this->session->userdata('nama_lengkap');
                 $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
                 $data['level_akun'] = $this->session->userdata('level');
-                $data['mess'] = $this->session->userdata('mess');
+
                 $data['id_kar'] = $this->session->userdata('id_kar');
                 $data['pesan'] = '<div class="alert alert-success" role="alert">Password Berhasil Diubah !
             </div>';
@@ -231,7 +229,7 @@ class User_karyawan extends CI_Controller
                 $data['nama'] = $this->session->userdata('nama_lengkap');
                 $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
                 $data['level_akun'] = $this->session->userdata('level');
-                $data['mess'] = $this->session->userdata('mess');
+
                 $data['id_kar'] = $this->session->userdata('id_kar');
                 $data['pesan'] =  '<div class="alert alert-danger" role="alert">Password Salah !
                 </div>';
@@ -266,7 +264,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $id_kar = $this->session->userdata('id_kar');
 
 
@@ -283,7 +281,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['pendidikan'] = $this->karyawan_model->getpendidikanid($id);
 
         $id_kar = $this->session->userdata('id_kar');
@@ -342,7 +340,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $id_kar = $this->session->userdata('id_kar');
 
@@ -360,7 +358,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
 
         $this->load->view('user_karyawan/template_user/header', $data);
@@ -375,7 +373,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $data['rw'] = $this->karyawan_model->get_id_rw($id);
 
@@ -435,7 +433,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $id_kar = $this->session->userdata('id_kar');
         $data['pasangan'] =  $this->karyawan_model->get_datapasangan($id_kar);
@@ -451,7 +449,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
 
         $this->load->view('user_karyawan/template_user/header', $data);
@@ -466,7 +464,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $data['pasangan'] = $this->karyawan_model->getpasangan($id_pasangan);
 
@@ -535,7 +533,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $id_kar = $this->session->userdata('id_kar');
         $data['anak'] = $this->karyawan_model->getanak($id_kar);
@@ -552,7 +550,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
 
         $this->load->view('user_karyawan/template_user/header', $data);
@@ -567,7 +565,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
 
         $data['anak'] = $this->karyawan_model->dataanak($id_anak);
@@ -637,7 +635,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $id_kar = $this->session->userdata('id_kar');
 
@@ -655,7 +653,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $id_kar = $this->session->userdata('id_kar');
 
@@ -673,7 +671,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         // $id_kar = $this->session->userdata('id_kar');
 
@@ -768,7 +766,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $id_kar = $this->session->userdata('id_kar');
         $data['riwayat_pelatihan'] = $this->karyawan_model->getriwayatpelatihan($id_kar);
@@ -784,7 +782,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
 
         $this->load->view('user_karyawan/template_user/header', $data);
@@ -798,7 +796,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $this->session->userdata('id_kar');
         $data['pelatihan'] = $this->karyawan_model->getdatapelatihan($id_pelatihan);
 
@@ -848,7 +846,7 @@ class User_karyawan extends CI_Controller
         $data['level_akun'] = $this->session->userdata('level');
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
-        $data['mess'] = $this->session->userdata('mess');
+
         $data['id_kar'] = $id_kar;
         $bulan = $this->input->post('bulan');
         $tahun = $this->input->post('tahun');
@@ -870,7 +868,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
 
         $data['id_kar'] = $this->session->userdata('id_kar');
         $data['mess_2'] = $this->mess_model->data_mess();
@@ -889,7 +887,7 @@ class User_karyawan extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
-        $data['mess'] = $this->session->userdata('mess');
+
         if ($this->input->post('date') == false) {
             $data['makanan'] = false;
         } elseif ($this->input->post('date') == true) {
