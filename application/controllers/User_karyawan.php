@@ -43,16 +43,11 @@ class User_karyawan extends CI_Controller
         $id_kar = $this->session->userdata('id_kar');
         $x = $this->karyawan_model->get_karyawan($id);
         $data['data'] =  json_decode(json_encode($x), true);
-        // $data['pendidikan'] = $this->karyawan_model->pendidikan($id);
-        // $data['riwayat_pekerjaan'] = $this->karyawan_model->riwayat_kerja($id);
-        // $data['pasangan'] =  $this->karyawan_model->get_datapasangan($id_kar);
-        // $data['anak'] = $this->karyawan_model->getanak($id_kar);
-        // $data['ortu'] = $this->karyawan_model->orangtuaget($id_kar);
-        // $data['overtime'] = $this->karyawan_model->hitung_overtime($id_kar);
 
-        // $this->load->view('user/template/header', $data);
+
+        $this->load->view('user/template/header', $data);
         $this->load->view('user_karyawan/index', $data);
-        // $this->load->view('user/template/footer');
+        $this->load->view('user/template/footer');
     }
 
     public function tambah_data_diri()

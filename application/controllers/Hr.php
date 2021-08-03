@@ -699,6 +699,72 @@ class Hr extends CI_Controller
         $this->karyawan_model->update_karyawan($data, $id);
         redirect('hr/karyawan');
     }
+
+    public function surat()
+    {
+        $data['judul'] = "Surat";
+        // $data['id_karyawan'] = $id_karyawan;
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->hr_model->data_karyawan();
+        $data['level_akun'] = $this->session->userdata('level');
+        $date = $this->input->post('date');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('surat/index', $data);
+        $this->load->view('template/footer');
+    }
+    public function surat_masuk()
+    {
+        $data['judul'] = "Surat Masuk";
+
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->hr_model->data_karyawan();
+        $data['level_akun'] = $this->session->userdata('level');
+        $data['surat'] = $this->hr_model->surat_masuk();
+        $this->load->view('template/header', $data);
+        $this->load->view('surat/masuk', $data);
+        $this->load->view('template/footer');
+    }
+    public function surat_keluar()
+    {
+        $data['judul'] = "Surat Keluar";
+
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->hr_model->data_karyawan();
+        $data['level_akun'] = $this->session->userdata('level');
+        $data['surat'] = $this->hr_model->surat_keluar();
+        $data['jumlah_surat_k'] = $this->hr_model->jumlah_surat_k();
+        $this->load->view('template/header', $data);
+        $this->load->view('surat/keluar', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function prosessurat_keluar()
+    {
+        $data = array(
+            "no_surat" => $this->input->post('no_surat_keluar'),
+            "perihal" => $this->input->post('perihal'),
+            "tanggal" => date("Y-m-d"),
+        );
+        $this->db->insert('surat_keluar', $data);
+        redirect('hr/surat_keluar');
+    }
+    public function prosessurat_masuk()
+    {
+        $data = array(
+            "no_surat_masuk" => $this->input->post('no_surat_masuk'),
+            "perihal" => $this->input->post('perihal'),
+            "tanggal" => date("Y-m-d"),
+        );
+        $this->db->insert('surat_masuk', $data);
+        redirect('hr/surat_masuk');
+    }
 }
 
 /* End of file Hr.php */

@@ -37,6 +37,36 @@ class Atk extends CI_Controller
         $this->load->view('atk/index', $data);
         $this->load->view('template/footer');
     }
+    public function data_barang_update()
+    {
+
+        //load index
+        $data['judul'] = 'ATK';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['data'] = $this->atk_model->getDataBarangmasuk();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('atk/data_barang_update', $data);
+        $this->load->view('template/footer');
+    }
+    public function data_barang_rusak()
+    {
+        $data['judul'] = 'ATK';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['data'] = $this->atk_model->getDataBarangrusak();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('atk/data_rusak', $data);
+        $this->load->view('template/footer');
+    }
     public function tambah_barang()
     {
         $data['judul'] = 'Input Data Barang';
@@ -91,7 +121,8 @@ class Atk extends CI_Controller
             $data = array(
                 'item' => $this->input->post('item'),
                 'qty' => $this->input->post('qty'),
-                'satuan' => $this->input->post('satuan')
+                'satuan' => $this->input->post('satuan'),
+                'type' => $this->input->post('type')
             );
             $insert = $this->atk_model->insertbarang($data);
             redirect('atk/view_data');
@@ -106,6 +137,20 @@ class Atk extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['data'] = $this->atk_model->getDataBarang();
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('atk/view_data', $data);
+        $this->load->view('template/footer');
+    }
+    public function view_data_barang_habis_pakai()
+    {
+        $data['judul'] = 'Tabel Data ATK';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->atk_model->getDataBarang2();
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
@@ -127,6 +172,34 @@ class Atk extends CI_Controller
         $this->load->view('atk/edit', $data);
         $this->load->view('template/footer');
     }
+    public function barang_masuk($id)
+    {
+        $data['judul'] = 'Barang Masuk';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->atk_model->getDataBarangById($id);
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('atk/barang_masuk', $data);
+        $this->load->view('template/footer');
+    }
+    public function barang_rusak($id)
+    {
+        $data['judul'] = 'Barang Rusak';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->atk_model->getDataBarangById($id);
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('atk/barang_rusak', $data);
+        $this->load->view('template/footer');
+    }
 
     public function prosesEdit($id)
     {
@@ -146,10 +219,62 @@ class Atk extends CI_Controller
             redirect('atk/view_data');
         }
     }
+    public function tambah_stok()
+    {
+        $data = array(
+            'id_barang' => $this->input->post('id_barang'),
+            'jumlah' => $this->input->post('jumlah'),
+            'tanggal_barang_masuk' => date("Y-m-d")
+        );
+        $barang = $this->atk_model->getDataBarangById($this->input->post('id_barang'));
+
+        $data2 = array(
+            'qty' => $barang->qty + $this->input->post('jumlah')
+        );
+        $this->db->insert('barang_masuk', $data);
+
+        $this->db->where('id', $this->input->post('id_barang'));
+
+        $this->db->update('data_barang', $data2);
+
+        redirect('atk/view_data');
+    }
+    public function update_barang_rusak()
+    {
+        $data = array(
+            'id_barang' => $this->input->post('id_barang'),
+            'jumlah' => $this->input->post('jumlah'),
+            'tanggal_barang_rusak' => date("Y-m-d")
+        );
+        $barang = $this->atk_model->getDataBarangById($this->input->post('id_barang'));
+
+        $data2 = array(
+            'qty' => $barang->qty - $this->input->post('jumlah')
+        );
+        $this->db->insert('barang_rusak', $data);
+
+        $this->db->where('id', $this->input->post('id_barang'));
+
+        $this->db->update('data_barang', $data2);
+
+        redirect('atk/view_data');
+    }
     public function hapus($id)
     {
         $this->db->where('id', $id);
         $delete = $this->db->delete('data_barang');
+        redirect('atk/view_data');
+    }
+    public function hapus_masuk($id)
+    {
+        $this->db->where('id_barang_masuk', $id);
+        $delete = $this->db->delete('barang_masuk');
+        redirect('atk/view_data');
+    }
+    public function hapus_rusak($id)
+    {
+        $this->db->where('id_barang_rusak', $id);
+        $delete = $this->db->delete('barang_rusak');
         redirect('atk/view_data');
     }
 

@@ -1,37 +1,59 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <!-- Create Organization-->
-        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11 mt-4">
-            <div class="card text-center h-100">
-                <div class="card-body px-5 pt-5 d-flex flex-column">
-                    <div>
-                        <div class="h3 text-secondary font-weight-300">Admin</div>
-                        <p class="text-muted mb-4">Lakukan login sebagai admin</p>
+<body class="bg-gradient-primary">
+    <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="1000" data-pause="true">
+        <div class="container">
+
+            <!-- Outer Row -->
+            <div class="row justify-content-center">
+
+                <div class="col-lg-12">
+
+                    <div class="card o-hidden border-0 shadow-lg my-5 ">
+                        <div class="card-body p-0">
+
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
+                                <div class="col-lg">
+                                    <div class="p-5">
+                                        <div class="text-center">
+
+
+                                            <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                        </div>
+                                        <?php
+                                        echo $data;
+                                        ?>
+                                        <?= validation_errors() ?>
+                                        <form class="user" action="<?= base_url('auth') ?>" method="POST">
+                                            <div class="form-group mb-4">
+                                                <div class="form-group mb-4">
+                                                    <input type="text" class="form-control" name="id_kar" placeholder="ID Karyawan">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-4">
+                                                <select class="form-control" name="level">
+                                                    <option value="admin">Admin</option>
+                                                    <option value="user">User</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group mb-4">
+                                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                                Masuk
+                                            </button>
+                                        </form>
+                                        <hr>
+                                        <a href="<?= base_url('auth') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="icons-org-create align-items-center mx-auto mt-auto">
-                        <i class="icon-users" data-feather="users"></i>
-                        <i class="icon-plus fas fa-plus"></i>
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent px-5 py-4">
-                    <div class="small text-center"><a class="btn btn-block btn-primary" href="<?= base_url('auth/admin') ?> ">Admin</a></div>
                 </div>
             </div>
         </div>
-        <!-- Join Organization-->
-        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11 mt-4">
-            <div class="card text-center h-100">
-                <div class="card-body px-5 pt-5 d-flex flex-column align-items-between">
-                    <div>
-                        <div class="h3 text-secondary font-weight-300">Karyawan</div>
-                        <p class="text-muted mb-4">Lakukan login sebagai karyawan</p>
-                    </div>
-                    <div class="icons-org-join align-items-center mx-auto">
-                        <i class="icon-user" data-feather="user"></i>
-                        <i class="icon-arrow fas fa-long-arrow-alt-right"></i>
-                        <i class="icon-users" data-feather="users"></i>
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent px-5 py-4">
-                    <div class="small text-center"><a class="btn btn-block btn-secondary" href="<?= base_url('auth/user') ?>">Karyawan</a></div>
-                </div>
+    </div>
+</body>

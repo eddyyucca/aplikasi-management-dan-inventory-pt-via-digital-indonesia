@@ -14,6 +14,7 @@
                     <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-success">Data Barang Masuk</a>
                     <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-danger">Tambah Barang</a>
                     <!-- Button trigger modal -->
+                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
                         Print Excel
                     </button>
@@ -46,7 +47,7 @@
                             <th>No</th>
                             <th>Item</th>
                             <th>Jumlah</th>
-                            <th>Satuan</th>
+                            <th>tanggal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -57,13 +58,10 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->item; ?></td>
-                                <td><?= $x->qty; ?></td>
-                                <td><?= $x->satuan; ?></td>
+                                <td><?= $x->jumlah; ?></td>
+                                <td><?= $x->tanggal_barang_masuk; ?></td>
                                 <td>
-                                    <a href="<?= base_url('atk/edit/') . $x->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?= base_url('atk/barang_masuk/') . $x->id; ?>" class="btn btn-success">Update Stok</a>
-                                    <a href="<?= base_url('atk/barang_rusak/') . $x->id; ?>" class="btn btn-warning">Barang Rusak</a>
-                                    <a href="<?= base_url('atk/hapus/') . $x->id; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('atk/hapus_masuk/') . $x->id_barang_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -7,6 +7,29 @@ class Atk_model extends CI_Model
 
     public function getDataBarang()
     {
+        $this->db->where('type', "1");
+        $query = $this->db->get('data_barang');
+        return $query->result();
+    }
+    public function getDataBarangmasuk()
+    {
+        $this->db->select('*');
+        $this->db->from('data_barang');
+        $this->db->join('barang_masuk', 'barang_masuk.id_barang = data_barang.id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getDataBarangrusak()
+    {
+        $this->db->select('*');
+        $this->db->from('data_barang');
+        $this->db->join('barang_rusak', 'barang_rusak.id_barang = data_barang.id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getDataBarang2()
+    {
+        $this->db->where('type', "2");
         $query = $this->db->get('data_barang');
         return $query->result();
     }

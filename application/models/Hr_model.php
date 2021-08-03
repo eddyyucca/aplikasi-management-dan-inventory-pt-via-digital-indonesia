@@ -95,6 +95,16 @@ class Hr_model extends CI_Model
 
         $this->db->update('absen', $data);
     }
+    public function surat_masuk()
+    {
+
+        return $this->db->get('surat_masuk')->result();
+    }
+    public function surat_keluar()
+    {
+
+        return $this->db->get('surat_keluar')->result();
+    }
 
     public function cektanggalexcel($date)
     {
@@ -123,6 +133,16 @@ class Hr_model extends CI_Model
         $this->db->where('date', $date);
         $query = $this->db->get();
         return $query->row();
+    }
+
+    public function jumlah_surat_k()
+    {
+        $query = $this->db->get('surat_keluar');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
     }
 }
 

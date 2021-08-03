@@ -9,7 +9,12 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_model');
+        $this->load->model('order_model');
         $this->load->model('jabatan_model');
+        $this->load->model('hr_model');
+        $this->load->model('karyawan_model');
+        $this->load->model('departemen_model');
+        $this->load->model('akun_model');
         $this->load->library('cart');
         $this->load->library('pagination');
         // if ($this->session->userdata('level') != "false") {
@@ -19,14 +24,29 @@ class User extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Tabel Data ATK';
+        $data['judul'] = 'User';
+        $data['databarang'] = $this->user_model->getDataBarang();
+        $data['keranjang'] = $this->cart->contents();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $this->load->view('user/template/header', $data);
+        $this->load->view('user/index', $data);
+        $this->load->view('user/template/footer');
+    }
+    public function user()
+    {
+        $data['judul'] = 'User';
         $data['databarang'] = $this->user_model->getDataBarang();
         $data['keranjang'] = $this->cart->contents();
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $id = $this->session->userdata('id_kar');
+        $id_kar = $this->session->userdata('id_kar');
+        $x = $this->karyawan_model->get_karyawan($id_kar);
+        $data['data'] =  json_decode(json_encode($x), true);
         $this->load->view('user/template/header', $data);
-        $this->load->view('user/index', $data);
+        $this->load->view('user_karyawan/index', $data);
         $this->load->view('user/template/footer');
     }
 
