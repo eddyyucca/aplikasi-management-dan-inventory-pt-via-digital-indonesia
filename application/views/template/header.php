@@ -187,7 +187,33 @@
                                     <a class="nav-link" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
                                 </nav>
                             </div>
-                        <?php   } ?>
+                        <?php    } elseif ($level_akun == "kepala") { ?>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#akun" aria-expanded="false" aria-controls="akun">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Data Karyawan
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="akun" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('hr/karyawan') ?>">Karyawan</a>
+                                    <a class="nav-link" href="<?= base_url('hr/jadikan_admin') ?>">Kelola Admin</a>
+
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#laporan_atk" aria-expanded="false" aria-controls="laporan_atk">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Laporan Order ATK
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="laporan_atk" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('order/laporan_bulanan') ?>">Laporan Order Bulanan</a>
+                                    <a class="nav-link" href="<?= base_url('order/laporan_departemen') ?>">Laporan Departemen</a>
+                                    <a class="nav-link" href="<?= base_url('order/order_selesai') ?>">Order Selesai</a>
+                                    <a class="nav-link" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
+                                </nav>
+                            </div>
+                        <?php } ?>
                     </div>
 
                 </div>
