@@ -18,7 +18,7 @@
             </div>
             <div class="col-xl-8">
                 <!-- Account details card-->
-                <div class="card mb-4">
+                <div class="card mb-2">
                     <div class="card-header">Visi & Misi Perusahaan PT.Via Digital Indonesia</div>
                     <div class="card-body">
                         <h4 class="text-center">
@@ -38,7 +38,18 @@
                         </h4>
                     </div>
                 </div>
+                <div class="col-xl-12">
+                    <!-- Account details card-->
+                    <div class="card mb-4">
+                        <div class="card-header">Struktur Organisasi PT. Via Digital Indonesia</div>
+                        <div class="card-body">
+                            <img class="img-thumbnail" mb-2" src="<?= base_url("assets/foto/Struktur.jpg") ?>" alt="" />
+
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </main>

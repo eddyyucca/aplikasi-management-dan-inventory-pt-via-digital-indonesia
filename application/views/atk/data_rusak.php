@@ -12,8 +12,10 @@
                     <a href="<?= base_url('atk/view_data') ?>" class="btn btn-primary">Barang Habis Pakai</a>
                     <a href="<?= base_url('atk/data_barang_rusak') ?>" class="btn btn-success">Data Barang masuk</a>
                     <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-success">Data Barang Masuk</a>
-                    <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-danger">Tambah Barang</a>
-                    <!-- Button trigger modal -->
+                    <?php if ($level_akun == "admin_gudang") { ?>
+                        <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-danger">Tambah Barang</a>
+                    <?php   } else {
+                    } ?>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
                         Print Excel
                     </button>
@@ -60,7 +62,11 @@
                                 <td><?= $x->jumlah; ?></td>
                                 <td><?= $x->tanggal_barang_rusak; ?></td>
                                 <td>
-                                    <a href="<?= base_url('atk/hapus_rusak/') . $x->id_barang_rusak; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <?php if ($level_akun == "admin_hr") { ?>
+                                        <p>-</p>
+                                    <?php   } else { ?>
+                                        <a href="<?= base_url('atk/hapus_rusak/') . $x->id_barang_rusak; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php } ?>

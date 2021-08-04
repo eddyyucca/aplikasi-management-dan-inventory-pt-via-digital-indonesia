@@ -65,14 +65,12 @@ class Auth extends CI_Controller
 
                 if ($this->session->userdata('level') == "admin") {
                     redirect('home/index');
-                } elseif ($this->session->userdata('level') == "admin_dep") {
-                    redirect('user/index');
-                } elseif ($this->session->userdata('level') == "kepala_gs") {
+                } elseif ($this->session->userdata('level') == "admin_gudang") {
                     redirect('home/index');
-                } elseif ($this->session->userdata('level') == "hr_admin") {
+                } elseif ($this->session->userdata('level') == "admin_hr") {
                     redirect('home/index');
-                } elseif ($this->session->userdata('level') == "super_admin") {
-                    redirect('dev/index');
+                } elseif ($this->session->userdata('level') == "kepala") {
+                    redirect('home/index');
                 }
             }
             // $this->form_validation->set_rules('departemen', 'Departemen', 'required');

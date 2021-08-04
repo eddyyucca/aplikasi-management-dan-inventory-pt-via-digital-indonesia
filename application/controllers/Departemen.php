@@ -12,7 +12,9 @@ class Departemen extends CI_Controller
         $this->load->model('order_model');
         $this->load->library('form_validation');
         $level_akun = $this->session->userdata('level');
-        if ($level_akun != ("admin") <= ("super_admin")) {
+        // if ($level_akun != ("admin_hr") <= ("admin_gudang")) {
+        //     redirect('auth');
+        if ($level_akun == false) {
             redirect('auth');
         } elseif ($level_akun == "user") {
             redirect('auth');

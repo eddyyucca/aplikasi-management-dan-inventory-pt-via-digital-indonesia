@@ -31,9 +31,9 @@
                  <th>
                      <table>
                          <tr align="left">
-                             <th rowspan="2"><img src="<?= base_url('assets/img/hrs.png') ?>" width="50">
+                             <th rowspan="2"><img src="<?= base_url('assets/foto/icon.png') ?>" width="50">
                              </th>
-                             <th class="a">PT. Hasnur Riung Sinergi <br> BRE Mining Project</th>
+                             <th class="a">PT. Via Digital Indonesia</th>
                              <th width="295x"></th>
                          </tr>
                      </table>
@@ -100,11 +100,7 @@
                              <th> <br><br><br> </th>
                              <th> <br><br><br> </th>
                          </tr>
-                         <tr>
-                             <th>Dept Head</th>
-                             <th>HRGS Dept Head</th>
-                             <th>Group Leader HRGS</th>
-                         </tr>
+
                      </table>
                      <br>
                      <table border=1 width="600px">

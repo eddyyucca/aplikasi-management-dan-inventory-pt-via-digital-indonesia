@@ -100,70 +100,95 @@
                         <div class="sidenav-menu-heading">Core</div>
 
                         <!-- Sidenav Accordion (Dashboard)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
-                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Master Data
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" href="<?= base_url('atk/view_data') ?>">ATK - Barang Habis Pakai</a>
-                                <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Barang Tidak Habis Pakai</a>
-                                <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Barang Rusak</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#surat" aria-expanded="false" aria-controls="surat">
-                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Data Surat
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="surat" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" href="<?= base_url('hr/surat') ?>">Surat</a>
-                            </nav>
-                        </div>
-                        <!-- Sidenav Accordion (Dashboard)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#akun" aria-expanded="false" aria-controls="akun">
-                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Data Karyawan
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="akun" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" href="<?= base_url('hr/karyawan') ?>">Karyawan</a>
+                        <?php if ($level_akun == "admin_gudang") { ?>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Master Data
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Inventaris</a>
 
-                            </nav>
-                        </div>
-                        <!-- Sidenav Accordion (Dashboard)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#data" aria-expanded="false" aria-controls="data">
-                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Order ATK
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="data" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Order Persetujuan</a>
-                                <a class="nav-link" href="<?= base_url('order') ?>">Order Tunggu</a>
-                            </nav>
-                        </div>
+                                </nav>
+                            </div>
 
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#laporan_atk" aria-expanded="false" aria-controls="laporan_atk">
-                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                            Laporan Order ATK
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="laporan_atk" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                <a class="nav-link" href="<?= base_url('order/laporan_bulanan') ?>">Laporan Order Bulanan</a>
-                                <a class="nav-link" href="<?= base_url('order/laporan_departemen') ?>">Laporan Departemen</a>
-                                <a class="nav-link" href="<?= base_url('order/order_selesai') ?>">Order Selesai</a>
-                                <a class="nav-link" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
-                            </nav>
-                        </div>
+                            <!-- Sidenav Accordion (Dashboard)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#data" aria-expanded="false" aria-controls="data">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Order ATK
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="data" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Order Persetujuan</a>
+                                    <a class="nav-link" href="<?= base_url('order') ?>">Order Tunggu</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#laporan_atk" aria-expanded="false" aria-controls="laporan_atk">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Laporan Order ATK
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="laporan_atk" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('order/laporan_bulanan') ?>">Laporan Order Bulanan</a>
+                                    <a class="nav-link" href="<?= base_url('order/laporan_departemen') ?>">Laporan Departemen</a>
+                                    <a class="nav-link" href="<?= base_url('order/order_selesai') ?>">Order Selesai</a>
+                                    <a class="nav-link" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
+                                </nav>
+                            </div>
+                        <?php    } elseif ($level_akun == "admin_hr") { ?>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Master Data
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Inventaris</a>
+
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#surat" aria-expanded="false" aria-controls="surat">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Data Surat
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="surat" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('hr/surat') ?>">Surat</a>
+                                </nav>
+                            </div>
+                            <!-- Sidenav Accordion (Dashboard)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#akun" aria-expanded="false" aria-controls="akun">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Data Karyawan
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="akun" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('hr/karyawan') ?>">Karyawan</a>
+                                    <a class="nav-link" href="<?= base_url('hr/jadikan_admin') ?>">Kelola Admin</a>
+
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#laporan_atk" aria-expanded="false" aria-controls="laporan_atk">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Laporan Order ATK
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="laporan_atk" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <a class="nav-link" href="<?= base_url('order/laporan_bulanan') ?>">Laporan Order Bulanan</a>
+                                    <a class="nav-link" href="<?= base_url('order/laporan_departemen') ?>">Laporan Departemen</a>
+                                    <a class="nav-link" href="<?= base_url('order/order_selesai') ?>">Order Selesai</a>
+                                    <a class="nav-link" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
+                                </nav>
+                            </div>
+                        <?php   } ?>
                     </div>
-
-
-
 
                 </div>
                 <!-- Sidenav Footer-->

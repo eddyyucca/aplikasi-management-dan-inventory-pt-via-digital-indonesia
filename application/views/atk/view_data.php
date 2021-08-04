@@ -12,8 +12,10 @@
                     <a href="<?= base_url('atk/view_data') ?>" class="btn btn-primary">Barang Habis Pakai</a>
                     <a href="<?= base_url('atk/data_barang_rusak') ?>" class="btn btn-success">Data Barang Rusak</a>
                     <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-success">Data Barang Masuk</a>
-                    <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-danger">Tambah Barang</a>
-                    <!-- Button trigger modal -->
+                    <?php if ($level_akun == "admin_gudang") { ?>
+                        <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-danger">Tambah Barang</a>
+                    <?php   } else {
+                    } ?>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
                         Print Excel
                     </button>
@@ -60,10 +62,14 @@
                                 <td><?= $x->qty; ?></td>
                                 <td><?= $x->satuan; ?></td>
                                 <td>
-                                    <a href="<?= base_url('atk/edit/') . $x->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?= base_url('atk/barang_masuk/') . $x->id; ?>" class="btn btn-success">Update Stok</a>
-                                    <a href="<?= base_url('atk/barang_rusak/') . $x->id; ?>" class="btn btn-warning">Barang Rusak</a>
-                                    <a href="<?= base_url('atk/hapus/') . $x->id; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <?php if ($level_akun == "admin_hr") { ?>
+                                        <p>-</p>
+                                    <?php   } else { ?>
+                                        <a href="<?= base_url('atk/edit/') . $x->id; ?>" class="btn btn-primary">Edit</a>
+                                        <a href="<?= base_url('atk/barang_masuk/') . $x->id; ?>" class="btn btn-success">Update Stok</a>
+                                        <a href="<?= base_url('atk/barang_rusak/') . $x->id; ?>" class="btn btn-warning">Barang Rusak</a>
+                                        <a href="<?= base_url('atk/hapus/') . $x->id; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php } ?>

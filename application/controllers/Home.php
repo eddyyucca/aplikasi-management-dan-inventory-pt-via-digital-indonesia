@@ -15,7 +15,9 @@ class Home extends CI_Controller
 
 
         $level_akun = $this->session->userdata('level');
-        if ($level_akun != ("admin") <= ("super_admin")) {
+        // if ($level_akun != ("admin_hr") <= ("admin_gudang")) {
+        //     redirect('auth');
+        if ($level_akun == false) {
             redirect('auth');
         } elseif ($level_akun == "user") {
             redirect('auth');

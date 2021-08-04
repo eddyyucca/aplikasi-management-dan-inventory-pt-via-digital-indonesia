@@ -12,12 +12,13 @@ class Akun extends CI_Controller
 		$this->load->library('form_validation');
 
 		$level_akun = $this->session->userdata('level');
-		if ($level_akun != ("admin") <= ("super_admin")) {
+		// if ($level_akun != ("admin_hr") <= ("admin_gudang")) {
+		//     redirect('auth');
+		if ($level_akun == false) {
 			redirect('auth');
 		} elseif ($level_akun == "user") {
 			redirect('auth');
 		}
-
 		$data['nama'] = $this->session->userdata('nama_lengkap');
 		$data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
 	}

@@ -24,7 +24,11 @@ class Hr extends CI_Controller
 
 
         $level_akun = $this->session->userdata('level');
-        if ($level_akun != ("hr_admin") <= ("super_admin")) {
+        // if ($level_akun != ("admin_hr") <= ("admin_gudang")) {
+        //     redirect('auth');
+        if ($level_akun == false) {
+            redirect('auth');
+        } elseif ($level_akun == "user") {
             redirect('auth');
         }
     }
@@ -82,11 +86,11 @@ class Hr extends CI_Controller
 
 
 
-        $data['pendidikan'] = $this->karyawan_model->pendidikan($id);
-        $data['riwayat_pekerjaan'] = $this->karyawan_model->riwayat_kerja($id);
-        $data['pasangan'] =  $this->karyawan_model->get_datapasangan($id_kar);
-        $data['anak'] = $this->karyawan_model->getanak($id_kar);
-        $data['ortu'] = $this->karyawan_model->orangtuaget($id_kar);
+        // $data['pendidikan'] = $this->karyawan_model->pendidikan($id);
+        // $data['riwayat_pekerjaan'] = $this->karyawan_model->riwayat_kerja($id);
+        // $data['pasangan'] =  $this->karyawan_model->get_datapasangan($id_kar);
+        // $data['anak'] = $this->karyawan_model->getanak($id_kar);
+        // $data['ortu'] = $this->karyawan_model->orangtuaget($id_kar);
         // $data['overtime'] = $this->karyawan_model->hitung_overtime($id_kar);
         $this->load->view('template/header', $data);
         $this->load->view('hr/karyawan/view_karyawan', $data);
@@ -457,7 +461,7 @@ class Hr extends CI_Controller
 
     public function jadikan_admin()
     {
-        $data['judul'] = 'Human Resource';
+        $data['judul'] = 'Atur Level Admin';
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');
@@ -468,7 +472,7 @@ class Hr extends CI_Controller
     }
     public function ubah_level($id_kar)
     {
-        $data['judul'] = 'Human Resource';
+        $data['judul'] = 'Atur Level Admin';
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
         $data['level_akun'] = $this->session->userdata('level');

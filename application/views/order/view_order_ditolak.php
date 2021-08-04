@@ -28,8 +28,8 @@
                                             if ($data == false) { ?>
                                                 <td colspan='5' align='center'>Data Kosong</td>
                                                 <?php
-                                                } else {
-                                                    foreach ($data as $x) { ?>
+                                            } else {
+                                                foreach ($data as $x) { ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $x->item ?></td>
@@ -38,15 +38,10 @@
                                                         <td><?= $x->tanggal; ?></td>
                                                     </tr>
                                                 <?php } ?>
-                                                <tr>
-                                                    <td>Ket</td>
-                                                    <td colspan="5">
-                                                        <?= $data3->ket; ?>
-                                                    </td>
-                                                </tr>
+
                                         </tbody>
                                     <?php
-                                    } ?>
+                                            } ?>
                                 </table>
                             </div>
                         </div>
@@ -76,7 +71,7 @@
                 <?php $no = 1;
                 foreach ($data as $k) :
                     if ($no++ > 1) break;
-                    ?>
+                ?>
 
                     <a href="<?= base_url('order/report/') . $k->id_keranjang ?>" target="_blank" class="btn btn-primary">Selesai</a>
                 <?php endforeach; ?>
