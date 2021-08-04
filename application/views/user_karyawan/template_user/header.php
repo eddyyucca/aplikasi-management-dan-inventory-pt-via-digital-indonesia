@@ -145,6 +145,18 @@
 
 							</nav>
 						</div>
+						<a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#pass" aria-expanded="false" aria-controls="pass">
+							<div class="nav-link-icon"><i data-feather="activity"></i></div>
+							Password
+							<div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+						</a>
+						<div class="collapse" id="pass" data-parent="#accordionSidenav">
+							<nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+
+								<a class="nav-link" href="<?= base_url('user/password') ?>">Ubah Password</a>
+
+							</nav>
+						</div>
 					</div>
 				</div>
 				<!-- Sidenav Footer-->

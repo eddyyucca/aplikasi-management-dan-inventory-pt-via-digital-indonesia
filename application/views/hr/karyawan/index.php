@@ -32,7 +32,7 @@
                                     <td><?= $x->nama_lengkap ?></td>
                                     <td><?= $x->nama_dep ?></td>
                                     <td> <a href="<?= base_url('hr/view_karyawan/') . $x->id_karyawan; ?>" class="btn btn-secondary"><i class="fas fa-eye"></i></a>
-                                        <a href="<?= base_url('hr/cari_tanggal/') . $x->id_karyawan; ?>" class="btn btn-secondary"><i class="fas fa-fingerprint"></i></a>
+
                                         <a href="<?= base_url('hr/ubah_karyawan/') . $x->id_karyawan; ?>" class="btn btn-secondary">Ubah</i></a>
                                     </td>
                             </tr>

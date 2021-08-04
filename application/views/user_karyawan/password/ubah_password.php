@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <form action="<?= base_url('user_karyawan/prosesubahpass/') . $id_kar ?>" method="POST">
+                    <form action="<?= base_url('user/prosesubahpass/') . $id_kar ?>" method="POST">
                         <table class="table">
                             <?= $pesan; ?>
                             <?php if (validation_errors() == false) {

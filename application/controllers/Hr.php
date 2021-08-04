@@ -82,7 +82,7 @@ class Hr extends CI_Controller
         $data["data"] = $this->karyawan_model->getdatakaryawan($id_karyawan);
         $x = $this->karyawan_model->get_karyawan($id);
         $data['data1'] =  json_decode(json_encode($x), true);
-        $data['pendidikan'] = $this->karyawan_model->pendidikan($id);
+
 
 
 
@@ -490,7 +490,7 @@ class Hr extends CI_Controller
         );
         $this->db->where('id_kar', $id_kar);
         $this->db->update('user_login', $data);
-        redirect('dev/admin');
+        redirect('hr/jadikan_admin');
     }
 
     public function index_absen()

@@ -17,7 +17,7 @@ class User_karyawan extends CI_Controller
         $this->load->model('jabatan_model');
         $this->load->model('akun_model');
         $this->load->library('form_validation');
-        ini_set('date.timezone', 'Asia/Kuala_Lumpur');
+        // ini_set('date.timezone', 'Asia/Kuala_Lumpur');
         // $level_akun = $this->session->userdata('level');
         // if ($this->session->userdata('level') == false) {
         //     redirect('auth');
@@ -167,9 +167,10 @@ class User_karyawan extends CI_Controller
 
         $data['id_kar'] = $this->session->userdata('id_kar');
         $data['pesan'] = "";
-        $this->load->view('user_karyawan/template_user/header', $data);
+
+        $this->load->view('user/template/header', $data);
         $this->load->view('user_karyawan/password/ubah_password', $data);
-        $this->load->view('user_karyawan/template_user/footer');
+        $this->load->view('user/template/footer', $data);
     }
 
     public function prosesubahpass($id_kar)

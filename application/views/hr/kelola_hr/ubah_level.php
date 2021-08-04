@@ -29,25 +29,14 @@
                             </tr>
                             <tr>
                                 <td> Level</td>
-                                <form action="<?= base_url('dev/prosesubahlevel/' . $data_karyawan->id_karyawan) ?>" method="post">
-                                    <?php if ($data_karyawan->level == "kepala_gs") { ?>
-                                        <td><select name="level" class="form-control" disabled>
-                                                <option value="">--Pilih--</option>
-                                                <option value="admin" <?= $data_karyawan->level ==  "admin" ? 'selected=selected' : ''; ?>>Admin GS</option>
-                                                <option value="hr_admin" <?= $data_karyawan->level ==  "hr_admin" ? 'selected=selected' : ''; ?>>Admin HR</option>
-                                                <option value="admin_dep" <?= $data_karyawan->level ==  "admin_dep" ? 'selected=selected' : ''; ?>>Admin Departemen</option>
-                                                <option value="kepala_gs" <?= $data_karyawan->level ==  "kepala_gs" ? 'selected=selected' : ''; ?>>Kepala GS</option>
-                                                <option value="user" <?= $data_karyawan->level ==  "user" ? 'selected=selected' : ''; ?>>User Biasa</option>
-                                            </select></td>
-                                    <?php  } else { ?>
-                                        <td><select name="level" class="form-control">
-                                                <option value="">--Pilih--</option>
-                                                <option value="admin" <?= $data_karyawan->level ==  "admin" ? 'selected=selected' : ''; ?>>Admin GS</option>
-                                                <option value="hr_admin" <?= $data_karyawan->level ==  "hr_admin" ? 'selected=selected' : ''; ?>>Admin HR</option>
-                                                <option value="admin_dep" <?= $data_karyawan->level ==  "admin_dep" ? 'selected=selected' : ''; ?>>Admin Departemen</option>
-                                                <option value="user" <?= $data_karyawan->level ==  "user" ? 'selected=selected' : ''; ?>>User Biasa</option>
-                                            </select></td>
-                                    <?php } ?>
+                                <form action="<?= base_url('hr/prosesubahlevel/' . $data_karyawan->id_karyawan) ?>" method="post">
+                                    <td><select name="level" class="form-control">
+                                            <option value="">--Pilih--</option>
+                                            <option value="admin_gudang" <?= $data_karyawan->level ==  "admin_gudang" ? 'selected=selected' : ''; ?>>Admin Gudang</option>
+                                            <option value="admin_hr" <?= $data_karyawan->level ==  "admin_hr" ? 'selected=selected' : ''; ?>>Admin HR</option>
+                                            <option value="user" <?= $data_karyawan->level ==  "user" ? 'selected=selected' : ''; ?>>User</option>
+                                            <option value="kepala" <?= $data_karyawan->level ==  "kepala" ? 'selected=selected' : ''; ?>>Direktur</option>
+                                        </select></td>
                             <tr>
                                 <td colspan="2" align="center">
                                     <button class="btn btn-primary mt-2">Ubah</button>

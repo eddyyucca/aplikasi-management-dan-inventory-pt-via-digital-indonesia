@@ -18,7 +18,7 @@
 
 <body class="nav-fixed">
   <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
-    <a class="navbar-brand" href="<?= base_url("home") ?>"> <img src="<?= base_url('assets/foto/icon.png'); ?>" alt="Logo"> PT.VIA Digital Indonesia </a>
+    <a class="navbar-brand" href="<?= base_url("user") ?>"> <img src="<?= base_url('assets/foto/icon.png'); ?>" alt="Logo"> PT.VIA Digital Indonesia </a>
     <!-- Sidenav Toggle Button-->
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle"><i data-feather="menu"></i></button>
     <!-- Navbar Search Input-->
@@ -88,6 +88,18 @@
             <!-- Sidenav Menu Heading (Core)-->
             <div class="sidenav-menu-heading">Core</div>
             <!-- Sidenav Accordion (Dashboard)-->
+            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#pass" aria-expanded="false" aria-controls="pass">
+              <div class="nav-link-icon"><i data-feather="activity"></i></div>
+              Password
+              <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="pass" data-parent="#accordionSidenav">
+              <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+
+                <a class="nav-link" href="<?= base_url('user/password') ?>">Ubah Password</a>
+
+              </nav>
+            </div>
             <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
               <div class="nav-link-icon"><i data-feather="activity"></i></div>
               Order Departemen

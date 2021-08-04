@@ -54,7 +54,7 @@
                                                     </td>
                                                 </tr>
 
-                                                <tr>
+                                                <tr width="100%">
                                                     <td>
                                                         <H4>Order</H4>
                                                     </td>
@@ -64,24 +64,20 @@
                                                     <td>
 
                                                         <?php if ($data->qty < 1) {
-                                                                echo "<h3>Stok Kosong</h3>";
-                                                                ?>
+                                                            echo "<h3>Stok Kosong</h3>";
+                                                        ?>
 
                                                         <?php } else { ?>
                                                             <div class="col-sm-6">
                                                                 <div class="input-group">
                                                                     <span class="input-group-btn lm-2 input-group-prepend">
-                                                                        <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
-                                                                            <i class="fas fa-minus-circle"></i>
-                                                                        </button>
+
                                                                     </span>
                                                                     <input type="hidden" name="item" value="<?= $data->item; ?>">
                                                                     <input type="hidden" name="satuan" value="<?= $data->satuan; ?>">
-                                                                    <input type="text" id="quantity" name="qty" class="form-control input-number" value="1" min="1" max="100">
+                                                                    <input class="form-control" name="qty" step="1" data-step-max="10" type="number" id="inputLoop" value="1" data-decimals="0" min="1" max="<?= $data->qty; ?>">
                                                                     <span class="input-group-btn lm-2 input-group-append">
-                                                                        <button type="button" class="quantity-right-plus btn btn-primary btn-number" data-type="plus" data-field="">
-                                                                            <i class="fas fa-plus-circle"></i>
-                                                                        </button>
+
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -95,8 +91,8 @@
                                             <hr>
                                             <td align="center">
                                                 <?php if ($data->qty < 1) {
-                                                        echo '<button type="submit" class="btn btn-primary" disabled>Order</button>';
-                                                    } else { ?>
+                                                    echo '<button type="submit" class="btn btn-primary" disabled>Order</button>';
+                                                } else { ?>
                                                     <button type="submit" class="btn btn-primary">Order</button>
                                                 <?php } ?>
                                             </td>

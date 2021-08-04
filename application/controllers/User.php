@@ -17,6 +17,8 @@ class User extends CI_Controller
         $this->load->model('akun_model');
         $this->load->library('cart');
         $this->load->library('pagination');
+
+        $this->load->library('form_validation');
         // if ($this->session->userdata('level') != "false") {
         //     redirect('auth');
         // }
@@ -39,12 +41,14 @@ class User extends CI_Controller
         $data['databarang'] = $this->user_model->getDataBarang();
         $data['keranjang'] = $this->cart->contents();
         $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['pesan'] = "";
         $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
-        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
-        $id = $this->session->userdata('id_kar');
-        $id_kar = $this->session->userdata('id_kar');
-        $x = $this->karyawan_model->get_karyawan($id_kar);
-        $data['data'] =  json_decode(json_encode($x), true);
+        $id_karyawan = $this->session->userdata('id_kar');
+        $id = $id_karyawan;
+        $id_kar = $id;
+        $data["data"] = $this->karyawan_model->getdatakaryawan($id_karyawan);
+        $x = $this->karyawan_model->get_karyawan($id);
+        $data['data1'] =  json_decode(json_encode($x), true);
         $this->load->view('user/template/header', $data);
         $this->load->view('user_karyawan/index', $data);
         $this->load->view('user/template/footer');
@@ -343,6 +347,84 @@ class User extends CI_Controller
         $this->load->view('user/template/header', $data);
         $this->load->view('user/catering/view', $data);
         $this->load->view('user/template/footer');
+    }
+
+    public function password()
+    {
+        $data['judul'] = 'User';
+        $data['databarang'] = $this->user_model->getDataBarang();
+        $data['keranjang'] = $this->cart->contents();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+
+        $data['id_kar'] = $this->session->userdata('id_kar');
+        $data['pesan'] = "";
+        $this->load->view('user/template/header', $data);
+        $this->load->view('user_karyawan/password/ubah_password', $data);
+        $this->load->view('user/template/footer');
+    }
+
+    public function prosesubahpass($id_kar)
+    {
+        $this->form_validation->set_rules('password_lama', 'Password Lama', 'required');
+        $this->form_validation->set_rules('password_baru', 'Password Baru', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $data['judul'] = 'User';
+            $data['databarang'] = $this->user_model->getDataBarang();
+            $data['keranjang'] = $this->cart->contents();
+            $data['nama'] = $this->session->userdata('nama_lengkap');
+            $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+
+
+            $data['id_kar'] = $this->session->userdata('id_kar');
+            $data['pesan'] = "";
+
+            $this->load->view('user/template/header', $data);
+            $this->load->view('user_karyawan/password/ubah_password', $data);
+            $this->load->view('user/template/footer');
+        } else {
+
+            $password = md5($this->input->post('password_lama'));
+            $cek = $this->karyawan_model->cek_pass($password, $id_kar);
+
+            if ($cek == true) {
+                $data['judul'] = 'User';
+                $data['databarang'] = $this->user_model->getDataBarang();
+                $data['keranjang'] = $this->cart->contents();
+                $data['nama'] = $this->session->userdata('nama_lengkap');
+                $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+
+
+                $data['id_kar'] = $this->session->userdata('id_kar');
+                $data['pesan'] = '<div class="alert alert-success" role="alert">Password Berhasil Diubah !
+            </div>';
+                $data_update = array(
+                    "password" => md5($this->input->post('password_baru'))
+                );
+                $this->db->where('id_kar', $id_kar);
+                $this->db->update('user_login', $data_update);
+
+
+
+                $this->load->view('user/template/header', $data);
+                $this->load->view('user_karyawan/password/ubah_password', $data);
+                $this->load->view('user/template/footer');
+            } else {
+                $data['judul'] = 'User';
+                $data['databarang'] = $this->user_model->getDataBarang();
+                $data['keranjang'] = $this->cart->contents();
+                $data['nama'] = $this->session->userdata('nama_lengkap');
+                $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+
+                $data['id_kar'] = $this->session->userdata('id_kar');
+                $data['pesan'] =  '<div class="alert alert-danger" role="alert">Password Salah !
+                </div>';
+
+                $this->load->view('user/template/header', $data);
+                $this->load->view('user_karyawan/password/ubah_password', $data);
+                $this->load->view('user/template/footer');
+            }
+        }
     }
 }
 
