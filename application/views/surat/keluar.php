@@ -45,7 +45,7 @@
                                             <td><?= $x->perihal; ?></td>
                                             <td align="center">
 
-                                                <a href="<?= base_url('akun/prosesHapus/') . $x->id_surat_keluar; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                                <a href="<?= base_url('hr/hapus_surat_keluar/') . $x->id_surat_keluar; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php } ?>

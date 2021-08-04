@@ -759,6 +759,24 @@ class Hr extends CI_Controller
         $this->db->insert('surat_keluar', $data);
         redirect('hr/surat_keluar');
     }
+    public function hapus_surat_keluar($id)
+    {
+
+        $this->db->where('id_surat_keluar', $id);
+
+        $this->db->delete('surat_keluar');
+
+        redirect('hr/surat_keluar');
+    }
+    public function hapus_surat_masuk($id)
+    {
+
+        $this->db->where('id_surat_masuk', $id);
+
+        $this->db->delete('surat_masuk');
+
+        redirect('hr/surat_masuk');
+    }
     public function prosessurat_masuk()
     {
         $data = array(
