@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
     <style>
         body {
-            background-image: url(<?= base_url("assets/foto/auth.jpg") ?>);
+            background-image: url(<?= base_url("assets/foto/auth2.jpg") ?>);
             background-color: #cccccc;
         }
     </style>

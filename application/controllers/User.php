@@ -14,6 +14,7 @@ class User extends CI_Controller
         $this->load->model('hr_model');
         $this->load->model('karyawan_model');
         $this->load->model('departemen_model');
+        $this->load->model('atk_model');
         $this->load->model('akun_model');
         $this->load->library('cart');
         $this->load->library('pagination');
@@ -35,6 +36,32 @@ class User extends CI_Controller
         $this->load->view('user/index', $data);
         $this->load->view('user/template/footer');
     }
+    public function atk_dep()
+    {
+        $data["level_akun"] = $this->session->userdata('level');
+        $data_cari = $this->session->userdata('id_jab');
+        $data['data_departemen'] = $this->akun_model->getDataDepartemen();
+        $data['data'] = $this->atk_model->getDataBarangdep($data_cari);
+        $data['judul'] = 'User';
+        $data['databarang'] = $this->user_model->getDataBarang();
+        $data['keranjang'] = $this->cart->contents();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $this->load->view('user/template/header', $data);
+        $this->load->view('user/atk/atk_dep', $data);
+        $this->load->view('user/template/footer');
+    }
+
+    public function atk_habis($id_dep)
+    {
+        $data = array(
+            'qty_order' => "0",
+        );
+        $this->db->where('id_dep', $id_dep);
+        $this->db->update('data_order_dep', $data);
+        redirect('user/atk_dep');
+    }
+
     public function user()
     {
         $data['judul'] = 'User';
@@ -199,6 +226,30 @@ class User extends CI_Controller
                 'tanggal' => $item['tanggal']
             );
             $this->user_model->insert($data);
+            $id_barang = $item['id'];
+            if ($this->user_model->cek_barang($id_barang) == false) {
+
+                $data_dep = array(
+
+                    'id_keranjang' => $id_x,
+                    'id_barang' => $item['id'],
+                    'qty_order' => $item['qty'],
+                    'id_dep' => $item['id_dep'],
+                    'tanggal' => $item['tanggal'],
+                );
+                // $this->user_model->insert_dep($data_dep);
+                $this->user_model->insert_dep($data_dep);
+            } elseif ($this->user_model->cek_barang($id_barang) == true) {
+                $x1 =   $this->user_model->cek_barang_ada();
+                $x2 = $item['qty'];
+                $xx = $x1 + $x2;
+                $data_dep = array(
+                    'qty_order' =>  $xx,
+                    'tanggal' => $item['tanggal'],
+                );
+
+                $this->user_model->update_dep($data_dep, $id_barang);
+            }
         }
 
         $keranjang = array(
@@ -212,7 +263,6 @@ class User extends CI_Controller
         $this->cart->destroy();
         redirect('user/atk/atk');
     }
-
     public function status()
     {
         $data['judul'] = 'Status Order';

@@ -30,7 +30,7 @@
                             <tr>
                                 <td> Level</td>
                                 <form action="<?= base_url('hr/prosesubahlevel/' . $data_karyawan->id_karyawan) ?>" method="post">
-                                    <td><select name="level" class="form-control">
+                                    <td><select name="level" class="custom-select">
                                             <option value="">--Pilih--</option>
                                             <option value="admin_gudang" <?= $data_karyawan->level ==  "admin_gudang" ? 'selected=selected' : ''; ?>>Admin Gudang</option>
                                             <option value="admin_hr" <?= $data_karyawan->level ==  "admin_hr" ? 'selected=selected' : ''; ?>>Admin HR</option>

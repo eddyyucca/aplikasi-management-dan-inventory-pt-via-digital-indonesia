@@ -46,6 +46,8 @@
 
       <!-- User Dropdown-->
       <li class="nav-item dropdown no-caret mr-3 mr-lg-0 dropdown-user">
+
+        <?= $nama; ?> | <?= $jabatan->nama_jabatan ?>
         <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="<?= base_url('assets') ?>/assets/img/illustrations/profiles/profile-2.png" /></a>
         <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
           <h6 class="dropdown-header d-flex align-items-center">
@@ -100,15 +102,25 @@
 
               </nav>
             </div>
+            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#atkk" aria-expanded="false" aria-controls="atkk">
+              <div class="nav-link-icon"><i data-feather="activity"></i></div>
+              Barang Departemen
+              <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="atkk" data-parent="#accordionSidenav">
+              <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                <a class="nav-link" href="<?= base_url('user/atk_dep') ?>">Barang Departemen
+              </nav>
+            </div>
             <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
               <div class="nav-link-icon"><i data-feather="activity"></i></div>
-              Order Departemen
+              Permohonan Departemen
               <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
               <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
                 <a class="nav-link" href="<?= base_url('user/keranjang') ?>">Keranjang (<?php echo count($keranjang); ?>)</a>
-                <a class="nav-link" href="<?= base_url('user/status') ?>">Status Order</a>
+                <a class="nav-link" href="<?= base_url('user/status') ?>">Status Permohonan</a>
 
               </nav>
             </div>

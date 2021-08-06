@@ -25,7 +25,7 @@
                                                     <td>
                                                         <h3>:</h3>
                                                     </td>
-                                                    <td>
+                                                    <td width="600px">
                                                         <h3><?= $data->item; ?></h3>
                                                     </td>
                                                 </tr>
@@ -75,7 +75,7 @@
                                                                     </span>
                                                                     <input type="hidden" name="item" value="<?= $data->item; ?>">
                                                                     <input type="hidden" name="satuan" value="<?= $data->satuan; ?>">
-                                                                    <input class="form-control" name="qty" step="1" data-step-max="10" type="number" id="inputLoop" value="1" data-decimals="0" min="1" max="<?= $data->qty; ?>">
+                                                                    <input class="form-control" name="qty" step="1" data-step-max="10" type="number" value="1" data-decimals="0" min="1" max="<?= $data->qty; ?>">
                                                                     <span class="input-group-btn lm-2 input-group-append">
 
                                                                     </span>

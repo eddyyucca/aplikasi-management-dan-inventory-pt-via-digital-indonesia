@@ -51,7 +51,7 @@
             <!-- Alerts Dropdown-->
             <li class="nav-item dropdown no-caret d-none d-sm-block mr-3 dropdown-notifications">
 
-
+                <?= $nama; ?> | <?= $jabatan->nama_jabatan ?>
             </li>
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret mr-3 mr-lg-0 dropdown-user">
@@ -109,20 +109,23 @@
                             <div class="collapse" id="collapseDashboards" data-parent="#accordionSidenav">
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
                                     <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Inventaris</a>
-
+                                    <a class="nav-link" href="<?= base_url('atk/atk_dep') ?>">Inventaris Departemen</a>
                                 </nav>
                             </div>
 
                             <!-- Sidenav Accordion (Dashboard)-->
                             <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#data" aria-expanded="false" aria-controls="data">
                                 <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                                Order ATK
+                                Permohonan ATK
                                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="data" data-parent="#accordionSidenav">
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                                    <a class="nav-link" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Order Persetujuan</a>
-                                    <a class="nav-link" href="<?= base_url('order') ?>">Order Tunggu</a>
+                                    <?php if ($level_akun == "admin_gudang") { ?>
+                                        <a class="nav-link" href="<?= base_url('order') ?>">Permohonan Tunggu</a>
+                                    <?php    } elseif ($level_akun == "admin_hr") { ?>
+                                        <a class="nav-link" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Permohonan Persetujuan</a>
+                                    <?php } ?>
                                 </nav>
                             </div>
 
@@ -151,6 +154,20 @@
 
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#data" aria-expanded="false" aria-controls="data">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Permohonan ATK
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="data" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                                    <?php if ($level_akun == "admin_gudang") { ?>
+                                        <a class="nav-link" href="<?= base_url('order') ?>">Permohonan Tunggu</a>
+                                    <?php    } elseif ($level_akun == "admin_hr") { ?>
+                                        <a class="nav-link" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Permohonan Persetujuan</a>
+                                    <?php } ?>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#surat" aria-expanded="false" aria-controls="surat">
                                 <div class="nav-link-icon"><i data-feather="activity"></i></div>
                                 Data Surat
@@ -176,7 +193,7 @@
                             </div>
                             <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#laporan_atk" aria-expanded="false" aria-controls="laporan_atk">
                                 <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                                Laporan Order ATK
+                                Laporan Permohonan ATK
                                 <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="laporan_atk" data-parent="#accordionSidenav">

@@ -9,6 +9,16 @@ class User_model extends CI_Model
         $query = $this->db->get('data_barang');
         return $query->result();
     }
+    public function cek_barang_ada()
+    {
+
+        $this->db->where('id_barang', "3");
+        $query = $this->db->get('data_order_dep');
+
+        foreach ($query->result() as $row) {
+            return $row->qty_order;
+        }
+    }
     public function getDataBarangById($id)
     {
         $this->db->where('id', $id);
@@ -20,10 +30,29 @@ class User_model extends CI_Model
     {
         $this->db->insert('data_order', $data);
     }
+    public function insert_dep($data)
+    {
+        $this->db->insert('data_order_dep', $data);
+    }
+    public function update_dep($data_dep, $id_barang)
+    {
+        $this->db->where('id_barang', $id_barang);
+        $this->db->update('data_order_dep', $data_dep);
+    }
 
     public function insert_result($keranjang)
     {
         $this->db->insert('order_status', $keranjang);
+    }
+    public function cek_barang($id_barang)
+    {
+        $this->db->where('id_barang', $id_barang);
+        $x = $this->db->get('data_order_dep');
+        if ($x->num_rows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
     function penomoran($limit, $start)
     {
@@ -64,20 +93,6 @@ class User_model extends CI_Model
         $x = $this->db->get('order_status');
         return $x->result();
     }
-
-    public function data_mess()
-    {
-        $x = $this->db->get('data_mess_lahan');
-        return $x->result();
-    }
-
-    public function data_mess_row($id)
-    {
-        $this->db->where('id', $id);
-        $x = $this->db->get('data_mess_lahan');
-        return $x->row();
-    }
-
     //seragam
 
     public function get_seragam_kerja()

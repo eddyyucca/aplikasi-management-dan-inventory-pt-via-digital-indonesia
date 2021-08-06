@@ -751,6 +751,9 @@ class Hr extends CI_Controller
 
     public function prosessurat_keluar()
     {
+
+
+
         $data = array(
             "no_surat" => $this->input->post('no_surat_keluar'),
             "perihal" => $this->input->post('perihal'),
@@ -779,13 +782,62 @@ class Hr extends CI_Controller
     }
     public function prosessurat_masuk()
     {
+        $config['upload_path']   = './assets/file_surat/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+
+        $this->load->library('upload', $config);
+        // script upload file 1
+        $this->upload->do_upload('file');
+        $x = $this->upload->data();
+        // $data_model = $this->pegawai_m->get_row_pegawai($id_pegawai);
+
+        var_dump($x["file_name"]);
         $data = array(
             "no_surat_masuk" => $this->input->post('no_surat_masuk'),
             "perihal" => $this->input->post('perihal'),
             "tanggal" => date("Y-m-d"),
+
+            'file' => $x["file_name"],
         );
         $this->db->insert('surat_masuk', $data);
         redirect('hr/surat_masuk');
+    }
+
+    public function pengajuan_baru($nip)
+    {
+        $config['upload_path']   = './assets/file_pengajuan/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+        //$config['max_size']      = 100; 
+        //$config['max_width']     = 1024; 
+        //$config['max_height']    = 768;  
+
+        $this->load->library('upload', $config);
+        // script upload file 1
+        $this->upload->do_upload('file');
+        $x = $this->upload->data();
+        $id_pegawai =  $this->session->userdata('id_pegawai');
+        // $data_model = $this->pegawai_m->get_row_pegawai($id_pegawai);
+
+        $data = array(
+            'nip' => $nip,
+            'file' => $x["file_name"],
+            'date' => date('Y-m-d'),
+            'status_pengajuan' => "Diperiksa"
+        );
+        $this->db->insert('berkas', $data);
+        $data['judul'] = 'Upload SK Terakhir';
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $id_pegawai =  $this->session->userdata('id_pegawai');
+        $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+        $nip =  $this->session->userdata('nip');
+        $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+        $data['pesan'] = false;
+        $data['pesan'] = '<div class="alert alert-success" role="alert">Berkas Berhasil Di Upload !
+            </div>';
+        $data['keranjang'] = $this->cart->contents();
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/pengajuan/pengajuan_gaji', $data);
+        $this->load->view('template_user/footer');
     }
 }
 

@@ -31,7 +31,7 @@
                                             </div>
 
                                             <div class="form-group mb-4">
-                                                <select class="form-control" name="level">
+                                                <select class="custom-select" name="level">
                                                     <option value="admin">Admin</option>
                                                     <option value="user">User</option>
                                                 </select>

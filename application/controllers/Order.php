@@ -24,7 +24,7 @@ class Order extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Order Barang';
+        $data['judul'] = 'Permohonan Barang';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->order_model->getDataJoin();
@@ -213,27 +213,6 @@ class Order extends CI_Controller
 
         $this->load->view('template/header', $data);
         $this->load->view('order/laporan_departemen', $data);
-        $this->load->view('template/footer');
-    }
-    public function order_makanan()
-    {
-
-        $data['judul'] = 'laporan order departemen';
-        $data['alerts'] = $this->order_model->getDataJoin();
-        $data['alerts_3'] = $this->order_model->alerts_3();
-        $data['data_departemen'] = $this->akun_model->getDataDepartemen();
-        $data['nama'] = $this->session->userdata('nama_lengkap');
-        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
-        $data['level_akun'] = $this->session->userdata('level');
-        if ($this->input->post('date') == false) {
-            $data['makanan'] = false;
-        } elseif ($this->input->post('date') == true) {
-            $date = $this->input->post('date');
-            $data['makanan'] = $this->order_model->ordermakan($date);
-        }
-
-        $this->load->view('template/header', $data);
-        $this->load->view('order/order_makanan', $data);
         $this->load->view('template/footer');
     }
 }

@@ -8,20 +8,7 @@
             <div class="table-responsive">
                 <div class="container">
                     <!-- Button trigger modal -->
-                    <a href="<?= base_url('atk/view_data_barang_habis_pakai') ?>" class="btn btn-primary">Barang Tidak Habis Pakai</a>
-                    <a href="<?= base_url('atk/view_data') ?>" class="btn btn-primary">Barang Habis Pakai</a>
-                    <a href="<?= base_url('atk/data_barang_rusak') ?>" class="btn btn-primary">Data Barang Rusak</a>
-                    <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-danger">Data Barang Masuk</a>
-                    <?php if ($level_akun == "admin_gudang") { ?>
-                        <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-primary">Tambah Barang</a>
-                    <?php   } else {
-                    } ?>
 
-                    <!-- Button trigger modal -->
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                        Print Excel
-                    </button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -43,16 +30,32 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
                 </div>
+                <form action="<?= base_url('atk/atk_dep') ?>" method="post">
+                    <div class="input-group mb-3 col-6">
+                        <div class="form-group mr-1">
+                            <select name="laporan_dep" class="custom-select">
+                                <option value="">--PILIH DEPARTEMEN--</option>
+                                <?php foreach ($data_departemen as $x) : ?>
+                                    <option value="<?= $x->id; ?>"><?= $x->nama_dep; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group ml-2">
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
+                        </div>
+                    </div>
+                </form>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Item</th>
                             <th>Jumlah</th>
-                            <th>tanggal</th>
-                            <th>Aksi</th>
+
+                            <th>Tanggal Order Terakhir</th>
+
+                            <th>Satuan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,16 +65,9 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->item; ?></td>
-                                <td><?= $x->jumlah; ?></td>
-                                <td><?= $x->tanggal_barang_masuk; ?></td>
-                                <td>
-                                    <?php if ($level_akun == "admin_hr") { ?>
-                                        <p>-</p>
-                                    <?php   } else { ?>
-                                        <a href="<?= base_url('atk/hapus_masuk/') . $x->id_barang_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                    <?php } ?>
-
-                                </td>
+                                <td><?= $x->qty_order; ?></td>
+                                <td><?= $x->tanggal; ?></td>
+                                <td><?= $x->satuan; ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>

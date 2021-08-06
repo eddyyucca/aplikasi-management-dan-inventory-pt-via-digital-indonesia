@@ -8,17 +8,14 @@
             <div class="table-responsive">
                 <div class="container">
                     <!-- Button trigger modal -->
-                    <a href="<?= base_url('atk/view_data_barang_habis_pakai') ?>" class="btn btn-primary">Barang Tidak Habis Pakai</a>
+                    <a href="<?= base_url('atk/view_data_barang_habis_pakai') ?>" class="btn btn-danger">Barang Tidak Habis Pakai</a>
                     <a href="<?= base_url('atk/view_data') ?>" class="btn btn-primary">Barang Habis Pakai</a>
                     <a href="<?= base_url('atk/data_barang_rusak') ?>" class="btn btn-primary">Data Barang Rusak</a>
-                    <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-danger">Data Barang Masuk</a>
+                    <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-primary">Data Barang Masuk</a>
                     <?php if ($level_akun == "admin_gudang") { ?>
                         <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-primary">Tambah Barang</a>
                     <?php   } else {
                     } ?>
-
-                    <!-- Button trigger modal -->
-                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
                         Print Excel
                     </button>
@@ -51,7 +48,7 @@
                             <th>No</th>
                             <th>Item</th>
                             <th>Jumlah</th>
-                            <th>tanggal</th>
+                            <th>Satuan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -62,15 +59,17 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->item; ?></td>
-                                <td><?= $x->jumlah; ?></td>
-                                <td><?= $x->tanggal_barang_masuk; ?></td>
+                                <td><?= $x->qty; ?></td>
+                                <td><?= $x->satuan; ?></td>
                                 <td>
                                     <?php if ($level_akun == "admin_hr") { ?>
                                         <p>-</p>
                                     <?php   } else { ?>
-                                        <a href="<?= base_url('atk/hapus_masuk/') . $x->id_barang_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                        <a href="<?= base_url('atk/edit/') . $x->id; ?>" class="btn btn-primary">Edit</a>
+                                        <a href="<?= base_url('atk/barang_masuk/') . $x->id; ?>" class="btn btn-success">Update Stok</a>
+                                        <a href="<?= base_url('atk/barang_rusak/') . $x->id; ?>" class="btn btn-warning">Barang Rusak</a>
+                                        <a href="<?= base_url('atk/hapus/') . $x->id; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <?php } ?>
-
                                 </td>
                             </tr>
                         <?php } ?>

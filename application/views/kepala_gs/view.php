@@ -54,13 +54,7 @@
                                                     foreach ($data2 as $k) :
                                                         if ($no++ > 1) break;
                                     ?>
-                                        <td colspan='4' align="life">
-                                            <a href="<?= base_url('kepala_gs/ket/') . $k->id_keranjang ?>" class="btn btn-primary">Tambah Keterangan</a>
-                                            <hr>
 
-
-                                            <input type="text" disabled name="ket" class="form-control" value="<?= $data3->ket ?>">
-                                        </td>
 
                                         <td colspan='6' align="center">
 

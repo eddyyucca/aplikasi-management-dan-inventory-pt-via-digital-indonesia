@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="container">
                         <?= validation_errors() ?>
-                        <form action="<?= base_url('hr/prosessurat_masuk') ?>" method="POST">
+                        <form action="<?= base_url('hr/prosessurat_masuk') ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputItem">No Surat</label>
                                 <input type="text" class="form-control" id="no_surat" name="no_surat_masuk" placeholder="No SUrat Masuk">
@@ -20,8 +20,13 @@
                                 <label for="inputItem">Perihal</label>
                                 <input type="text" class="form-control" id="nama_user" name="perihal" placeholder="Perihal">
                             </div>
+                            <div class="form-group">
+                                <label for="inputItem">File</label>
+                                <input type="file" name="file" class="form-control" placeholder="file" required></td>
+                            </div>
                             <button class="btn btn-primary" type="submit">Simpan</button>
                         </form>
+                        <hr>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -44,6 +49,9 @@
                                             <td><?= $x->perihal; ?></td>
                                             <td align="center">
                                                 <a href="<?= base_url('hr/hapus_surat_masuk/') . $x->id_surat_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+
+                                                <a href="<?= base_url('assets/file_surat/' . $x->file) ?>" target="_blank" class="btn btn-primary">Cek Berkas</a>
+
                                             </td>
                                         </tr>
                                     <?php } ?>

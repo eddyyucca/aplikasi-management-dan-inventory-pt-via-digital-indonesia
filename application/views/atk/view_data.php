@@ -9,11 +9,12 @@
                 <div class="container">
                     <!-- Button trigger modal -->
                     <a href="<?= base_url('atk/view_data_barang_habis_pakai') ?>" class="btn btn-primary">Barang Tidak Habis Pakai</a>
-                    <a href="<?= base_url('atk/view_data') ?>" class="btn btn-primary">Barang Habis Pakai</a>
-                    <a href="<?= base_url('atk/data_barang_rusak') ?>" class="btn btn-success">Data Barang Rusak</a>
-                    <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-success">Data Barang Masuk</a>
+                    <a href="<?= base_url('atk/view_data') ?>" class="btn btn-danger">Barang Habis Pakai</a>
+
+                    <a href="<?= base_url('atk/data_barang_rusak') ?>" class="btn btn-primary">Data Barang Rusak</a>
+                    <a href="<?= base_url('atk/data_barang_update') ?>" class="btn btn-primary">Data Barang Masuk</a>
                     <?php if ($level_akun == "admin_gudang") { ?>
-                        <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-danger">Tambah Barang</a>
+                        <a href="<?= base_url('atk/tambah_barang') ?>" class="btn btn-primary">Tambah Barang</a>
                     <?php   } else {
                     } ?>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">

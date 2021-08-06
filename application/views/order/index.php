@@ -33,7 +33,6 @@
                                                     <td><?= $x->tanggal; ?></td>
                                                     <td align="center">
                                                         <a href="<?= base_url('order/view/') . $x->id_ker ?>" class="btn btn-primary">View</a>
-                                                        <a href="<?= base_url('order/hapusorder/') . $x->id_ker ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

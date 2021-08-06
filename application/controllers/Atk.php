@@ -13,6 +13,7 @@ class Atk extends CI_Controller
         $this->load->model('jabatan_model');
         $this->load->model('atk_model');
         $this->load->model('order_model');
+        $this->load->model('akun_model');
         $this->load->library('form_validation');
         $level_akun = $this->session->userdata('level');
         // if ($level_akun != ("admin_hr") <= ("admin_gudang")) {
@@ -41,12 +42,30 @@ class Atk extends CI_Controller
         $this->load->view('atk/index', $data);
         $this->load->view('template/footer');
     }
+    public function atk_dep()
+    {
+        $data["level_akun"] = $this->session->userdata('level');
+        $data_cari = $this->input->post('laporan_dep');
+        $data['data_departemen'] = $this->akun_model->getDataDepartemen();
+        $data['data'] = $this->atk_model->getDataBarangdep($data_cari);
+        //load index
+        $data['judul'] = 'ATK Departemen';
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('atk/atk_dep', $data);
+        $this->load->view('template/footer');
+    }
     public function data_barang_update()
     {
         $data["level_akun"] = $this->session->userdata('level');
 
         //load index
-        $data['judul'] = 'ATK';
+        $data['judul'] = 'Data Barang Update';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->atk_model->getDataBarangmasuk();
@@ -61,7 +80,7 @@ class Atk extends CI_Controller
     public function data_barang_rusak()
     {
         $data["level_akun"] = $this->session->userdata('level');
-        $data['judul'] = 'ATK';
+        $data['judul'] = 'Data Barang Masuk';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->atk_model->getDataBarangrusak();
@@ -142,7 +161,8 @@ class Atk extends CI_Controller
     public function view_data()
     {
         $data["level_akun"] = $this->session->userdata('level');
-        $data['judul'] = 'Tabel Data Inventaris';
+        $data['judul'] = 'Tabel Data Barang habis Pakai';
+
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['nama'] = $this->session->userdata('nama_lengkap');
@@ -157,7 +177,8 @@ class Atk extends CI_Controller
     public function view_data_barang_habis_pakai()
     {
         $data["level_akun"] = $this->session->userdata('level');
-        $data['judul'] = 'Tabel Data Inventaris';
+        $data['judul'] = 'Tabel Data Barang Tidak habis pakai';
+
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['nama'] = $this->session->userdata('nama_lengkap');
@@ -166,7 +187,23 @@ class Atk extends CI_Controller
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
-        $this->load->view('atk/view_data', $data);
+        $this->load->view('atk/view_data_barang_habis_pakai', $data);
+        $this->load->view('template/footer');
+    }
+    public function view_data_dep()
+    {
+        $data["level_akun"] = $this->session->userdata('level');
+        $data['judul'] = 'Tabel Data Inventaris';
+
+        $data['alerts'] = $this->order_model->getDataJoin();
+        $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->atk_model->getDataBarang2();
+        $data['level_akun'] = $this->session->userdata('level');
+
+        $this->load->view('template/header', $data);
+        $this->load->view('atk/view_data_barang_habis_pakai', $data);
         $this->load->view('template/footer');
     }
 
@@ -284,6 +321,7 @@ class Atk extends CI_Controller
         $delete = $this->db->delete('data_barang');
         redirect('atk/view_data');
     }
+
     public function hapus_masuk($id)
     {
         $data["level_akun"] = $this->session->userdata('level');
