@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Agu 2021 pada 08.22
+-- Waktu pembuatan: 06 Agu 2021 pada 08.07
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -85,13 +85,13 @@ CREATE TABLE `data_barang` (
 --
 
 INSERT INTO `data_barang` (`id`, `item`, `qty`, `satuan`, `type`) VALUES
-(3, 'Amplop jaya 95x152mm', '18', 'Pack', '1'),
-(4, 'Amplop Surat Putih (110 x 230 mm)', '7', 'Pack', '1'),
-(5, 'Ball Point Snowman V5 Hitam', '46', 'Pcs', '1'),
+(3, 'Amplop jaya 95x152mm', '13', 'Pack', '1'),
+(4, 'Amplop Surat Putih (110 x 230 mm)', '5', 'Pack', '1'),
+(5, 'Ball Point Snowman V5 Hitam', '45', 'Pcs', '1'),
 (6, 'Ballpoint Boxy Uni Ball 105 (Biru)', '31', 'Pcs', '1'),
 (7, 'Ballpoint Boxy Uni Ball 105 (Hitam)', '37', 'Pcs', '1'),
 (8, 'Ballpoint Pilot G2 - 07 Hitam', '24', 'Pcs', '1'),
-(9, 'Ballpoint Pilot G2 - 07 Biru', '6', 'Pcs', '1'),
+(9, 'Ballpoint Pilot G2 - 07 Biru', '5', 'Pcs', '1'),
 (10, 'Battery Size AA 1,5V Alkaline (Panasonic)', '66', 'Psg', '1'),
 (11, 'Battery Size AAA  Alkaline (Panasonic)', '20', 'Psg', '1'),
 (12, 'Battery Tanggung Tipe C', '6', 'Psg', '1'),
@@ -244,21 +244,32 @@ CREATE TABLE `data_order` (
 --
 
 INSERT INTO `data_order` (`id_order`, `id_keranjang`, `id_barang`, `id_dep`, `user_id`, `qty_order`, `tanggal`, `ket`) VALUES
-(55, '1', '3', '8', 'eddy', '3', '2019-09-18', ''),
-(56, '2', '3', '8', 'eddy', '1', '2019-09-18', ''),
-(57, '3', '9', '8', 'eddy', '1', '2019-09-19', ''),
-(58, '4', '8', '8', 'eddy', '1', '2019-09-19', ''),
-(59, '5', '8', '8', 'eddy', '1', '2019-09-19', ''),
-(60, '5', '3', '8', 'eddy', '2', '2019-09-19', ''),
-(61, '5', '2', '8', 'eddy', '1', '2019-09-19', ''),
-(62, '8', '8', '8', 'eddy', '1', '2019-09-19', ''),
-(63, '8', '9', '8', 'eddy', '1', '2019-09-19', ''),
-(64, '10', '5', '8', 'eddy', '1', '2019-09-20', ''),
-(65, '10', '3', '8', 'eddy', '1', '2019-09-20', ''),
-(66, '12', '1', '1', 'Berlian Mutiara Senduk', '5', '2021-07-17', ''),
-(67, '12', '2', '1', 'Berlian Mutiara Senduk', '4', '2021-07-17', ''),
-(68, '14', '5', '1', 'eddy adha saputra', '4', '2021-07-18', ''),
-(69, '15', '3', '1', 'eddy adha saputra', '2', '2021-08-03', '');
+(146, '1', '3', '1', 'eddy adha saputra', '2', '2021-08-06', ''),
+(147, '2', '3', '1', 'eddy adha saputra', '2', '2021-08-06', ''),
+(148, '3', '3', '1', 'eddy adha saputra', '12', '2021-08-06', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_order_dep`
+--
+
+CREATE TABLE `data_order_dep` (
+  `id_order_dep` int(11) NOT NULL,
+  `id_keranjang` varchar(100) NOT NULL,
+  `id_barang` varchar(100) NOT NULL,
+  `id_dep` varchar(100) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `qty_order` varchar(100) NOT NULL,
+  `tanggal` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `data_order_dep`
+--
+
+INSERT INTO `data_order_dep` (`id_order_dep`, `id_keranjang`, `id_barang`, `id_dep`, `user_id`, `qty_order`, `tanggal`) VALUES
+(22, '1', '3', '1', '', '0', '2021-08-06');
 
 -- --------------------------------------------------------
 
@@ -341,16 +352,9 @@ CREATE TABLE `order_status` (
 --
 
 INSERT INTO `order_status` (`id_ker`, `departemen`, `user`, `status`, `tanggal`) VALUES
-(1, '8', 'eddy', 1, '2019-09-18'),
-(2, '8', 'eddy', 4, '2019-09-18'),
-(3, '8', 'eddy', 4, '2019-09-19'),
-(4, '8', 'eddy', 1, '2019-09-19'),
-(5, '8', 'eddy', 1, '2019-09-19'),
-(8, '8', 'eddy', 1, '2019-09-19'),
-(10, '8', 'eddy', 3, '2019-09-20'),
-(12, '1', 'Berlian Mutiara Senduk', 3, '2021-07-17'),
-(14, '1', 'eddy adha saputra', 1, '2021-07-18'),
-(15, '1', 'eddy adha saputra', 1, '2021-08-03');
+(1, '1', 'eddy adha saputra', 1, '2021-08-06'),
+(2, '1', 'eddy adha saputra', 1, '2021-08-06'),
+(3, '1', 'eddy adha saputra', 3, '2021-08-06');
 
 -- --------------------------------------------------------
 
@@ -384,16 +388,9 @@ CREATE TABLE `surat_masuk` (
   `id_surat_masuk` int(11) NOT NULL,
   `no_surat_masuk` varchar(100) NOT NULL,
   `perihal` varchar(100) NOT NULL,
-  `tanggal` varchar(100) NOT NULL
+  `tanggal` varchar(100) NOT NULL,
+  `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `surat_masuk`
---
-
-INSERT INTO `surat_masuk` (`id_surat_masuk`, `no_surat_masuk`, `perihal`, `tanggal`) VALUES
-(1, '111', 'surat PT.GIS', '2021-08-02'),
-(2, '112/112-1', 'Surat Dari PT.Ucuk', '2021-08-03');
 
 -- --------------------------------------------------------
 
@@ -413,7 +410,7 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`id_userlog`, `id_kar`, `password`, `level`) VALUES
-(21, '1202005081', 'd56b699830e77ba53855679cb1d252da', 'admin_hr');
+(21, '1202005081', 'd56b699830e77ba53855679cb1d252da', 'admin_gudang');
 
 --
 -- Indexes for dumped tables
@@ -448,6 +445,12 @@ ALTER TABLE `data_karyawan`
 --
 ALTER TABLE `data_order`
   ADD PRIMARY KEY (`id_order`);
+
+--
+-- Indeks untuk tabel `data_order_dep`
+--
+ALTER TABLE `data_order_dep`
+  ADD PRIMARY KEY (`id_order_dep`);
 
 --
 -- Indeks untuk tabel `departemen`
@@ -517,7 +520,13 @@ ALTER TABLE `data_barang`
 -- AUTO_INCREMENT untuk tabel `data_order`
 --
 ALTER TABLE `data_order`
-  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+
+--
+-- AUTO_INCREMENT untuk tabel `data_order_dep`
+--
+ALTER TABLE `data_order_dep`
+  MODIFY `id_order_dep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `departemen`
@@ -541,7 +550,7 @@ ALTER TABLE `jabatan`
 -- AUTO_INCREMENT untuk tabel `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id_ker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_ker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_keluar`
@@ -553,7 +562,7 @@ ALTER TABLE `surat_keluar`
 -- AUTO_INCREMENT untuk tabel `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_login`
