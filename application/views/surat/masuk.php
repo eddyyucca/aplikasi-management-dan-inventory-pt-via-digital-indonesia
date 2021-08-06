@@ -35,6 +35,7 @@
                                         <th>No</th>
                                         <th>No Surat</th>
                                         <th>Perihal</th>
+                                        <th>tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -47,6 +48,7 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $x->no_surat_masuk; ?></td>
                                             <td><?= $x->perihal; ?></td>
+                                            <td><?= $x->tanggal; ?></td>
                                             <td align="center">
                                                 <a href="<?= base_url('hr/hapus_surat_masuk/') . $x->id_surat_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
 
