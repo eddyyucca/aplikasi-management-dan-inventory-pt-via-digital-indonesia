@@ -39,7 +39,7 @@ class User extends CI_Controller
     public function atk_dep()
     {
         $data["level_akun"] = $this->session->userdata('level');
-        $data_cari = $this->session->userdata('id_jab');
+        $data_cari = $this->session->userdata('id_dep');
         $data['data_departemen'] = $this->akun_model->getDataDepartemen();
         $data['data'] = $this->atk_model->getDataBarangdep($data_cari);
         $data['judul'] = 'User';

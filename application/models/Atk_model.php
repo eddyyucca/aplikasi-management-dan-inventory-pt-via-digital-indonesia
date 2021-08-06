@@ -22,8 +22,6 @@ class Atk_model extends CI_Model
 
         $query = $this->db->get();
         return $query->result();
-
-        return $query->result();
     }
     public function getDataBarangmasuk()
     {
