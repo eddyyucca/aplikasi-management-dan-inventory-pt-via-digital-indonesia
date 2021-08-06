@@ -21,6 +21,10 @@
                                 <input type="text" class="form-control" id="nama_user" name="perihal" placeholder="Perihal">
                             </div>
                             <div class="form-group">
+                                <label for="inputItem">Perihal</label>
+                                <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Perihal">
+                            </div>
+                            <div class="form-group">
                                 <label for="inputItem">File</label>
                                 <input type="file" name="file" class="form-control" placeholder="file" required></td>
                             </div>

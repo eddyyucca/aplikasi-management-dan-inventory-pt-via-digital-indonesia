@@ -21,6 +21,10 @@
                                 <label for="inputItem">Perihal</label>
                                 <input type="text" class="form-control" id="nama_user" name="perihal" placeholder="Perihal">
                             </div>
+                            <div class="form-group">
+                                <label for="inputItem">Perihal</label>
+                                <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Perihal">
+                            </div>
                             <button class="btn btn-primary" type="submit">Simpan</button>
                         </form>
                         <br>
