@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Agu 2021 pada 08.07
+-- Waktu pembuatan: 07 Agu 2021 pada 03.21
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -85,9 +85,9 @@ CREATE TABLE `data_barang` (
 --
 
 INSERT INTO `data_barang` (`id`, `item`, `qty`, `satuan`, `type`) VALUES
-(3, 'Amplop jaya 95x152mm', '13', 'Pack', '1'),
+(3, 'Amplop jaya 95x152mm', '1', 'Pack', '1'),
 (4, 'Amplop Surat Putih (110 x 230 mm)', '5', 'Pack', '1'),
-(5, 'Ball Point Snowman V5 Hitam', '45', 'Pcs', '1'),
+(5, 'Ball Point Snowman V5 Hitam', '44', 'Pcs', '1'),
 (6, 'Ballpoint Boxy Uni Ball 105 (Biru)', '31', 'Pcs', '1'),
 (7, 'Ballpoint Boxy Uni Ball 105 (Hitam)', '37', 'Pcs', '1'),
 (8, 'Ballpoint Pilot G2 - 07 Hitam', '24', 'Pcs', '1'),
@@ -220,7 +220,9 @@ CREATE TABLE `data_karyawan` (
 --
 
 INSERT INTO `data_karyawan` (`id_karyawan`, `nama_lengkap`, `nama_panggilan`, `jk`, `tempat`, `ttl`, `alamat_saat_ini`, `alamat_permanen`, `no_telp`, `agama`, `warganegra`, `suku`, `no_ktp`, `alamat_ktp`, `masa_berlaku_ktp`, `no_sim_a`, `alamat_sim_a`, `masa_berlaku_sim_a`, `no_sim_c`, `alamat_sim_c`, `masa_berlaku_sim_c`, `no_npwp`, `no_bpjs_tenagakerja`, `no_bpjs_kes`, `no_passport`, `alamat_passport`, `masa_berlaku_passport`, `tinggi_badan`, `berat_badan`, `rhesus`, `ukuran_baju`, `ukuran_celana`, `ukuran_sepatu`, `hobi`, `email`, `id_dep`, `id_jab`, `status_karyawan`, `mess`, `foto`) VALUES
-('1202005081', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'tapin', '2020-05-08', 'Tapin\r\n', '', '', '', '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '112', '', '', '', '', '', '', '', 1, 1, '', 'Ya', 'foto.jpg');
+('1011111111111', 'eddy adha saputra', 'assa', 'Laki-Laki', 'banjarbaru', '111111-11-11', 'Banjar Baru Selatan', 'JL. pandu, guntung paikat, kost berkat utama no 67', 'sasa', 'Kristen', 'Indonesia', 'aa', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '9', 'jij', 'a', 'ddd', 'bbb', 'ddd', 'dd', 'eddyyucca@gmail.com', 10, 1, 'Aktif', '', ''),
+('1202005081', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'tapin', '2020-05-08', 'Tapin\r\n', '', '', '', '', '', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '112', '', '', '', '', '', '', '', 1, 1, '', 'Ya', 'foto.jpg'),
+('8111111111', 'eddy adha saputra', 'sss', 'Laki-Laki', 'banjarbaru', '1111-11-11', 'Banjar Baru Selatan', 'JL. pandu, guntung paikat, kost berkat utama no 67', '111', 'Islam', 'Indonesia', 'as', 0, '', '', 0, '', '', 0, '', '', 0, 0, 0, 0, '', '', '2', 's', 'a', 'XL', 'xxl', 'ss', '212', 'eddyyucca@gmail.com', 8, 17, 'Aktif', '', '');
 
 -- --------------------------------------------------------
 
@@ -246,7 +248,8 @@ CREATE TABLE `data_order` (
 INSERT INTO `data_order` (`id_order`, `id_keranjang`, `id_barang`, `id_dep`, `user_id`, `qty_order`, `tanggal`, `ket`) VALUES
 (146, '1', '3', '1', 'eddy adha saputra', '2', '2021-08-06', ''),
 (147, '2', '3', '1', 'eddy adha saputra', '2', '2021-08-06', ''),
-(148, '3', '3', '1', 'eddy adha saputra', '12', '2021-08-06', '');
+(148, '3', '3', '1', 'eddy adha saputra', '12', '2021-08-06', ''),
+(149, '4', '5', '1', 'eddy adha saputra', '1', '2021-08-06', '');
 
 -- --------------------------------------------------------
 
@@ -269,7 +272,8 @@ CREATE TABLE `data_order_dep` (
 --
 
 INSERT INTO `data_order_dep` (`id_order_dep`, `id_keranjang`, `id_barang`, `id_dep`, `user_id`, `qty_order`, `tanggal`) VALUES
-(22, '1', '3', '1', '', '0', '2021-08-06');
+(22, '1', '3', '1', '', '12', '2021-08-06'),
+(23, '4', '5', '1', '', '0', '2021-08-06');
 
 -- --------------------------------------------------------
 
@@ -354,7 +358,8 @@ CREATE TABLE `order_status` (
 INSERT INTO `order_status` (`id_ker`, `departemen`, `user`, `status`, `tanggal`) VALUES
 (1, '1', 'eddy adha saputra', 1, '2021-08-06'),
 (2, '1', 'eddy adha saputra', 1, '2021-08-06'),
-(3, '1', 'eddy adha saputra', 3, '2021-08-06');
+(3, '1', 'eddy adha saputra', 1, '2021-08-06'),
+(4, '1', 'eddy adha saputra', 1, '2021-08-06');
 
 -- --------------------------------------------------------
 
@@ -366,17 +371,22 @@ CREATE TABLE `surat_keluar` (
   `id_surat_keluar` int(11) NOT NULL,
   `no_surat` varchar(100) NOT NULL,
   `perihal` varchar(100) NOT NULL,
-  `tanggal` varchar(100) NOT NULL
+  `tanggal` varchar(100) NOT NULL,
+  `bentuk_surat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `surat_keluar`
 --
 
-INSERT INTO `surat_keluar` (`id_surat_keluar`, `no_surat`, `perihal`, `tanggal`) VALUES
-(1, '2021-08-02/1', 'surat PT.GIS', '2021-08-02'),
-(2, '2021-08-03/2', 'Surat Dari PT.Ucuk', '2021-08-03'),
-(3, '2021-08-03/3', 'Surat Dari PT.Ucuk 3', '2021-08-03');
+INSERT INTO `surat_keluar` (`id_surat_keluar`, `no_surat`, `perihal`, `tanggal`, `bentuk_surat`) VALUES
+(1, '2021-08-02/1', 'surat PT.GIS', '2021-08-02', ''),
+(2, '2021-08-03/2', 'Surat Dari PT.Ucuk', '2021-08-03', ''),
+(3, '2021-08-03/3', 'Surat Dari PT.Ucuk 3', '2021-08-03', ''),
+(4, '2021-08-06/4', 'hjjh', '2021-08-06', ''),
+(5, '2021-08-06/5', 'yuggyuyug', '2021-08-06', ''),
+(6, '2021-08-06/6', '', '2021-08-06', ''),
+(7, '2021-08-07/7', 'sas', '2021-08-02', 'aaaa');
 
 -- --------------------------------------------------------
 
@@ -389,8 +399,18 @@ CREATE TABLE `surat_masuk` (
   `no_surat_masuk` varchar(100) NOT NULL,
   `perihal` varchar(100) NOT NULL,
   `tanggal` varchar(100) NOT NULL,
-  `file` text NOT NULL
+  `file` text NOT NULL,
+  `tgl_surat_masuk` varchar(100) NOT NULL,
+  `bentuk_surat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_masuk`
+--
+
+INSERT INTO `surat_masuk` (`id_surat_masuk`, `no_surat_masuk`, `perihal`, `tanggal`, `file`, `tgl_surat_masuk`, `bentuk_surat`) VALUES
+(10, 'sasa', 'sa', '2021-08-02', 'HRGA_EDDY_ADHA_SAPUTRA-231.pdf', '', '0'),
+(11, 'dsd', 'dsd', '2222-02-22', 'HRGA_EDDY_ADHA_SAPUTRA-221.pdf', '2211-02-22', 'sazadsad');
 
 -- --------------------------------------------------------
 
@@ -410,7 +430,9 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`id_userlog`, `id_kar`, `password`, `level`) VALUES
-(21, '1202005081', 'd56b699830e77ba53855679cb1d252da', 'admin_gudang');
+(21, '1202005081', 'd56b699830e77ba53855679cb1d252da', 'admin_hr'),
+(49, '8111111111', '77a539bf366119c80f13d2bba3dd23c2', 'user'),
+(50, '1011111111111', '9f3f92169a8c4fcd13b482195cf176a8', 'admin_gudang');
 
 --
 -- Indexes for dumped tables
@@ -520,13 +542,13 @@ ALTER TABLE `data_barang`
 -- AUTO_INCREMENT untuk tabel `data_order`
 --
 ALTER TABLE `data_order`
-  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_order_dep`
 --
 ALTER TABLE `data_order_dep`
-  MODIFY `id_order_dep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_order_dep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `departemen`
@@ -556,19 +578,19 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT untuk tabel `surat_keluar`
 --
 ALTER TABLE `surat_keluar`
-  MODIFY `id_surat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_surat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_surat_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `id_userlog` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_userlog` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
