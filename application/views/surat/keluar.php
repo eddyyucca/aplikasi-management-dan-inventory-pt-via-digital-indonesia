@@ -11,12 +11,12 @@
                 <div class="row">
                     <div class="container">
                         <?= validation_errors() ?>
-                        <?php $rand = rand(100, 500); ?>
+                        <?php $rand = rand(10000, 50000); ?>
                         <form action="<?= base_url('hr/prosessurat_keluar') ?>" method="POST">
                             <div class="form-group">
                                 <label for="inputItem">No Surat</label>
-                                <input type="text" class="form-control" id="no_surat" disabled placeholder="<?= $rand . "/" . $jumlah_surat_k + 1 ?>">
-                                <input type="hidden" class="form-control" name="no_surat_keluar" value="<?= $rand .  "/" . $jumlah_surat_k + 1 ?>">
+                                <input type="text" class="form-control" id="no_surat" disabled placeholder="<?= $rand ?>">
+                                <input type="hidden" class="form-control" name="no_surat_keluar" value="<?= $rand ?>">
                             </div>
                             <div class="form-group">
                                 <label for="inputItem">Perihal</label>
