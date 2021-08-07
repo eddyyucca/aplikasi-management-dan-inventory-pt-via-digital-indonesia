@@ -80,7 +80,7 @@ class Atk extends CI_Controller
     public function data_barang_rusak()
     {
         $data["level_akun"] = $this->session->userdata('level');
-        $data['judul'] = 'Data Barang Masuk';
+        $data['judul'] = 'Data Barang Rusak';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->atk_model->getDataBarangrusak();

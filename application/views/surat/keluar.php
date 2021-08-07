@@ -22,7 +22,11 @@
                                 <input type="text" class="form-control" id="nama_user" name="perihal" placeholder="Perihal">
                             </div>
                             <div class="form-group">
-                                <label for="inputItem">Perihal</label>
+                                <label for="inputItem">Bentuk Surat</label>
+                                <input type="text" class="form-control" id="nama_user" name="bentuk_surat" placeholder="Bentuk Surat">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItem">Tanggal</label>
                                 <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Perihal">
                             </div>
                             <button class="btn btn-primary" type="submit">Simpan</button>
@@ -35,6 +39,7 @@
                                         <th>No</th>
                                         <th>No Surat</th>
                                         <th>Perihal</th>
+                                        <th>Bentuk Surat</th>
                                         <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -48,9 +53,9 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $x->no_surat; ?></td>
                                             <td><?= $x->perihal; ?></td>
+                                            <td><?= $x->bentuk_surat; ?></td>
                                             <td><?= $x->tanggal; ?></td>
                                             <td align="center">
-
                                                 <a href="<?= base_url('hr/hapus_surat_keluar/') . $x->id_surat_keluar; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                             </td>
                                         </tr>

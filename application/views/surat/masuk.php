@@ -14,15 +14,23 @@
                         <form action="<?= base_url('hr/prosessurat_masuk') ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputItem">No Surat</label>
-                                <input type="text" class="form-control" id="no_surat" name="no_surat_masuk" placeholder="No SUrat Masuk">
+                                <input type="text" class="form-control" id="no_surat" name="no_surat_masuk" placeholder="No Surat Masuk">
                             </div>
                             <div class="form-group">
                                 <label for="inputItem">Perihal</label>
                                 <input type="text" class="form-control" id="nama_user" name="perihal" placeholder="Perihal">
                             </div>
                             <div class="form-group">
-                                <label for="inputItem">Perihal</label>
-                                <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Perihal">
+                                <label for="inputItem">Bentuk Surat</label>
+                                <input type="text" class="form-control" id="nama_user" name="bentuk_surat" placeholder="Bentuk Surat">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItem">Tanggal Surat</label>
+                                <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Tanggal Surat Diterima">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItem">Tanggal Surat Diterima</label>
+                                <input type="date" class="form-control" id="nama_user" name="tgl_surat_masuk" placeholder="Tanggal Surat Diterima">
                             </div>
                             <div class="form-group">
                                 <label for="inputItem">File</label>
@@ -39,7 +47,9 @@
                                         <th>No</th>
                                         <th>No Surat</th>
                                         <th>Perihal</th>
-                                        <th>tanggal</th>
+                                        <th>tanggal Surat</th>
+                                        <th>tanggal Surat Diterima</th>
+                                        <th>Bentuk Surat</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -53,6 +63,8 @@
                                             <td><?= $x->no_surat_masuk; ?></td>
                                             <td><?= $x->perihal; ?></td>
                                             <td><?= $x->tanggal; ?></td>
+                                            <td><?= $x->tgl_surat_masuk; ?></td>
+                                            <td><?= $x->bentuk_surat; ?></td>
                                             <td align="center">
                                                 <a href="<?= base_url('hr/hapus_surat_masuk/') . $x->id_surat_masuk; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
 

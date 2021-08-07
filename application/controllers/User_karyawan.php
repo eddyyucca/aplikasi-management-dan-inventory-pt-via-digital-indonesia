@@ -18,16 +18,10 @@ class User_karyawan extends CI_Controller
         $this->load->model('akun_model');
         $this->load->library('form_validation');
         // ini_set('date.timezone', 'Asia/Kuala_Lumpur');
-        // $level_akun = $this->session->userdata('level');
-        // if ($this->session->userdata('level') == false) {
-        //     redirect('auth');
-        // } elseif ($this->session->userdata('level') == "vendor") {
-        //     redirect('auth');
-        // } elseif ($level_akun == "vendor") {
-        //     redirect('auth');
-        // } elseif ($level_akun == "pos") {
-        //     redirect('auth');
-        // }
+
+        if ($this->session->userdata('level') == false) {
+            redirect('auth');
+        }
     }
 
     public function index()

@@ -39,7 +39,6 @@
                             <th>Item</th>
                             <th>Jumlah</th>
                             <th>Tanggal Order Terakhir</th>
-
                             <th>Satuan</th>
                             <th>Aksi</th>
                         </tr>
@@ -54,7 +53,7 @@
                                 <td><?= $x->qty_order; ?></td>
                                 <td><?= $x->tanggal; ?></td>
                                 <td><?= $x->satuan; ?></td>
-                                <td> <a href="<?= base_url('user/atk_habis/') . $x->id_dep; ?>" onclick="return confirm('Yakin Barang Habis?')" class="btn btn-danger">Barang Habis</a>
+                                <td> <a href="<?= base_url('user/atk_habis/') . $x->id_barang; ?>" onclick="return confirm('Yakin Barang Habis?')" class="btn btn-danger">Barang Habis</a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -20,9 +20,9 @@ class User extends CI_Controller
         $this->load->library('pagination');
 
         $this->load->library('form_validation');
-        // if ($this->session->userdata('level') != "false") {
-        //     redirect('auth');
-        // }
+        if ($this->session->userdata('level') == false) {
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -42,7 +42,7 @@ class User extends CI_Controller
         $data_cari = $this->session->userdata('id_dep');
         $data['data_departemen'] = $this->akun_model->getDataDepartemen();
         $data['data'] = $this->atk_model->getDataBarangdep($data_cari);
-        $data['judul'] = 'User';
+        $data['judul'] = 'ATK Departement';
         $data['databarang'] = $this->user_model->getDataBarang();
         $data['keranjang'] = $this->cart->contents();
         $data['nama'] = $this->session->userdata('nama_lengkap');
@@ -52,12 +52,14 @@ class User extends CI_Controller
         $this->load->view('user/template/footer');
     }
 
-    public function atk_habis($id_dep)
+    public function atk_habis($id_barang)
     {
+        $id_dep = $this->session->userdata('id_dep');
         $data = array(
             'qty_order' => "0",
         );
         $this->db->where('id_dep', $id_dep);
+        $this->db->where('id_barang', $id_barang);
         $this->db->update('data_order_dep', $data);
         redirect('user/atk_dep');
     }

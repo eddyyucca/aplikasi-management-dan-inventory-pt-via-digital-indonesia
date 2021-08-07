@@ -758,6 +758,7 @@ class Hr extends CI_Controller
             "no_surat" => $this->input->post('no_surat_keluar'),
             "perihal" => $this->input->post('perihal'),
             "tanggal" =>  $this->input->post('tanggal'),
+            "bentuk_surat" => $this->input->post('bentuk_surat'),
         );
         $this->db->insert('surat_keluar', $data);
         redirect('hr/surat_keluar');
@@ -796,6 +797,8 @@ class Hr extends CI_Controller
             "no_surat_masuk" => $this->input->post('no_surat_masuk'),
             "perihal" => $this->input->post('perihal'),
             "tanggal" => $this->input->post('tanggal'),
+            "bentuk_surat" => $this->input->post('bentuk_surat'),
+            "tgl_surat_masuk" => $this->input->post('tgl_surat_masuk'),
 
             'file' => $x["file_name"],
         );
