@@ -32,11 +32,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputItem">Tujuan</label>
-                                <input type="text" class="form-control" id="nama_user" name="tujuan" placeholder="Perihal">
+                                <input type="text" class="form-control" id="nama_user" name="tujuan" placeholder="Tujuan">
                             </div>
                             <div class="form-group">
-                                <label for="inputItem">Bagian</label>
-                                <input type="text" class="form-control" id="nama_user" name="bagian" placeholder="Perihal">
+                                <label for="inputItem">Departemen</label>
+                                <input type="text" class="form-control" id="nama_user" name="bagian" placeholder="Departemen">
                             </div>
                             <div class="form-group">
                                 <label for="inputItem">File</label>
@@ -53,6 +53,8 @@
                                         <th>No Surat</th>
                                         <th>Perihal</th>
                                         <th>Bentuk Surat</th>
+                                        <th>Tujuan</th>
+                                        <th>Bagian</th>
                                         <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -67,6 +69,8 @@
                                             <td><?= $x->no_surat; ?></td>
                                             <td><?= $x->perihal; ?></td>
                                             <td><?= $x->bentuk_surat; ?></td>
+                                            <td><?= $x->tujuan; ?></td>
+                                            <td><?= $x->bagian; ?></td>
                                             <td><?= $x->tanggal; ?></td>
                                             <td align="center">
                                                 <a href="<?= base_url('hr/hapus_surat_keluar/') . $x->id_surat_keluar; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
