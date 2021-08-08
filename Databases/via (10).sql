@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Agu 2021 pada 03.21
+-- Waktu pembuatan: 08 Agu 2021 pada 02.27
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -294,7 +294,9 @@ INSERT INTO `departemen` (`id`, `nama_dep`) VALUES
 (1, 'Human Resources'),
 (8, 'Development'),
 (9, 'Creative'),
-(10, 'Logistik');
+(10, 'Logistik'),
+(15, 'tes'),
+(16, 'tes 22');
 
 -- --------------------------------------------------------
 
@@ -335,7 +337,8 @@ INSERT INTO `jabatan` (`id_jab`, `nama_jabatan`) VALUES
 (1, 'Admin Gudang'),
 (17, 'Admin HR'),
 (18, 'karyawan'),
-(19, 'Direktur');
+(19, 'Direktur'),
+(20, 'tes 11');
 
 -- --------------------------------------------------------
 
@@ -372,21 +375,29 @@ CREATE TABLE `surat_keluar` (
   `no_surat` varchar(100) NOT NULL,
   `perihal` varchar(100) NOT NULL,
   `tanggal` varchar(100) NOT NULL,
-  `bentuk_surat` varchar(100) NOT NULL
+  `bentuk_surat` varchar(100) NOT NULL,
+  `tujuan` varchar(111) NOT NULL,
+  `bagian` varchar(111) NOT NULL,
+  `file_keluar` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `surat_keluar`
 --
 
-INSERT INTO `surat_keluar` (`id_surat_keluar`, `no_surat`, `perihal`, `tanggal`, `bentuk_surat`) VALUES
-(1, '2021-08-02/1', 'surat PT.GIS', '2021-08-02', ''),
-(2, '2021-08-03/2', 'Surat Dari PT.Ucuk', '2021-08-03', ''),
-(3, '2021-08-03/3', 'Surat Dari PT.Ucuk 3', '2021-08-03', ''),
-(4, '2021-08-06/4', 'hjjh', '2021-08-06', ''),
-(5, '2021-08-06/5', 'yuggyuyug', '2021-08-06', ''),
-(6, '2021-08-06/6', '', '2021-08-06', ''),
-(7, '2021-08-07/7', 'sas', '2021-08-02', 'aaaa');
+INSERT INTO `surat_keluar` (`id_surat_keluar`, `no_surat`, `perihal`, `tanggal`, `bentuk_surat`, `tujuan`, `bagian`, `file_keluar`) VALUES
+(2, '2021-08-03/2', 'Surat Dari PT.Ucuk', '2021-08-03', '', '', '', ''),
+(4, '2021-08-06/4', 'hjjh', '2021-08-06', '', '', '', ''),
+(5, '2021-08-06/5', 'yuggyuyug', '2021-08-06', '', '', '', ''),
+(6, '2021-08-06/6', '', '2021-08-06', '', '', '', ''),
+(7, '2021-08-07/7', 'sas', '2021-08-02', 'aaaa', '', '', ''),
+(8, '117/8', 'sa', '11111-11-11', 'sa', '', '', ''),
+(9, '130', '', '', '', '', '', ''),
+(10, '297', '', '', '', '', '', ''),
+(11, '368', '', '', '', '', '', ''),
+(12, '48066', 'saa', '2021-08-03', 'asas', 'saas', 'asas', ''),
+(13, '30502', 'sas', '111111-11-11', 'sa', 'saas', 'sasa', ''),
+(14, '22675', '', '', '', '', '', 'cv_fauziah.pdf');
 
 -- --------------------------------------------------------
 
@@ -554,7 +565,7 @@ ALTER TABLE `data_order_dep`
 -- AUTO_INCREMENT untuk tabel `departemen`
 --
 ALTER TABLE `departemen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `developer`
@@ -566,7 +577,7 @@ ALTER TABLE `developer`
 -- AUTO_INCREMENT untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_jab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `order_status`
@@ -578,7 +589,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT untuk tabel `surat_keluar`
 --
 ALTER TABLE `surat_keluar`
-  MODIFY `id_surat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_surat_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_masuk`

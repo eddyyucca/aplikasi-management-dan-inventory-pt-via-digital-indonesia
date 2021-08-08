@@ -34,7 +34,7 @@ class Home extends CI_Controller
         $data['level_akun'] = $this->session->userdata('level');
 
 
-        var_dump($this->session->userdata('level'));
+
         $this->load->view('template/header', $data);
         $this->load->view('home/index', $data);
         $this->load->view('template/footer');
