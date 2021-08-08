@@ -151,7 +151,8 @@ class Atk extends CI_Controller
                 'item' => $this->input->post('item'),
                 'qty' => $this->input->post('qty'),
                 'satuan' => $this->input->post('satuan'),
-                'type' => $this->input->post('type')
+                'type' => $this->input->post('type'),
+                'tanggal' => date("Y-m-d"),
             );
             $insert = $this->atk_model->insertbarang($data);
             redirect('atk/view_data');
