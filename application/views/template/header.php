@@ -152,6 +152,8 @@
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
                                     <a class="nav-link" href="<?= base_url('atk/view_data') ?>">Inventaris</a>
                                     <a class="nav-link" href="<?= base_url('atk/atk_dep') ?>">Inventaris Departemen</a>
+                                    <a class="nav-link" href="<?= base_url('hr/departemen') ?>">Departemen</a>
+                                    <a class="nav-link" href="<?= base_url('hr/jabatan') ?>">Jabatan</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#data" aria-expanded="false" aria-controls="data">

@@ -752,6 +752,14 @@ class Hr extends CI_Controller
     public function prosessurat_keluar()
     {
 
+        $config['upload_path']   = './assets/file_suratkeluar/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+
+        $this->load->library('upload', $config);
+        // script upload file 1
+        $this->upload->do_upload('file');
+        $x = $this->upload->data();
+        // $data_model = $this->pegawai_m->get_row_pegawai($id_pegawai);
 
 
         $data = array(
@@ -759,6 +767,9 @@ class Hr extends CI_Controller
             "perihal" => $this->input->post('perihal'),
             "tanggal" =>  $this->input->post('tanggal'),
             "bentuk_surat" => $this->input->post('bentuk_surat'),
+            "tujuan" => $this->input->post('tujuan'),
+            "bagian" => $this->input->post('bagian'),
+            'file_keluar' => $x["orig_name"],
         );
         $this->db->insert('surat_keluar', $data);
         redirect('hr/surat_keluar');

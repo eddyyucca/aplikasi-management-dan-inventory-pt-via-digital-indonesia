@@ -12,7 +12,7 @@
                     <div class="container">
                         <?= validation_errors() ?>
                         <?php $rand = rand(10000, 50000); ?>
-                        <form action="<?= base_url('hr/prosessurat_keluar') ?>" method="POST">
+                        <form action="<?= base_url('hr/prosessurat_keluar') ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputItem">No Surat</label>
                                 <input type="text" class="form-control" id="no_surat" disabled placeholder="<?= $rand ?>">
@@ -29,6 +29,18 @@
                             <div class="form-group">
                                 <label for="inputItem">Tanggal</label>
                                 <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Perihal">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItem">Tujuan</label>
+                                <input type="text" class="form-control" id="nama_user" name="tujuan" placeholder="Perihal">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItem">Bagian</label>
+                                <input type="text" class="form-control" id="nama_user" name="bagian" placeholder="Perihal">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputItem">File</label>
+                                <input type="file" name="file" class="form-control" placeholder="file" required></td>
                             </div>
                             <button class="btn btn-primary" type="submit">Simpan</button>
                         </form>
@@ -58,6 +70,7 @@
                                             <td><?= $x->tanggal; ?></td>
                                             <td align="center">
                                                 <a href="<?= base_url('hr/hapus_surat_keluar/') . $x->id_surat_keluar; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                                <a href="<?= base_url('assets/file_suratkeluar/') . $x->file_keluar; ?>" class="btn btn-primary">Cek Berkas</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
