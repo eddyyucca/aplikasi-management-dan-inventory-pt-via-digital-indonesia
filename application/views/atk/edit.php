@@ -30,6 +30,22 @@
                                 <label for="Description">Satuan</label>
                                 <input type="text" class="form-control" id="satuan" name="satuan" placeholder="Satuan" value="<?= $data->satuan; ?>">
                             </div>
+                            <div class="form-group mr-1">
+                                <label for="Quantity">Quantity</label>
+                                <select name="type" class="custom-select">
+                                    <option value="">--PILIH TYPE--</option>
+                                    <option value="1">Barang Habis Pakai</option>
+                                    <option value="2">Barang tidak Habis Pakai</option>
+                                </select>
+                            </div>
+                            <div class="form-group mr-1">
+                                <label for="Quantity">Kondisi Barang</label>
+                                <select name="kondisi" class="custom-select">
+                                    <option value="">--PILIH KONDISI--</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Rusak">Rusak</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>

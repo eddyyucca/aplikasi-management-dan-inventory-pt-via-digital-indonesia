@@ -50,6 +50,7 @@
                             <th>Item</th>
                             <th>Jumlah</th>
                             <th>Satuan</th>
+                            <th>Kondisi</th>
                             <th>Tanggal</th>
                             <th>Aksi</th>
                         </tr>
@@ -63,6 +64,7 @@
                                 <td><?= $x->item; ?></td>
                                 <td><?= $x->qty; ?></td>
                                 <td><?= $x->satuan; ?></td>
+                                <td><?= $x->kondisi; ?></td>
                                 <td><?= $x->tanggal; ?></td>
                                 <td>
                                     <?php if ($level_akun == "admin_hr") { ?>

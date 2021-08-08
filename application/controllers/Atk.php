@@ -153,6 +153,7 @@ class Atk extends CI_Controller
                 'satuan' => $this->input->post('satuan'),
                 'type' => $this->input->post('type'),
                 'tanggal' => date("Y-m-d"),
+                'kondisi' =>  $this->input->post('kondisi'),
             );
             $insert = $this->atk_model->insertbarang($data);
             redirect('atk/view_data');
@@ -267,7 +268,9 @@ class Atk extends CI_Controller
             $data = array(
                 'item' => $this->input->post('item'),
                 'qty' => $this->input->post('qty'),
-                'satuan' => $this->input->post('satuan')
+                'satuan' => $this->input->post('satuan'),
+                'tanggal' => date("Y-m-d"),
+                'kondisi' =>  $this->input->post('kondisi'),
             );
             $update = $this->atk_model->update($id, $data);
             redirect('atk/view_data');
