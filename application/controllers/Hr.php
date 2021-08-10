@@ -733,6 +733,19 @@ class Hr extends CI_Controller
         $this->load->view('surat/masuk', $data);
         $this->load->view('template/footer');
     }
+    public function cetak_surat_masuk()
+    {
+        $data['judul'] = "Surat Masuk";
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->hr_model->data_karyawan();
+        $data['level_akun'] = $this->session->userdata('level');
+        $data['surat'] = $this->hr_model->surat_masuk();
+        // $this->load->view('template/header', $data);
+        $this->load->view('surat/cetak_masuk', $data);
+        // $this->load->view('template/footer');
+    }
     public function surat_keluar()
     {
         $data['judul'] = "Surat Keluar";
@@ -746,6 +759,21 @@ class Hr extends CI_Controller
         $data['jumlah_surat_k'] = $this->hr_model->jumlah_surat_k();
         $this->load->view('template/header', $data);
         $this->load->view('surat/keluar', $data);
+        $this->load->view('template/footer');
+    }
+    public function cetak_surat_keluar()
+    {
+        $data['judul'] = "Surat Keluar";
+
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        $data['data'] = $this->hr_model->data_karyawan();
+        $data['level_akun'] = $this->session->userdata('level');
+        $data['surat'] = $this->hr_model->surat_keluar();
+        $data['jumlah_surat_k'] = $this->hr_model->jumlah_surat_k();
+        $this->load->view('template/header', $data);
+        $this->load->view('surat/cetak_keluar', $data);
         $this->load->view('template/footer');
     }
 

@@ -8,7 +8,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= base_url('order/cari') ?>" method="post">
+                    <form action="<?= base_url('order/order_selesai') ?>" method="post">
                         <div class="input-group mb-3 col-6">
                             <input type="date" class="form-control" name="tanggal">
                             <div class="input-group-append">
@@ -16,6 +16,13 @@
                             </div>
                         </div>
                     </form>
+                    <form action="<?= base_url('order/cetak_order_selesai') ?>" method="post">
+                        <input type="hidden" name="tanggal" value="<?= $tanggal ?>">
+                        <div class="form-group ml-2">
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Cetak</button>
+                        </div>
+                    </form>
+                    <hr>
                     <hr>
                     <div class="row">
                         <div class="table-responsive">

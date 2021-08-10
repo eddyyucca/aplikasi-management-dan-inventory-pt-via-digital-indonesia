@@ -25,6 +25,13 @@
 </head>
 
 <body>
+    <table>
+        <tr align="center">
+            <th rowspan="3"><img src="<?= base_url('assets/cop.png') ?>" width="100%">
+            </th>
+        </tr>
+    </table>
+    <br>
     <table align="center" width="1000px">
         <tr>
             <th>

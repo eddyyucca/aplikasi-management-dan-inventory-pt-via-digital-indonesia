@@ -46,6 +46,12 @@
                         </div>
                     </div>
                 </form>
+                <form action="<?= base_url('atk/cetak_atk_dep') ?>" method="post">
+                    <input type="hidden" name="laporan_dep" value="<?= $laporan_dep ?>">
+                    <div class="form-group ml-2">
+                        <button class="btn btn-primary" type="submit" id="button-addon2">Cetak</button>
+                    </div>
+                </form>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>

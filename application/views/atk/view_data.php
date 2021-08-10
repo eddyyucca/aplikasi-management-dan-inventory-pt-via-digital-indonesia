@@ -42,7 +42,12 @@
                         </div>
                     </div>
                     <hr>
-                </div>
+                </div> <?php if ($level_akun == "admin_gudang") { ?>
+                    <a href="<?= base_url('atk/cetak_view_data') ?>" class="btn btn-primary">CETAK</a>
+
+                <?php } else {
+                        } ?>
+                <hr>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>

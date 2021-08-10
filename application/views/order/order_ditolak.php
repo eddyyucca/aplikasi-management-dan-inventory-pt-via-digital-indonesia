@@ -11,6 +11,8 @@
                     <div class="row">
                         <div class="table-responsive">
                             <div class="container">
+                                <a href="<?= base_url('order/cetak_order_ditolak') ?>" class="btn btn-primary">CETAK</a>
+                                <hr>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <div class="container">
                                         <thead>

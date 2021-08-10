@@ -45,6 +45,8 @@
                             <button class="btn btn-primary" type="submit">Simpan</button>
                         </form>
                         <br>
+                        <a href="<?= base_url('hr/cetak_surat_keluar') ?>" class="btn btn-primary">CETAK</a>
+                        <hr>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>

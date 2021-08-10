@@ -51,6 +51,21 @@ class User extends CI_Controller
         $this->load->view('user/atk/atk_dep', $data);
         $this->load->view('user/template/footer');
     }
+    public function cetak_atk_dep()
+    {
+        $data["level_akun"] = $this->session->userdata('level');
+        $data_cari = $this->session->userdata('id_dep');
+        $data['data_departemen'] = $this->akun_model->getDataDepartemen();
+        $data['data'] = $this->atk_model->getDataBarangdep($data_cari);
+        $data['judul'] = 'ATK Departement';
+        $data['databarang'] = $this->user_model->getDataBarang();
+        $data['keranjang'] = $this->cart->contents();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['jabatan'] = $this->jabatan_model->getDataById($this->session->userdata('id_jab'));
+        // $this->load->view('user/template/header', $data);
+        $this->load->view('user/atk/cetak_atk_dep', $data);
+        // $this->load->view('user/template/footer');
+    }
 
     public function atk_habis($id_barang)
     {

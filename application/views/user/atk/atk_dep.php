@@ -31,7 +31,8 @@
                         </div>
                     </div>
                 </div>
-
+                <a href="<?= base_url('user/cetak_atk_dep') ?>" class="btn btn-primary">CETAK</a>
+                <hr>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
