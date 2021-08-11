@@ -4,6 +4,13 @@
          </th>
      </tr>
  </table>
+ <table align="center" width="1000px">
+     <tr>
+         <th>
+             <h1>LAPORAN PERMOHONAN DEPARTEMEN</h1>
+         </th>
+     </tr>
+ </table>
  <br>
  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
      <div class="container">
@@ -30,6 +37,15 @@
              <?php }
                 ?>
          </tbody>
+ </table>
+ <table width="100%" border="0">
+     <tr align="center">
+         <br><br>
+
+         <td colspan="9">
+             <img style="float: right;" alt="" src=" <?= base_url('assets/ttd.png') ?>" width="15%">
+         </td>
+     </tr>
  </table>
  <script>
      window.print()

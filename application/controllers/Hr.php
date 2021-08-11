@@ -772,9 +772,9 @@ class Hr extends CI_Controller
         $data['level_akun'] = $this->session->userdata('level');
         $data['surat'] = $this->hr_model->surat_keluar();
         $data['jumlah_surat_k'] = $this->hr_model->jumlah_surat_k();
-        $this->load->view('template/header', $data);
+        // $this->load->view('template/header', $data);
         $this->load->view('surat/cetak_keluar', $data);
-        $this->load->view('template/footer');
+        // $this->load->view('template/footer');
     }
 
     public function prosessurat_keluar()
