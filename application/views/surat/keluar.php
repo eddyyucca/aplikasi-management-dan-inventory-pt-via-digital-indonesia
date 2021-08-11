@@ -11,39 +11,42 @@
                 <div class="row">
                     <div class="container">
                         <?= validation_errors() ?>
-                        <?php $rand = rand(10000, 50000); ?>
-                        <form action="<?= base_url('hr/prosessurat_keluar') ?>" method="POST" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="inputItem">No Surat</label>
-                                <input type="text" class="form-control" id="no_surat" disabled placeholder="<?= $rand ?>">
-                                <input type="hidden" class="form-control" name="no_surat_keluar" value="<?= $rand ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItem">Perihal</label>
-                                <input type="text" class="form-control" id="nama_user" name="perihal" placeholder="Perihal">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItem">Bentuk Surat</label>
-                                <input type="text" class="form-control" id="nama_user" name="bentuk_surat" placeholder="Bentuk Surat">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItem">Tanggal</label>
-                                <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Perihal">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItem">Tujuan</label>
-                                <input type="text" class="form-control" id="nama_user" name="tujuan" placeholder="Tujuan">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItem">Departemen</label>
-                                <input type="text" class="form-control" id="nama_user" name="bagian" placeholder="Departemen">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputItem">File</label>
-                                <input type="file" name="file" class="form-control" placeholder="file" required></td>
-                            </div>
-                            <button class="btn btn-primary" type="submit">Simpan</button>
-                        </form>
+                        <?php if ($level_akun == "kepala") {
+                        } else { ?>
+                            <?php $rand = rand(10000, 50000); ?>
+                            <form action="<?= base_url('hr/prosessurat_keluar') ?>" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="inputItem">No Surat</label>
+                                    <input type="text" class="form-control" id="no_surat" disabled placeholder="<?= $rand ?>">
+                                    <input type="hidden" class="form-control" name="no_surat_keluar" value="<?= $rand ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputItem">Perihal</label>
+                                    <input type="text" class="form-control" id="nama_user" name="perihal" placeholder="Perihal">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputItem">Bentuk Surat</label>
+                                    <input type="text" class="form-control" id="nama_user" name="bentuk_surat" placeholder="Bentuk Surat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputItem">Tanggal</label>
+                                    <input type="date" class="form-control" id="nama_user" name="tanggal" placeholder="Perihal">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputItem">Tujuan</label>
+                                    <input type="text" class="form-control" id="nama_user" name="tujuan" placeholder="Tujuan">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputItem">Departemen</label>
+                                    <input type="text" class="form-control" id="nama_user" name="bagian" placeholder="Departemen">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputItem">File</label>
+                                    <input type="file" name="file" class="form-control" placeholder="file" required></td>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Simpan</button>
+                            </form>
+                        <?php } ?>
                         <br>
                         <a href="<?= base_url('hr/cetak_surat_keluar') ?>" class="btn btn-primary">CETAK</a>
                         <hr>
