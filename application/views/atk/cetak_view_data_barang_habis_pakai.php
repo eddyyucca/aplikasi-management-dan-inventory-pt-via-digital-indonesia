@@ -8,7 +8,7 @@
  <table align="center" width="1000px">
      <tr>
          <th>
-             <h1>DATA ATK BARANG HABIS PAKAI</h1>
+             <h1>DATA ATK BARANG TIDAK HABIS PAKAI</h1>
          </th>
      </tr>
  </table>
