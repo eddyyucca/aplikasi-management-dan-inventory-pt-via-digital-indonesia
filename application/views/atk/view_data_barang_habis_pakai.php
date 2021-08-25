@@ -48,43 +48,71 @@
                 <?php } else {
                 } ?>
                 <hr>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Item</th>
-                            <th>Jumlah</th>
-                            <th>Satuan</th>
-                            <th>Kondisi</th>
-                            <th>Tanggal</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $nomor = 1;
-                        foreach ($data as $x) { ?>
+                <?php if ($level_akun == "admin_hr") { ?>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td><?= $x->item; ?></td>
-                                <td><?= $x->qty; ?></td>
-                                <td><?= $x->satuan; ?></td>
-                                <td><?= $x->kondisi; ?></td>
-                                <td><?= $x->tanggal; ?></td>
-                                <td>
-                                    <?php if ($level_akun == "admin_hr") { ?>
-                                        <p>-</p>
-                                    <?php   } else { ?>
-                                        <a href="<?= base_url('atk/edit/') . $x->id; ?>" class="btn btn-primary">Edit</a>
-                                        <a href="<?= base_url('atk/barang_masuk/') . $x->id; ?>" class="btn btn-success">Update Stok</a>
-                                        <a href="<?= base_url('atk/barang_rusak/') . $x->id; ?>" class="btn btn-warning">Barang Rusak</a>
-                                        <a href="<?= base_url('atk/hapus/') . $x->id; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                    <?php } ?>
-                                </td>
+                                <th>No</th>
+                                <th>Item</th>
+                                <th>Jumlah</th>
+                                <th>Satuan</th>
+                                <th>Kondisi</th>
+                                <th>Tanggal</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $nomor = 1;
+                            foreach ($data as $x) { ?>
+                                <tr>
+                                    <td><?= $nomor++; ?></td>
+                                    <td><?= $x->item; ?></td>
+                                    <td><?= $x->qty; ?></td>
+                                    <td><?= $x->satuan; ?></td>
+                                    <td><?= $x->kondisi; ?></td>
+                                    <td><?= $x->tanggal; ?></td>
+
+                                </tr>
+                            <?php }
+                        } else {
+                            ?>
+                        </tbody>
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Item</th>
+                                    <th>Jumlah</th>
+                                    <th>Satuan</th>
+                                    <th>Kondisi</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $nomor = 1;
+                                foreach ($data as $x) { ?>
+                                    <tr>
+                                        <td><?= $nomor++; ?></td>
+                                        <td><?= $x->item; ?></td>
+                                        <td><?= $x->qty; ?></td>
+                                        <td><?= $x->satuan; ?></td>
+                                        <td><?= $x->kondisi; ?></td>
+                                        <td><?= $x->tanggal; ?></td>
+                                        <td>
+
+
+                                            <a href="<?= base_url('atk/edit/') . $x->id; ?>" class="btn btn-primary">Edit</a>
+                                            <a href="<?= base_url('atk/barang_masuk/') . $x->id; ?>" class="btn btn-success">Update Stok</a>
+                                            <a href="<?= base_url('atk/barang_rusak/') . $x->id; ?>" class="btn btn-warning">Barang Rusak</a>
+                                            <a href="<?= base_url('atk/hapus/') . $x->id; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                        <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
             </div>
         </div>
     </div>

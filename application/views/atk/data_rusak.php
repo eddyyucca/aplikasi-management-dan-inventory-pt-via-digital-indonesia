@@ -48,36 +48,60 @@
                 <?php } else {
                 } ?>
                 <hr>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Item</th>
-                            <th>Jumlah</th>
-                            <th>Tanggal</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $nomor = 1;
-                        foreach ($data as $x) { ?>
+                <?php if ($level_akun == "admin_hr") { ?>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td><?= $nomor++; ?></td>
-                                <td><?= $x->item; ?></td>
-                                <td><?= $x->jumlah; ?></td>
-                                <td><?= $x->tanggal_barang_rusak; ?></td>
-                                <td>
-                                    <?php if ($level_akun == "admin_hr") { ?>
-                                        <p>-</p>
-                                    <?php   } else { ?>
+                                <th>No</th>
+                                <th>Item</th>
+                                <th>Jumlah</th>
+                                <th>Tanggal</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $nomor = 1;
+                            foreach ($data as $x) { ?>
+                                <tr>
+                                    <td><?= $nomor++; ?></td>
+                                    <td><?= $x->item; ?></td>
+                                    <td><?= $x->jumlah; ?></td>
+                                    <td><?= $x->tanggal_barang_rusak; ?></td>
+
+                                </tr>
+                            <?php }
+                        } else { ?>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Item</th>
+                                <th>Jumlah</th>
+                                <th>Tanggal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $nomor = 1;
+                            foreach ($data as $x) { ?>
+                                <tr>
+                                    <td><?= $nomor++; ?></td>
+                                    <td><?= $x->item; ?></td>
+                                    <td><?= $x->jumlah; ?></td>
+                                    <td><?= $x->tanggal_barang_rusak; ?></td>
+                                    <td>
+
                                         <a href="<?= base_url('atk/hapus_rusak/') . $x->id_barang_rusak; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <?php } ?>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>
