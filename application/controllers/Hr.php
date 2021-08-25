@@ -675,7 +675,6 @@ class Hr extends CI_Controller
             'email' => $this->input->post('email'),
             'id_dep' => $this->input->post('dep'),
             'id_jab' => $this->input->post('jab'),
-            'foto' => $file1["orig_name"],
             'status_karyawan' => $this->input->post('status_karyawan')
         );
 

@@ -107,14 +107,7 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>Foto</td>
-                            <td>
-                                <div class="custom-file">
-                                    <input type="file" class="form-control" name="foto" id="foto">
-                                </div>
-                            </td>
-                        </tr>
+
 
                         <tr>
                             <td>Nomor Kependudukan</td>
