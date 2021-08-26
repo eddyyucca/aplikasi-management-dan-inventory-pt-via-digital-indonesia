@@ -104,7 +104,7 @@
                      </table>
                      <br>
                      <table border=1 width="600px">
-                         <th>Form ini digunakan sebagai dasar pembuatan GR oleh HRGS Dept</th>
+                         <th>Form ini digunakan sebagai dasar pembuatan GR oleh ADMIN Dept</th>
                      </table>
                  </th>
              </tr>
