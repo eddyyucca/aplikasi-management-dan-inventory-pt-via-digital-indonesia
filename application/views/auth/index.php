@@ -30,19 +30,19 @@
 												</div>
 											</div>
 
-											<div class="form-group mb-4">
+											<!-- <div class="form-group mb-4">
 												<select class="custom-select" name="level">
 													<option value="admin">Admin</option>
 													<option value="user">User</option>
 												</select>
-											</div>
+											</div> -->
 
 											<div class="form-group mb-4">
 												<input type="password" class="form-control" name="password" placeholder="Password">
 											</div>
 
 											<button type="submit" class="btn btn-primary btn-user btn-block">
-												Masuk
+												Masukhh
 											</button>
 										</form>
 										<hr>

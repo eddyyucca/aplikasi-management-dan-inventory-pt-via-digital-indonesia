@@ -12,110 +12,7 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
-		if ($this->input->post('level') == "user") {
-			$this->form_validation->set_rules('id_kar', 'ID Karyawan', 'required');
-			$this->form_validation->set_rules('password', 'Password', 'required');
-			if ($this->form_validation->run() == FALSE) {
-				$data['data'] = false;
 
-				$data['judul'] = 'Login User';
-				$this->load->view('auth/template/header', $data);
-				$this->load->view('auth/user', $data);
-				$this->load->view('auth/template/footer');
-			}
-
-			$id_kar = $this->input->post('id_kar');
-			$password =  md5($this->input->post('password'));
-			$cek = $this->auth_model->login_user($id_kar, $password);
-			if ($cek == true) {
-
-				foreach ($cek as $row);
-				$this->session->set_userdata('id_kar', $row->id_kar);
-				$this->session->set_userdata('nama_lengkap', $row->nama_lengkap);
-				$this->session->set_userdata('id_dep', $row->id_dep);
-				$this->session->set_userdata('id_jab', $row->id_jab);
-				$this->session->set_userdata('level', $row->level);
-				$this->session->set_userdata('mess', $row->mess);
-
-				redirect('user');
-			} else {
-				$data['data'] = '<div class="alert alert-danger" role="alert">Password Salah !
-            </div>';
-
-				$data['judul'] = 'Login User';
-				$this->load->view('auth/template/header', $data);
-				$this->load->view('auth/user', $data);
-				$this->load->view('auth/template/footer');
-			}
-		} elseif ($this->input->post('level') == "admin") {
-
-			$id_kar = $this->input->post('id_kar');
-			$password =  md5($this->input->post('password'));
-
-			$cek = $this->auth_model->login($id_kar, $password);
-
-			if ($cek == true) {
-
-				foreach ($cek as $row);
-				$this->session->set_userdata('id', $row->id_karyawan);
-				$this->session->set_userdata('nama_lengkap', $row->nama_lengkap);
-				$this->session->set_userdata('id_dep', $row->id_dep);
-				$this->session->set_userdata('id_jab', $row->id_jab);
-				$this->session->set_userdata('level', $row->level);
-
-				if ($this->session->userdata('level') == "admin") {
-					redirect('home/index');
-				} elseif ($this->session->userdata('level') == "admin_gudang") {
-					redirect('home/index');
-				} elseif ($this->session->userdata('level') == "admin_hr") {
-					redirect('home/index');
-				} elseif ($this->session->userdata('level') == "kepala") {
-					redirect('home/index');
-				}
-			}
-			// $this->form_validation->set_rules('departemen', 'Departemen', 'required');
-			$this->form_validation->set_rules('password', 'Password', 'required');
-			if ($this->form_validation->run() == FALSE) {
-				$data['judul'] = 'Login Admin';
-				$data['data'] = '';
-				$data['departemen'] = $this->auth_model->departemen();
-
-				$this->load->view('auth/template/header', $data);
-				$this->load->view('auth/index', $data);
-				$this->load->view('auth/template/footer');
-			} else {
-				$data['data'] = '<div class="alert alert-danger" role="alert">Password Salah !
-          </div>';
-				$data['judul'] = 'Login';
-				$data['departemen'] = $this->auth_model->departemen();
-
-				$this->load->view('auth/template/header', $data);
-				$this->load->view('auth/index', $data);
-				$this->load->view('auth/template/footer');
-			}
-		} elseif ($this->input->post('level') == false) {
-			$data['judul'] = 'Login Admin';
-			$data['data'] = '';
-			$data['departemen'] = $this->auth_model->departemen();
-
-			$this->load->view('auth/template/header', $data);
-			$this->load->view('auth/index', $data);
-			$this->load->view('auth/template/footer');
-		}
-	}
-	//------------------------------------------------------------------------//
-	//------------------------------------------------------------------------//
-	//------------------------------------------------------------------------//
-	public function user()
-	{
-		$data['judul'] = 'Login User';
-		$data['data'] = false;
-		$this->load->view('auth/template/header', $data);
-		$this->load->view('auth/user', $data);
-		$this->load->view('auth/template/footer');
-	}
-	public function auth_user()
-	{
 		$this->form_validation->set_rules('id_kar', 'ID Karyawan', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		if ($this->form_validation->run() == FALSE) {
@@ -123,7 +20,7 @@ class Auth extends CI_Controller
 
 			$data['judul'] = 'Login User';
 			$this->load->view('auth/template/header', $data);
-			$this->load->view('auth/user', $data);
+			$this->load->view('auth/index', $data);
 			$this->load->view('auth/template/footer');
 		}
 
@@ -140,32 +37,72 @@ class Auth extends CI_Controller
 			$this->session->set_userdata('level', $row->level);
 			$this->session->set_userdata('mess', $row->mess);
 
-			redirect('user');
-		} else {
-			$data['data'] = '<div class="alert alert-danger" role="alert">Password Salah !
-            </div>';
-
-			$data['judul'] = 'Login User';
-			$this->load->view('auth/template/header', $data);
-			$this->load->view('auth/user', $data);
-			$this->load->view('auth/template/footer');
+			redirect('atk');
 		}
 	}
+	//------------------------------------------------------------------------//
+	//------------------------------------------------------------------------//
+	//------------------------------------------------------------------------//
+	// public function user()
+	// {
+	// 	$data['judul'] = 'Login User';
+	// 	$data['data'] = false;
+	// 	$this->load->view('auth/template/header', $data);
+	// 	$this->load->view('auth/user', $data);
+	// 	$this->load->view('auth/template/footer');
+	// }
+	// public function auth_user()
+	// {
+	// 	$this->form_validation->set_rules('id_kar', 'ID Karyawan', 'required');
+	// 	$this->form_validation->set_rules('password', 'Password', 'required');
+	// 	if ($this->form_validation->run() == FALSE) {
+	// 		$data['data'] = false;
 
-	public function auth_vendor()
-	{
+	// 		$data['judul'] = 'Login User';
+	// 		$this->load->view('auth/template/header', $data);
+	// 		$this->load->view('auth/user', $data);
+	// 		$this->load->view('auth/template/footer');
+	// 	}
 
-		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		if ($this->form_validation->run() == FALSE) {
-			$data['data'] = false;
-			$data['judul'] = 'Login Vendor';
+	// 	$id_kar = $this->input->post('id_kar');
+	// 	$password =  md5($this->input->post('password'));
+	// 	$cek = $this->auth_model->login_user($id_kar, $password);
+	// 	if ($cek == true) {
 
-			$this->load->view('auth/template/header', $data);
-			$this->load->view('auth/vendor', $data);
-			$this->load->view('auth/template/footer');
-		}
-	}
+	// 		foreach ($cek as $row);
+	// 		$this->session->set_userdata('id_kar', $row->id_kar);
+	// 		$this->session->set_userdata('nama_lengkap', $row->nama_lengkap);
+	// 		$this->session->set_userdata('id_dep', $row->id_dep);
+	// 		$this->session->set_userdata('id_jab', $row->id_jab);
+	// 		$this->session->set_userdata('level', $row->level);
+	// 		$this->session->set_userdata('mess', $row->mess);
+
+	// 		redirect('user');
+	// 	} else {
+	// 		$data['data'] = '<div class="alert alert-danger" role="alert">Password Salah !
+	//         </div>';
+
+	// 		$data['judul'] = 'Login User';
+	// 		$this->load->view('auth/template/header', $data);
+	// 		$this->load->view('auth/user', $data);
+	// 		$this->load->view('auth/template/footer');
+	// 	}
+	// }
+
+	// public function auth_vendor()
+	// {
+
+	// 	$this->form_validation->set_rules('username', 'Username', 'required');
+	// 	$this->form_validation->set_rules('password', 'Password', 'required');
+	// 	if ($this->form_validation->run() == FALSE) {
+	// 		$data['data'] = false;
+	// 		$data['judul'] = 'Login Vendor';
+
+	// 		$this->load->view('auth/template/header', $data);
+	// 		$this->load->view('auth/vendor', $data);
+	// 		$this->load->view('auth/template/footer');
+	// 	}
+	// }
 	public function vendor_cek()
 	{
 		$username = $this->input->post('username');
