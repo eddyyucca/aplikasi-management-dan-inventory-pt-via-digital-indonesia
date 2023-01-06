@@ -36,10 +36,18 @@ class Auth extends CI_Controller
 			$this->session->set_userdata('id_jab', $row->id_jab);
 			$this->session->set_userdata('level', $row->level);
 			$this->session->set_userdata('mess', $row->mess);
-
-			redirect('atk');
+			if ($row->level == 'user') {
+				redirect('user');
+			} elseif ($row->level == 'kepala_gs') {
+				redirect('home');
+			} elseif ($row->level == 'hr_admin') {
+				redirect('home');
+			} elseif ($row->level == 'admin') {
+				redirect('home');
+			}
 		}
 	}
+
 	//------------------------------------------------------------------------//
 	//------------------------------------------------------------------------//
 	//------------------------------------------------------------------------//

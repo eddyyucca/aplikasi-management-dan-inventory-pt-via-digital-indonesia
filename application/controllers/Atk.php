@@ -183,7 +183,7 @@ class Atk extends CI_Controller
 			'order' => 'id',
 			'status' => '1'
 		);
-		$this->model->atk_model($data, $id);
+		$this->model->atk_model->InsertOrder($data, $id);
 	}
 
 	public function prosesInput()
