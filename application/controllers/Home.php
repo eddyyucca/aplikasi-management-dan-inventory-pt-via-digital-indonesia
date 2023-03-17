@@ -14,15 +14,16 @@ class Home extends CI_Controller
 		$this->load->model('jabatan_model');
 
 
-		$level_akun = $this->session->userdata('level');
+		// $level_akun = $this->session->userdata('level');
 		// if ($level_akun != ("admin_hr") <= ("admin_gudang")) {
 		//     redirect('auth');
-		if ($level_akun == false) {
-			redirect('auth');
-		} elseif ($level_akun == "user") {
-			redirect('auth');
-		}
-	}
+		// if ($level_akun == false) {
+		// 	redirect('auth');
+		// } elseif ($level_akun == "user") {
+		// 	redirect('auth');
+		// }
+	// }
+}
 
 	public function index()
 	{

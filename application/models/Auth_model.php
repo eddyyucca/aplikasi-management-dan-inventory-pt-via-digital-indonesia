@@ -31,7 +31,7 @@ class Auth_model extends CI_Model
         }
     }
 
-    public function login_user($id_kar, $password)
+    public function login_user($id_kar)
     {
         $this->db->select('*');
         $this->db->from('user_login');
@@ -39,7 +39,7 @@ class Auth_model extends CI_Model
         // $this->db->select('*');
         // $this->db->from('user_login');
         $this->db->where('id_kar', $id_kar);
-        $this->db->where('password', $password);
+        // $this->db->where('password', $password);
         $this->db->limit(1);
         $query = $this->db->get();
 

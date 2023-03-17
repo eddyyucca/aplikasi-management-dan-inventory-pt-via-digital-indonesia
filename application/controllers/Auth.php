@@ -13,6 +13,44 @@ class Auth extends CI_Controller
 	public function index()
 	{
 
+		
+			$data['data'] = false;
+
+			$data['judul'] = 'Login User';
+			$this->load->view('auth/template/header', $data);
+			$this->load->view('auth/index', $data);
+			$this->load->view('auth/template/footer');
+	
+
+		$id_kar = $this->input->post('id_kar');
+		// $password =  md5($this->input->post('password'));
+		$cek = $this->auth_model->login_user($id_kar);
+		// var_dump($cek);
+		if ($cek == true) {
+
+			foreach ($cek as $row);
+			$this->session->set_userdata('id_kar', $row->id_kar);
+			$this->session->set_userdata('nama_lengkap', $row->nama_lengkap);
+			$this->session->set_userdata('id_dep', $row->id_dep);
+			$this->session->set_userdata('id_jab', $row->id_jab);
+			$this->session->set_userdata('level', $row->level);
+			if ($row->level == 'user') {
+				redirect('user');
+			} elseif ($row->level == 'kepala_gs') {
+				redirect('home');
+			} elseif ($row->level == 'hr_admin') {
+				redirect('home');
+			} elseif ($row->level == 'admin_dep') {
+				redirect('home');
+			}
+			if ($cek == FALSE) {
+				redirect('auth');
+		}
+	  }
+	}
+	public function index_back()
+	{
+
 		$this->form_validation->set_rules('id_kar', 'ID Karyawan', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		if ($this->form_validation->run() == FALSE) {
@@ -23,31 +61,7 @@ class Auth extends CI_Controller
 			$this->load->view('auth/index', $data);
 			$this->load->view('auth/template/footer');
 		}
-
-		$id_kar = $this->input->post('id_kar');
-		$password =  md5($this->input->post('password'));
-		$cek = $this->auth_model->login_user($id_kar, $password);
-		if ($cek == true) {
-
-			foreach ($cek as $row);
-			$this->session->set_userdata('id_kar', $row->id_kar);
-			$this->session->set_userdata('nama_lengkap', $row->nama_lengkap);
-			$this->session->set_userdata('id_dep', $row->id_dep);
-			$this->session->set_userdata('id_jab', $row->id_jab);
-			$this->session->set_userdata('level', $row->level);
-			$this->session->set_userdata('mess', $row->mess);
-			if ($row->level == 'user') {
-				redirect('user');
-			} elseif ($row->level == 'kepala_gs') {
-				redirect('home');
-			} elseif ($row->level == 'hr_admin') {
-				redirect('home');
-			} elseif ($row->level == 'admin') {
-				redirect('home');
-			}
-		}
 	}
-
 	//------------------------------------------------------------------------//
 	//------------------------------------------------------------------------//
 	//------------------------------------------------------------------------//
